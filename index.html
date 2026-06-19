@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fabrizio De Cicco — IoT Infrastructure Architect & Lead DevOps Engineer</title>
+<meta name="description" content="Fabrizio De Cicco — IoT Infrastructure Architect and Lead DevOps Engineer. Scalable, reliable, secure cloud foundations for connected products. Azure, Terraform, Kubernetes, Datadog, CI/CD, SRE.">
+<meta name="author" content="Fabrizio De Cicco">
+<meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0f17" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://fabriziodecicco.dev/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EFD%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fabrizio De Cicco — IoT Infrastructure Architect & Lead DevOps Engineer">
+<meta property="og:description" content="Scalable, reliable, secure cloud foundations for connected products. Azure, Terraform, Kubernetes, Datadog, CI/CD, SRE.">
+<meta property="og:url" content="https://fabriziodecicco.dev/">
+<meta property="og:image" content="https://fabriziodecicco.dev/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fabrizio De Cicco — IoT Infrastructure Architect & Lead DevOps Engineer">
+<meta name="twitter:description" content="Scalable, reliable, secure cloud foundations for connected products.">
+<meta name="twitter:image" content="https://fabriziodecicco.dev/assets/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f6fb; --surface: #ffffff; --surface-2: #fbfcfe;
+    --ink: #0e1726; --body: #3a4861; --muted: #64748b;
+    --line: #e6eaf2; --line-2: #dfe5f0;
+    --accent: #2563eb; --accent-ink: #1d4ed8; --accent-soft: #eef3ff;
+    --green: #16a34a; --term-bg: #0b0e14;
+    --radius: 16px; --radius-sm: 10px; --nav: 64px; --maxw: 1080px;
+    --shadow-sm: 0 1px 2px rgba(15,23,42,.05);
+    --shadow: 0 10px 30px -14px rgba(15,23,42,.22);
+    --ff: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+    color-scheme: light dark;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; background: var(--bg); }
+  body { margin: 0; background: var(--bg); color: var(--body); font-family: var(--ff); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3 { color: var(--ink); margin: 0; letter-spacing: -0.02em; line-height: 1.1; }
+  ::selection { background: #cfe0ff; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  .skip-link { position: absolute; left: 12px; top: -52px; background: var(--accent); color: #fff; padding: 10px 14px; border-radius: 8px; z-index: 100; transition: top .15s; }
+  .skip-link:focus { top: 12px; }
+
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  .section { padding: clamp(64px, 9vw, 110px) 0; }
+  .section + .section { border-top: 1px solid var(--line); }
+  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0 0 14px; }
+  .lede { color: var(--body); max-width: 62ch; }
+
+  /* Nav */
+  .nav { position: sticky; top: 0; z-index: 60; height: var(--nav); background: rgba(244,246,251,.82); backdrop-filter: saturate(160%) blur(10px); border-bottom: 1px solid var(--line); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; color: var(--ink); font-size: 15px; }
+  .brand .mark { width: 26px; height: 26px; border-radius: 8px; flex: none; background: linear-gradient(135deg, var(--accent), #4f7cff); color: #fff; display: grid; place-items: center; font-size: 12px; font-weight: 800; }
+  .nav-links { display: flex; align-items: center; gap: 4px; }
+  .nav-links a { padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--body); transition: background .15s, color .15s; }
+  .nav-links a:hover { background: #eaeefb; color: var(--ink); }
+  .nav-links a.active { color: var(--accent-ink); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; padding: 10px 16px; border-radius: var(--radius-sm); border: 1px solid transparent; transition: transform .12s, box-shadow .12s, background .15s, border-color .15s; cursor: pointer; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 8px 18px -8px rgba(37,99,235,.7); }
+  .btn-primary:hover { background: var(--accent-ink); }
+  .btn-ghost { background: var(--surface); color: var(--ink); border-color: var(--line-2); box-shadow: var(--shadow-sm); }
+  .btn-ghost:hover { border-color: #c7d2e8; }
+  .nav .btn { padding: 8px 14px; }
+  .nav-toggle { display: none; }
+
+  /* Hero */
+  .hero { padding-top: clamp(56px, 8vw, 92px); padding-bottom: clamp(56px, 8vw, 92px); position: relative; overflow: hidden; background: var(--bg); }
+  .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 50% at 88% -10%, rgba(37,99,235,.10), transparent 70%), radial-gradient(40% 40% at -5% 0%, rgba(79,124,255,.08), transparent 70%); }
+  .hero-inner { position: relative; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #334155; background: var(--surface); border: 1px solid var(--line-2); padding: 6px 13px; border-radius: 999px; box-shadow: var(--shadow-sm); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 0 rgba(34,197,94,.5); animation: pulse 2.6s ease-out infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(34,197,94,.45); } 70% { box-shadow: 0 0 0 9px rgba(34,197,94,0); } 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); } }
+  .hero h1 { font-size: clamp(40px, 7vw, 70px); font-weight: 800; margin: 20px 0 0; }
+  .hero .role { font-size: clamp(17px, 2.6vw, 22px); font-weight: 600; color: var(--accent-ink); margin: 14px 0 0; }
+  .hero .tagline { font-size: clamp(16px, 2.1vw, 19px); margin: 16px 0 0; max-width: 60ch; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 44px; }
+  .metric { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 20px; box-shadow: var(--shadow-sm); }
+  .metric .num { font-size: clamp(26px, 3.4vw, 34px); font-weight: 800; color: var(--ink); letter-spacing: -0.03em; }
+  .metric .cap { font-size: 13px; color: var(--muted); margin-top: 6px; }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(28px, 5vw, 56px); align-items: start; }
+  .about-grid p { margin: 0 0 16px; }
+  .focus { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow-sm); }
+  .focus h3 { font-size: 15px; letter-spacing: 0.02em; }
+  .focus ul { list-style: none; margin: 16px 0 0; padding: 0; }
+  .focus li { position: relative; padding-left: 24px; margin: 12px 0; font-size: 14.5px; color: var(--body); }
+  .focus li::before { content: ""; position: absolute; left: 0; top: 8px; width: 9px; height: 9px; border-radius: 3px; background: var(--accent); }
+
+  /* How I work */
+  .principles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 8px; }
+  .principle { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; box-shadow: var(--shadow-sm); }
+  .principle h3 { font-size: 16.5px; font-weight: 700; }
+  .principle p { margin: 8px 0 0; font-size: 14.5px; color: var(--body); }
+
+  /* Experience */
+  .timeline { position: relative; margin-top: 8px; }
+  .job { position: relative; padding: 0 0 38px 34px; }
+  .job:last-child { padding-bottom: 0; }
+  .timeline::before { content: ""; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 2px; background: var(--line-2); }
+  .job::before { content: ""; position: absolute; left: 3px; top: 6px; width: 13px; height: 13px; border-radius: 50%; background: var(--surface); border: 3px solid var(--accent); }
+  .job .top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; }
+  .job .org { font-size: 18px; font-weight: 700; color: var(--ink); }
+  .job .when { font-size: 13.5px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .job .title { font-size: 15px; font-weight: 600; color: var(--accent-ink); margin-top: 2px; }
+  .job .where { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .job ul { margin: 14px 0 0; padding-left: 18px; }
+  .job li { margin: 7px 0; font-size: 14.5px; }
+  .edu { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 30px; }
+  .edu .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 18px 20px; box-shadow: var(--shadow-sm); }
+  .edu .card .school { font-weight: 700; color: var(--ink); font-size: 15px; }
+  .edu .card .deg { font-size: 13.5px; color: var(--body); margin-top: 3px; }
+  .edu .card .yr { font-size: 12.5px; color: var(--muted); margin-top: 4px; font-variant-numeric: tabular-nums; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 8px; }
+  .skillset { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 18px; box-shadow: var(--shadow-sm); }
+  .skillset h3 { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .tags span { font-size: 13.5px; font-weight: 500; color: #2c3a52; background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 8px; padding: 6px 11px; }
+
+  /* Selected work / case study */
+  #work { background: linear-gradient(180deg, #eef2fb, #f4f6fb); }
+  .work-title { font-size: clamp(26px, 4vw, 40px); font-weight: 800; margin-top: 6px; }
+  .work-hook { font-size: clamp(16px, 2.1vw, 19px); color: var(--body); margin: 14px 0 0; max-width: 70ch; }
+  .cs-meta { display: flex; flex-wrap: wrap; gap: 14px 34px; margin: 26px 0 4px; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .cs-meta > div { display: flex; flex-direction: column; gap: 3px; }
+  .cs-meta .k { font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .cs-meta .v { font-size: 14.5px; font-weight: 600; color: var(--ink); }
+  .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 44px); align-items: start; margin-top: 30px; }
+  .cs-block + .cs-block { margin-top: 22px; }
+  .cs-block h3 { font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+  .cs-block p { margin: 8px 0 0; font-size: 15px; color: var(--body); }
+  .work-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+  .work-tags span { font-size: 13px; font-weight: 500; color: var(--accent-ink); background: var(--accent-soft); border: 1px solid #dbe6ff; border-radius: 999px; padding: 6px 12px; }
+  .work-note { font-size: 13.5px; color: var(--muted); margin-top: 18px; }
+
+  /* Terminal */
+  .term { background: var(--term-bg); border: 1px solid #20262f; border-radius: var(--radius); overflow: hidden; box-shadow: 0 30px 70px -28px rgba(8,12,20,.55); }
+  .term-bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: #161c26; border-bottom: 1px solid #20262f; }
+  .term-bar .d { width: 12px; height: 12px; border-radius: 50%; }
+  .term-bar .d:nth-child(1) { background: #ff5f56; } .term-bar .d:nth-child(2) { background: #ffbd2e; } .term-bar .d:nth-child(3) { background: #27c93f; }
+  .term-bar .t { margin-left: 10px; font: 500 12.5px/1 var(--mono); color: #6e7681; }
+  .term-body { padding: 22px clamp(16px, 2.5vw, 26px) 22px; font: 400 clamp(12.5px, 1.6vw, 14.5px)/1.95 var(--mono); color: #adbac7; max-height: clamp(330px, 50vh, 470px); overflow-y: auto; }
+  .term-body .line { white-space: nowrap; margin: 0; }
+  .term-body .p { color: #7ee787; margin-right: 10px; }
+  .term-body .ok { color: #7ee787; } .term-body .dim { color: #6e7681; } .term-body .cmt { color: #6e7681; }
+  .term-body a { color: #79c0ff; } .term-body a:hover { text-decoration: underline; }
+  .term-input-line { display: flex; align-items: center; }
+  .term-input { flex: 1; min-width: 0; background: transparent; border: 0; outline: none; color: #c9d1d9; font: inherit; caret-color: #7ee787; padding: 0; }
+  .term-input::placeholder { color: #48515c; }
+
+  /* Architecture diagram */
+  .diagram { margin: 40px 0 0; }
+  .diagram figcaption { font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
+  .arch { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(20px, 3vw, 32px); box-shadow: var(--shadow-sm); }
+  .arch-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-align: center; margin: 0 0 12px; }
+  .arch-center { display: flex; justify-content: center; }
+  .arch-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .node { background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 10px; padding: 13px 14px; text-align: center; }
+  .node .nt { font-weight: 700; color: var(--ink); font-size: 14px; }
+  .node .ns { display: block; font-size: 12px; color: var(--muted); margin-top: 3px; }
+  .node.orchestrator { background: var(--accent); border-color: var(--accent); min-width: 260px; }
+  .node.orchestrator .nt { color: #fff; } .node.orchestrator .ns { color: #dbe6ff; }
+  .node.skill { background: var(--accent-soft); border-color: #dbe6ff; width: 100%; }
+  .node.integration { background: #fbfcfe; }
+  .flow { display: flex; justify-content: center; height: 28px; }
+  .flow i { width: 2px; height: 100%; background: var(--line-2); position: relative; display: block; }
+  .flow i::after { content: ""; position: absolute; left: 50%; bottom: -1px; transform: translateX(-50%); border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid var(--line-2); }
+
+  /* Contact */
+  #contact { text-align: center; }
+  #contact h2 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; }
+  #contact .lede { margin: 16px auto 0; }
+  .reply { font-size: 13px; color: var(--muted); margin-top: 14px; }
+  .contact-cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 24px; }
+
+  /* Footer + status */
+  .foot { border-top: 1px solid var(--line); }
+  .status-bar { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .status-bar .status-left { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #15803d; }
+  .status-bar .status-right { color: var(--muted); font-family: var(--mono); font-size: 12.5px; }
+  .foot-row { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; padding-top: 22px; padding-bottom: 28px; }
+  .foot small { color: var(--muted); font-size: 13px; }
+  .foot .links { display: flex; gap: 18px; }
+  .foot .links a { font-size: 13px; color: var(--muted); }
+  .foot .links a:hover { color: var(--ink); }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in-view { opacity: 1; transform: none; }
+
+  /* Responsive */
+  @media (max-width: 860px) {
+    .about-grid, .cs-grid, .skills, .principles { grid-template-columns: 1fr; }
+    .metrics, .certs { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .nav-links { position: absolute; top: var(--nav); left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--surface); border-bottom: 1px solid var(--line); padding: 8px; box-shadow: var(--shadow); display: none; }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 12px 14px; border-radius: 8px; }
+    .nav-links .btn { margin: 6px 8px 4px; justify-content: center; }
+    .nav-toggle { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--line-2); border-radius: 10px; cursor: pointer; }
+    .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after { content: ""; display: block; width: 18px; height: 2px; background: var(--ink); position: relative; }
+    .nav-toggle span::before { position: absolute; top: -6px; } .nav-toggle span::after { position: absolute; top: 6px; }
+    .edu, .arch-row { grid-template-columns: repeat(2, 1fr); }
+    .node.orchestrator { min-width: 0; width: 100%; }
+  }
+
+  /* Certifications */
+  .certs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 8px; }
+  .cert { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow-sm); }
+  .cert .code { font-weight: 800; color: var(--ink); font-size: 17px; }
+  .cert .name { font-size: 13.5px; color: var(--body); margin-top: 6px; line-height: 1.4; }
+  .cert .meta { font-size: 12.5px; color: var(--muted); margin-top: 12px; font-variant-numeric: tabular-nums; }
+  .certs-more { margin-top: 18px; font-size: 14px; color: var(--muted); }
+  .certs-more a { color: var(--accent-ink); font-weight: 600; border-bottom: 1px solid #c7d6f7; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  /* Auto dark theme — follows the visitor's system setting */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0f17;
+      --surface: #121826;
+      --surface-2: #0f1520;
+      --ink: #e9eef7;
+      --body: #aeb9cb;
+      --muted: #7d8799;
+      --line: #1f2735;
+      --line-2: #2a3346;
+      --accent: #5b8cff;
+      --accent-ink: #82a6ff;
+      --accent-soft: #16233d;
+      --green: #34d399;
+      --term-bg: #0d121b;
+    }
+    .nav { background: rgba(11,15,23,.82); }
+    .nav-links a:hover { background: #18202e; }
+    .btn-ghost:hover { border-color: #38445c; }
+    .chip { color: #c4cedd; }
+    .tags span { color: #c4cedd; }
+    .work-tags span { border-color: #2a3a5e; }
+    .node.skill { border-color: #2a3a5e; }
+    .node.integration { background: #0f1520; }
+    .certs-more a { border-bottom-color: #2a3a5e; }
+    #work { background: linear-gradient(180deg, #0e1422, #0b0f17); }
+    .status-bar .status-left { color: #34d399; }
+    ::selection { background: #21406e; }
+  }
+</style>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top"><span class="mark">FD</span>Fabrizio De Cicco</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+      <nav class="nav-links" id="menu" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#approach">How I work</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-primary" href="assets/Fabrizio-De-Cicco-Resume.pdf" download>Résumé</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" aria-label="Introduction">
+      <div class="wrap hero-inner">
+        <span class="chip reveal"><span class="dot"></span>Turin, Italy &middot; Remote</span>
+        <h1 class="reveal">Fabrizio De Cicco</h1>
+        <p class="role reveal">IoT Infrastructure Architect &amp; Lead DevOps Engineer</p>
+        <p class="tagline reveal">I build scalable, reliable, and secure cloud foundations for connected products — bridging development and operations across Azure and Kubernetes through Infrastructure as Code, CI/CD, observability, and SRE.</p>
+        <div class="hero-cta reveal">
+          <a class="btn btn-primary" href="mailto:fabri.deci@gmail.com">Get in touch</a>
+          <a class="btn btn-ghost" href="https://github.com/fabrideci" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/fabriziodecicco" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+        <div class="metrics">
+          <div class="metric reveal"><div class="num" data-count="10" data-suffix="+">0</div><div class="cap">years in cloud &amp; DevOps</div></div>
+          <div class="metric reveal"><div class="num" data-count="4">0</div><div class="cap">core certifications</div></div>
+          <div class="metric reveal"><div class="num">Azure</div><div class="cap">+ Kubernetes, at global scale</div></div>
+          <div class="metric reveal"><div class="num">IoT</div><div class="cap">platform, cloud to edge</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about" aria-labelledby="about-h">
+      <div class="wrap">
+        <h2 class="eyebrow reveal" id="about-h">About</h2>
+        <div class="about-grid">
+          <div class="reveal">
+            <p>I lead the IoT infrastructure domain at Culligan International — designing and evolving our global IoT Platform's cloud architecture, automation, and observability so software and data teams can ship faster with confidence.</p>
+            <p>My focus is bridging development and operations into systems that are efficient, maintainable, and resilient. Experienced across Terraform, Azure DevOps, Kubernetes, and cloud cost optimization, I care as much about reliability and security baselines as I do about developer experience.</p>
+            <p>I enjoy mentoring engineers, simplifying complexity, and driving collaboration across teams — turning infrastructure into something the whole organization can build on and trust.</p>
+          </div>
+          <aside class="focus reveal">
+            <h3>What I focus on</h3>
+            <ul>
+              <li>Platform architecture &amp; scalability</li>
+              <li>Infrastructure automation &amp; IaC standardization</li>
+              <li>SRE &amp; observability — SLOs, DORA, MTTR</li>
+              <li>Security baselines &amp; cloud cost governance</li>
+              <li>Team leadership, mentoring &amp; enablement</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- How I work -->
+    <section class="section" id="approach" aria-labelledby="approach-h">
+      <div class="wrap">
+        <h2 class="eyebrow reveal" id="approach-h">How I work</h2>
+        <div class="principles">
+          <div class="principle reveal"><h3>Reliability is a feature.</h3><p>Design for failure, measure what users actually feel, and treat error budgets as real budgets.</p></div>
+          <div class="principle reveal"><h3>Automate the toil.</h3><p>If I've done it by hand twice, it becomes code. Humans are for judgment, not repetition.</p></div>
+          <div class="principle reveal"><h3>You can't operate what you can't see.</h3><p>Observability isn't an add-on — metrics, logs, and SLOs ship with the system, not after it.</p></div>
+          <div class="principle reveal"><h3>Boring and predictable wins.</h3><p>Simple, well-understood infrastructure beats clever and fragile every single time.</p></div>
+          <div class="principle reveal"><h3>Infrastructure as code, or it didn't happen.</h3><p>Everything reproducible, reviewable, and versioned. No snowflakes, no surprises.</p></div>
+          <div class="principle reveal"><h3>Lead by enabling.</h3><p>Mentor, document, and remove friction so the team moves faster than any one person could.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section" id="experience" aria-labelledby="exp-h">
+      <div class="wrap">
+        <h2 class="eyebrow reveal" id="exp-h">Experience</h2>
+        <div class="timeline">
+          <div class="job reveal">
+            <div class="top"><span class="org">Culligan International</span><span class="when">Jul 2023 — Present</span></div>
+            <div class="title">Infrastructure Architect (previously DevOps Engineer)</div>
+            <div class="where">Milan, Italy &middot; Remote</div>
+            <ul>
+              <li>Promoted to lead IoT infrastructure architecture and reliability across the Culligan IoT Platform organization.</li>
+              <li>Own end-to-end infrastructure design and operations, ensuring scalability, security, and cost efficiency.</li>
+              <li>Architect and evolve the platform's CI/CD, IaC, and observability frameworks supporting global IoT solutions.</li>
+              <li>Automate provisioning with Terraform and Azure DevOps pipelines; implement Datadog monitoring that reduced incident MTTR.</li>
+              <li>Mentor and guide the DevOps/SRE team, driving automation, observability, and reliability practices.</li>
+            </ul>
+          </div>
+          <div class="job reveal">
+            <div class="top"><span class="org">MSC Mediterranean Shipping Company</span><span class="when">Mar 2022 — Jul 2023</span></div>
+            <div class="title">DevOps Engineer</div>
+            <div class="where">Turin, Italy &middot; Hybrid</div>
+            <ul>
+              <li>Built and maintained scalable CI/CD pipelines on Azure DevOps using YAML across a large application portfolio.</li>
+              <li>Automated infrastructure provisioning with Ansible, Bicep, and Rundeck, cutting manual configuration work.</li>
+              <li>Wrote automation tooling in PowerShell and Bash that accelerated deployment cycles and reduced errors.</li>
+              <li>Rolled out observability and logging with Datadog, improving issue detection and resolution.</li>
+            </ul>
+          </div>
+          <div class="job reveal">
+            <div class="top"><span class="org">Deltatre</span><span class="when">Aug 2015 — Mar 2022</span></div>
+            <div class="title">Application Support Supervisor &middot; Analyst &middot; Software Engineer</div>
+            <div class="where">Turin, Italy</div>
+            <ul>
+              <li>Supervised and mentored a 12-person application support team, improving SLA compliance and productivity.</li>
+              <li>Collaborated across developers, analysts, and vendors to accelerate incident resolution and customer satisfaction.</li>
+              <li>Developed backend and web applications in C#, SQL, ASP.NET, and Angular using Agile and TDD.</li>
+              <li>Maintained high availability of microservices on Azure with Docker and Kubernetes.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="edu">
+          <div class="card reveal">
+            <div class="school">ITS ICT — Foundation for Information &amp; Communication Technologies</div>
+            <div class="deg">Associate's degree, Integrated Backend Services</div>
+            <div class="yr">2016 — 2018</div>
+          </div>
+          <div class="card reveal">
+            <div class="school">IIS Piero Martinetti</div>
+            <div class="deg">High School Diploma, Scientific &amp; Technological</div>
+            <div class="yr">2009 — 2014</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" id="skills" aria-labelledby="skills-h">
+      <div class="wrap">
+        <h2 class="eyebrow reveal" id="skills-h">Skills &amp; stack</h2>
+        <div class="skills">
+          <div class="skillset reveal"><h3>Cloud &amp; platform</h3><div class="tags"><span>Azure</span><span>AKS</span><span>Azure Functions</span><span>Linux</span><span>Windows</span></div></div>
+          <div class="skillset reveal"><h3>IaC &amp; automation</h3><div class="tags"><span>Terraform</span><span>Terragrunt</span><span>Ansible</span><span>Bicep</span><span>Rundeck</span></div></div>
+          <div class="skillset reveal"><h3>CI/CD &amp; delivery</h3><div class="tags"><span>Azure DevOps</span><span>Jenkins</span><span>YAML pipelines</span><span>Release management</span></div></div>
+          <div class="skillset reveal"><h3>Containers &amp; orchestration</h3><div class="tags"><span>Docker</span><span>Kubernetes</span></div></div>
+          <div class="skillset reveal"><h3>Observability &amp; SRE</h3><div class="tags"><span>Datadog</span><span>SLO / SLI</span><span>DORA</span><span>MTTR</span><span>Cost optimization</span></div></div>
+          <div class="skillset reveal"><h3>Languages &amp; data</h3><div class="tags"><span>Node.js</span><span>Python</span><span>PowerShell</span><span>Bash</span><span>C#</span><span>SQL</span><span>Cosmos DB</span><span>PostgreSQL</span><span>Redis</span><span>MongoDB</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected work / case study -->
+    <section class="section" id="work" aria-labelledby="work-h">
+      <div class="wrap">
+        <p class="eyebrow reveal">Selected work</p>
+        <h2 class="work-title reveal" id="work-h">Multi-agent engineering assistant</h2>
+        <p class="work-hook reveal">A multi-agent AI system that helps a platform team review, test, ship, and operate software with more consistency and less toil — adopted across the lead engineering team.</p>
+
+        <div class="cs-meta reveal">
+          <div><span class="k">Role</span><span class="v">Design &amp; build</span></div>
+          <div><span class="k">Context</span><span class="v">Internal IoT platform tooling</span></div>
+          <div><span class="k">Built with</span><span class="v">Claude Code &middot; MCP &middot; TypeScript</span></div>
+        </div>
+
+        <div class="cs-grid">
+          <div class="cs-narrative reveal">
+            <div class="cs-block">
+              <h3>Problem</h3>
+              <p>Across a growing set of repositories, code review, QA, release coordination, and reliability monitoring were largely manual — slow to perform, hard to keep consistent, and a constant pull on senior engineers' time.</p>
+            </div>
+            <div class="cs-block">
+              <h3>Approach</h3>
+              <p>I designed and built a set of specialist AI agents in Claude Code, each owning a single workflow and sharing a common library of reusable skills. They integrate with the team's existing toolchain through MCP, sit behind safety guardrails that gate anything destructive, and feed a weekly self-analysis loop that surfaces gaps. Two decisions shaped it: organizing agents by workflow rather than by role, so each carries only the context it needs, and pushing shared conventions into a skills layer to avoid duplicating knowledge.</p>
+            </div>
+            <div class="cs-block">
+              <h3>Outcome</h3>
+              <p>Rolled out to the lead engineering team and now part of how the platform ships. I measure it against adoption, cycle time, and defect-leakage baselines rather than vanity metrics — with the feedback loop steadily improving the agents over time.</p>
+            </div>
+          </div>
+
+          <div class="term reveal">
+            <div class="term-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="t">engineering-assistant — review</span></div>
+            <div class="term-body" id="termBody">
+              <div id="termStream">
+                <p class="line"><span class="p">$</span>review --pr 1487</p>
+                <p class="line dim">&rarr; orchestrator dispatching specialists</p>
+                <p class="line"><span class="ok">&check;</span> code review&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">standards + pipeline impact</span></p>
+                <p class="line"><span class="ok">&check;</span> qa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">branch checkout + tests</span></p>
+                <p class="line"><span class="ok">&check;</span> release&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">promotion readiness</span></p>
+                <p class="line"><span class="ok">&check;</span> reliability&nbsp;&nbsp;&nbsp;<span class="dim">SLOs + incident signals</span></p>
+                <p class="line"><span class="ok">&check;</span> review ready <span class="dim">— 0 blocking, 2 suggestions</span></p>
+                <p class="line cmt"># tip: this prompt is live — type 'help'</p>
+              </div>
+              <form class="term-input-line" id="termForm" autocomplete="off">
+                <label class="sr-only" for="termInput">Terminal command</label>
+                <span class="p">$</span>
+                <input id="termInput" class="term-input" type="text" spellcheck="false" placeholder="type 'help'" aria-label="Terminal command, type help">
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <figure class="diagram reveal">
+          <figcaption>High-level architecture</figcaption>
+          <div class="arch" role="img" aria-label="An orchestrator routes work to six specialist agents — code review, QA, release, infrastructure, reliability, and self-improvement — which draw on a shared skills layer with safety guardrails and connect to the team's toolchain (source control and pull requests, issue tracking, CI/CD, code quality, observability, and chat) through MCP.">
+            <p class="arch-label" aria-hidden="true">Orchestrator</p>
+            <div class="arch-center"><div class="node orchestrator"><span class="nt">Orchestrator</span><span class="ns">routes work &middot; plays the developer</span></div></div>
+            <div class="flow" aria-hidden="true"><i></i></div>
+            <p class="arch-label" aria-hidden="true">Specialist agents</p>
+            <div class="arch-row" aria-hidden="true">
+              <div class="node"><span class="nt">Code Review</span></div>
+              <div class="node"><span class="nt">QA</span></div>
+              <div class="node"><span class="nt">Release</span></div>
+              <div class="node"><span class="nt">Infrastructure</span></div>
+              <div class="node"><span class="nt">Reliability</span></div>
+              <div class="node"><span class="nt">Self-improvement</span></div>
+            </div>
+            <div class="flow" aria-hidden="true"><i></i></div>
+            <p class="arch-label" aria-hidden="true">Shared layer</p>
+            <div class="arch-center" aria-hidden="true"><div class="node skill"><span class="nt">Reusable skills layer</span><span class="ns">shared conventions &middot; safety guardrails</span></div></div>
+            <div class="flow" aria-hidden="true"><i></i></div>
+            <p class="arch-label" aria-hidden="true">Integrations &middot; MCP</p>
+            <div class="arch-row" aria-hidden="true">
+              <div class="node integration"><span class="nt">Source &amp; PRs</span></div>
+              <div class="node integration"><span class="nt">Issues</span></div>
+              <div class="node integration"><span class="nt">CI/CD</span></div>
+              <div class="node integration"><span class="nt">Code quality</span></div>
+              <div class="node integration"><span class="nt">Observability</span></div>
+              <div class="node integration"><span class="nt">Chat</span></div>
+            </div>
+          </div>
+        </figure>
+
+        <div class="work-tags reveal">
+          <span>Multi-agent orchestration</span><span>Claude Code</span><span>MCP integrations</span><span>Self-improving loop</span><span>Safety guardrails</span>
+        </div>
+        <p class="work-note reveal">Internal tooling — happy to walk through the architecture and the results.</p>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="section" id="certs" aria-labelledby="certs-h">
+      <div class="wrap">
+        <h2 class="eyebrow reveal" id="certs-h">Certifications</h2>
+        <div class="certs">
+          <div class="cert reveal"><div class="code">CKA</div><div class="name">Certified Kubernetes Administrator</div><div class="meta">CNCF &middot; earned 2022</div></div>
+          <div class="cert reveal"><div class="code">LFCS</div><div class="name">Linux Foundation Certified Systems Administrator</div><div class="meta">Linux Foundation &middot; earned 2023</div></div>
+          <div class="cert reveal"><div class="code">AZ-104</div><div class="name">Microsoft Certified: Azure Administrator Associate</div><div class="meta">Microsoft &middot; earned 2023</div></div>
+          <div class="cert reveal"><div class="code">AZ-400</div><div class="name">Microsoft Certified: DevOps Engineer Expert</div><div class="meta">Microsoft &middot; earned 2023</div></div>
+        </div>
+        <p class="certs-more reveal">Full list of licenses &amp; certifications on <a href="https://www.linkedin.com/in/fabriziodecicco" target="_blank" rel="noopener">LinkedIn</a>.</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact" aria-labelledby="contact-h">
+      <div class="wrap">
+        <p class="eyebrow reveal">Contact</p>
+        <h2 class="reveal" id="contact-h">Let's build something reliable.</h2>
+        <p class="lede reveal">Happy to talk infrastructure, reliability, or AI-assisted engineering — reach out and let's chat.</p>
+        <p class="reply reveal">Usually responds within a day.</p>
+        <div class="contact-cta reveal">
+          <a class="btn btn-primary" href="mailto:fabri.deci@gmail.com">fabri.deci@gmail.com</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/fabriziodecicco" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn-ghost" href="https://github.com/fabrideci" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="status-bar" role="status" aria-label="Site status">
+        <span class="status-left"><span class="dot"></span>All systems operational</span>
+        <span class="status-right">static &middot; 0 dependencies &middot; 0 trackers</span>
+      </div>
+      <div class="foot-row">
+        <small>&copy; <span id="year"></span> Fabrizio De Cicco</small>
+        <div class="links">
+          <a href="https://github.com/fabrideci" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/fabriziodecicco" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:fabri.deci@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('menu');
+    const setMenu = (open) => {
+      menu.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    toggle.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    // Dismiss the open menu the way users expect a disclosure to behave: Escape
+    // (returning focus to the toggle for keyboard users) or a click outside it.
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); toggle.focus(); }
+    });
+    document.addEventListener('click', (e) => {
+      if (menu.classList.contains('open') && !menu.contains(e.target) && !toggle.contains(e.target)) setMenu(false);
+    });
+
+    // Run a callback the first time each element scrolls into view, then stop
+    // watching it. Where IntersectionObserver is unavailable we run immediately,
+    // so nothing stays hidden behind an observer that would never fire.
+    function onceInView(els, cb, options) {
+      if (!('IntersectionObserver' in window)) { els.forEach(cb); return; }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { cb(e.target); io.unobserve(e.target); } });
+      }, options);
+      els.forEach(el => io.observe(el));
+    }
+
+    const reveals = document.querySelectorAll('.reveal');
+    if (reduce) reveals.forEach(el => el.classList.add('in-view'));
+    else onceInView(reveals, el => el.classList.add('in-view'), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    function countUp(el) {
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || '';
+      if (reduce) { el.textContent = target + suffix; return; }
+      const dur = 1100, start = performance.now();
+      (function step(now){
+        const t = Math.min((now - start) / dur, 1);
+        el.textContent = Math.round((1 - Math.pow(1 - t, 3)) * target) + suffix;
+        if (t < 1) requestAnimationFrame(step);
+      })(performance.now());
+    }
+    onceInView(document.querySelectorAll('.num[data-count]'), countUp, { threshold: 0.6 });
+
+    // Highlight the nav link for the section under the viewport's midline. Unlike
+    // onceInView, this observer keeps watching so the highlight tracks scrolling.
+    const sections = ['about','approach','experience','skills','work','contact'].map(id => document.getElementById(id)).filter(Boolean);
+    const linkFor = {};
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => { linkFor[a.getAttribute('href').slice(1)] = a; });
+    if ('IntersectionObserver' in window) {
+      const io3 = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          const a = linkFor[e.target.id]; if (!a) return;
+          if (e.isIntersecting) { Object.values(linkFor).forEach(x => x.classList.remove('active')); a.classList.add('active'); }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      sections.forEach(s => io3.observe(s));
+    }
+
+    // Interactive + typing terminal
+    (function(){
+      const term = document.getElementById('termBody');
+      const stream = document.getElementById('termStream');
+      const form = document.getElementById('termForm');
+      const input = document.getElementById('termInput');
+      if (!term || !stream || !form || !input) return;
+
+      // Stagger the demo lines in once the terminal scrolls into view. Under
+      // reduced-motion we leave them visible rather than hiding then animating.
+      const demo = Array.from(stream.children);
+      if (!reduce && 'IntersectionObserver' in window) {
+        demo.forEach(l => { l.style.opacity = '0'; });
+        onceInView([term], () => {
+          demo.forEach((l, i) => setTimeout(() => { l.style.transition = 'opacity .18s ease'; l.style.opacity = '1'; }, i * 230));
+        }, { threshold: 0.4 });
+      }
+
+      function esc(s){ return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+      function print(html, cls){ const p = document.createElement('p'); p.className = 'line' + (cls ? ' ' + cls : ''); p.innerHTML = html; stream.appendChild(p); term.scrollTop = term.scrollHeight; }
+      function go(id){ const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }
+
+      const cmds = {
+        help(){ print("commands: <span class='ok'>about</span> stack experience work certs contact resume social sudo clear"); },
+        about(){ print("Fabrizio De Cicco — IoT Infrastructure Architect &amp; Lead DevOps Engineer", 'ok'); print("10+ years making cloud infrastructure scalable, reliable, and secure.", 'dim'); },
+        whoami(){ this.about(); },
+        stack(){ print("Azure · Terraform · Terragrunt · Kubernetes · Datadog · Azure DevOps · CI/CD · SRE", 'dim'); },
+        experience(){ print("&rarr; opening experience", 'dim'); go('experience'); },
+        work(){ print("&rarr; you are here", 'dim'); go('work'); },
+        certs(){ print("CKA · LFCS · AZ-104 · AZ-400", 'dim'); go('certs'); },
+        contact(){ print("email: <a href='mailto:fabri.deci@gmail.com'>fabri.deci@gmail.com</a>"); print("links: <a href='https://github.com/fabrideci' target='_blank' rel='noopener'>github.com/fabrideci</a> · <a href='https://www.linkedin.com/in/fabriziodecicco' target='_blank' rel='noopener'>linkedin.com/in/fabriziodecicco</a>"); },
+        social(){ this.contact(); },
+        resume(){ print("&rarr; downloading résumé…", 'dim'); const a = document.querySelector('a[href$="Resume.pdf"]'); if (a) a.click(); },
+        sudo(){ print("nice try — you don't have root here :)", 'ok'); },
+        ls(){ print("about  stack  experience  work  certs  contact  resume", 'dim'); },
+        clear(){ stream.innerHTML = ''; }
+      };
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const raw = input.value.trim();
+        input.value = '';
+        if (raw === '') { print("<span class='p'>$</span>"); return; }
+        print("<span class='p'>$</span>" + esc(raw));
+        const cmd = raw.split(/\s+/)[0].toLowerCase();
+        if (Object.prototype.hasOwnProperty.call(cmds, cmd)) { cmds[cmd](); }
+        else { print("command not found: " + esc(cmd) + " — try <span class='ok'>help</span>"); }
+      });
+
+      // Press "/" to focus the terminal
+      document.addEventListener('keydown', function(e){
+        const tag = (document.activeElement && document.activeElement.tagName) || '';
+        if (e.key === '/' && !/^(INPUT|TEXTAREA)$/.test(tag)) {
+          e.preventDefault();
+          term.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+          input.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
