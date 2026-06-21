@@ -3,677 +3,605 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fabrizio De Cicco — IoT Infrastructure Architect & Lead DevOps Engineer</title>
-<meta name="description" content="Fabrizio De Cicco — IoT Infrastructure Architect and Lead DevOps Engineer. Scalable, reliable, secure cloud foundations for connected products. Azure, Terraform, Kubernetes, Datadog, CI/CD, SRE.">
+<title>Fabrizio De Cicco — IoT Infrastructure Architect</title>
+<meta name="description" content="Fabrizio De Cicco — IoT Infrastructure Architect & Lead DevOps Engineer. 10+ years building reliable cloud infrastructure for global IoT platforms. Azure, Kubernetes, Terraform, Datadog, SRE.">
 <meta name="author" content="Fabrizio De Cicco">
-<meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0b0f17" media="(prefers-color-scheme: dark)">
-<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0d1117">
 <link rel="canonical" href="https://fabriziodecicco.dev/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EFD%3C/text%3E%3C/svg%3E">
+
+<!-- icons (self-hosted; no external request) -->
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Fabrizio De Cicco — IoT Infrastructure Architect & Lead DevOps Engineer">
-<meta property="og:description" content="Scalable, reliable, secure cloud foundations for connected products. Azure, Terraform, Kubernetes, Datadog, CI/CD, SRE.">
+<meta property="og:description" content="10+ years building reliable cloud infrastructure for global IoT platforms. Azure, Kubernetes, Terraform, Datadog, SRE.">
 <meta property="og:url" content="https://fabriziodecicco.dev/">
 <meta property="og:image" content="https://fabriziodecicco.dev/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+
+<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Fabrizio De Cicco — IoT Infrastructure Architect & Lead DevOps Engineer">
-<meta name="twitter:description" content="Scalable, reliable, secure cloud foundations for connected products.">
+<meta name="twitter:description" content="10+ years building reliable cloud infrastructure for global IoT platforms.">
 <meta name="twitter:image" content="https://fabriziodecicco.dev/assets/og.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #f4f6fb; --surface: #ffffff; --surface-2: #fbfcfe;
-    --ink: #0e1726; --body: #3a4861; --muted: #64748b;
-    --line: #e6eaf2; --line-2: #dfe5f0;
-    --accent: #2563eb; --accent-ink: #1d4ed8; --accent-soft: #eef3ff;
-    --green: #16a34a; --term-bg: #0b0e14;
-    --radius: 16px; --radius-sm: 10px; --nav: 64px; --maxw: 1080px;
-    --shadow-sm: 0 1px 2px rgba(15,23,42,.05);
-    --shadow: 0 10px 30px -14px rgba(15,23,42,.22);
-    --ff: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-    --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
-    color-scheme: light dark;
-  }
-  *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; background: var(--bg); }
-  body { margin: 0; background: var(--bg); color: var(--body); font-family: var(--ff); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-  a { color: inherit; text-decoration: none; }
-  h1, h2, h3 { color: var(--ink); margin: 0; letter-spacing: -0.02em; line-height: 1.1; }
-  ::selection { background: #cfe0ff; }
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-  .skip-link { position: absolute; left: 12px; top: -52px; background: var(--accent); color: #fff; padding: 10px 14px; border-radius: 8px; z-index: 100; transition: top .15s; }
-  .skip-link:focus { top: 12px; }
 
-  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
-  .section { padding: clamp(64px, 9vw, 110px) 0; }
-  .section + .section { border-top: 1px solid var(--line); }
-  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0 0 14px; }
-  .lede { color: var(--body); max-width: 62ch; }
+<link rel="stylesheet" href="styles.css">
 
-  /* Nav */
-  .nav { position: sticky; top: 0; z-index: 60; height: var(--nav); background: rgba(244,246,251,.82); backdrop-filter: saturate(160%) blur(10px); border-bottom: 1px solid var(--line); }
-  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; }
-  .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; color: var(--ink); font-size: 15px; }
-  .brand .mark { width: 26px; height: 26px; border-radius: 8px; flex: none; background: linear-gradient(135deg, var(--accent), #4f7cff); color: #fff; display: grid; place-items: center; font-size: 12px; font-weight: 800; }
-  .nav-links { display: flex; align-items: center; gap: 4px; }
-  .nav-links a { padding: 8px 12px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--body); transition: background .15s, color .15s; }
-  .nav-links a:hover { background: #eaeefb; color: var(--ink); }
-  .nav-links a.active { color: var(--accent-ink); }
-  .btn { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; padding: 10px 16px; border-radius: var(--radius-sm); border: 1px solid transparent; transition: transform .12s, box-shadow .12s, background .15s, border-color .15s; cursor: pointer; }
-  .btn:hover { transform: translateY(-1px); }
-  .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 8px 18px -8px rgba(37,99,235,.7); }
-  .btn-primary:hover { background: var(--accent-ink); }
-  .btn-ghost { background: var(--surface); color: var(--ink); border-color: var(--line-2); box-shadow: var(--shadow-sm); }
-  .btn-ghost:hover { border-color: #c7d2e8; }
-  .nav .btn { padding: 8px 14px; }
-  .nav-toggle { display: none; }
+<!-- Person JSON-LD -->
+<script type="application/ld+json">
+{ "@context":"https://schema.org","@type":"Person",
+  "name":"Fabrizio De Cicco",
+  "jobTitle":"IoT Infrastructure Architect & Lead DevOps Engineer",
+  "url":"https://fabriziodecicco.dev/",
+  "image":"https://fabriziodecicco.dev/assets/og.png",
+  "worksFor":{"@type":"Organization","name":"Culligan International"},
+  "address":{"@type":"PostalAddress","addressLocality":"Turin","addressCountry":"IT"},
+  "sameAs":["https://github.com/fabrideci","https://www.linkedin.com/in/fabriziodecicco"],
+  "knowsAbout":["Azure","Kubernetes","Terraform","Infrastructure as Code","SRE","Observability","IoT Platforms","CI/CD"] }
+</script>
 
-  /* Hero */
-  .hero { padding-top: clamp(56px, 8vw, 92px); padding-bottom: clamp(56px, 8vw, 92px); position: relative; overflow: hidden; background: var(--bg); }
-  .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 50% at 88% -10%, rgba(37,99,235,.10), transparent 70%), radial-gradient(40% 40% at -5% 0%, rgba(79,124,255,.08), transparent 70%); }
-  .hero-inner { position: relative; }
-  .chip { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #334155; background: var(--surface); border: 1px solid var(--line-2); padding: 6px 13px; border-radius: 999px; box-shadow: var(--shadow-sm); }
-  .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 0 rgba(34,197,94,.5); animation: pulse 2.6s ease-out infinite; }
-  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(34,197,94,.45); } 70% { box-shadow: 0 0 0 9px rgba(34,197,94,0); } 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); } }
-  .hero h1 { font-size: clamp(40px, 7vw, 70px); font-weight: 800; margin: 20px 0 0; }
-  .hero .role { font-size: clamp(17px, 2.6vw, 22px); font-weight: 600; color: var(--accent-ink); margin: 14px 0 0; }
-  .hero .tagline { font-size: clamp(16px, 2.1vw, 19px); margin: 16px 0 0; max-width: 60ch; }
-  .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 44px; }
-  .metric { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 20px; box-shadow: var(--shadow-sm); }
-  .metric .num { font-size: clamp(26px, 3.4vw, 34px); font-weight: 800; color: var(--ink); letter-spacing: -0.03em; }
-  .metric .cap { font-size: 13px; color: var(--muted); margin-top: 6px; }
-
-  /* About */
-  .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(28px, 5vw, 56px); align-items: start; }
-  .about-grid p { margin: 0 0 16px; }
-  .focus { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow-sm); }
-  .focus h3 { font-size: 15px; letter-spacing: 0.02em; }
-  .focus ul { list-style: none; margin: 16px 0 0; padding: 0; }
-  .focus li { position: relative; padding-left: 24px; margin: 12px 0; font-size: 14.5px; color: var(--body); }
-  .focus li::before { content: ""; position: absolute; left: 0; top: 8px; width: 9px; height: 9px; border-radius: 3px; background: var(--accent); }
-
-  /* How I work */
-  .principles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 8px; }
-  .principle { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; box-shadow: var(--shadow-sm); }
-  .principle h3 { font-size: 16.5px; font-weight: 700; }
-  .principle p { margin: 8px 0 0; font-size: 14.5px; color: var(--body); }
-
-  /* Experience */
-  .timeline { position: relative; margin-top: 8px; }
-  .job { position: relative; padding: 0 0 38px 34px; }
-  .job:last-child { padding-bottom: 0; }
-  .timeline::before { content: ""; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 2px; background: var(--line-2); }
-  .job::before { content: ""; position: absolute; left: 3px; top: 6px; width: 13px; height: 13px; border-radius: 50%; background: var(--surface); border: 3px solid var(--accent); }
-  .job .top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; }
-  .job .org { font-size: 18px; font-weight: 700; color: var(--ink); }
-  .job .when { font-size: 13.5px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .job .title { font-size: 15px; font-weight: 600; color: var(--accent-ink); margin-top: 2px; }
-  .job .where { font-size: 13px; color: var(--muted); margin-top: 2px; }
-  .job ul { margin: 14px 0 0; padding-left: 18px; }
-  .job li { margin: 7px 0; font-size: 14.5px; }
-  .edu { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 30px; }
-  .edu .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 18px 20px; box-shadow: var(--shadow-sm); }
-  .edu .card .school { font-weight: 700; color: var(--ink); font-size: 15px; }
-  .edu .card .deg { font-size: 13.5px; color: var(--body); margin-top: 3px; }
-  .edu .card .yr { font-size: 12.5px; color: var(--muted); margin-top: 4px; font-variant-numeric: tabular-nums; }
-
-  /* Skills */
-  .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 8px; }
-  .skillset { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 18px; box-shadow: var(--shadow-sm); }
-  .skillset h3 { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-  .tags span { font-size: 13.5px; font-weight: 500; color: #2c3a52; background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 8px; padding: 6px 11px; }
-
-  /* Selected work / case study */
-  #work { background: linear-gradient(180deg, #eef2fb, #f4f6fb); }
-  .work-title { font-size: clamp(26px, 4vw, 40px); font-weight: 800; margin-top: 6px; }
-  .work-hook { font-size: clamp(16px, 2.1vw, 19px); color: var(--body); margin: 14px 0 0; max-width: 70ch; }
-  .cs-meta { display: flex; flex-wrap: wrap; gap: 14px 34px; margin: 26px 0 4px; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .cs-meta > div { display: flex; flex-direction: column; gap: 3px; }
-  .cs-meta .k { font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-  .cs-meta .v { font-size: 14.5px; font-weight: 600; color: var(--ink); }
-  .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 44px); align-items: start; margin-top: 30px; }
-  .cs-block + .cs-block { margin-top: 22px; }
-  .cs-block h3 { font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
-  .cs-block p { margin: 8px 0 0; font-size: 15px; color: var(--body); }
-  .work-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
-  .work-tags span { font-size: 13px; font-weight: 500; color: var(--accent-ink); background: var(--accent-soft); border: 1px solid #dbe6ff; border-radius: 999px; padding: 6px 12px; }
-  .work-note { font-size: 13.5px; color: var(--muted); margin-top: 18px; }
-
-  /* Terminal */
-  .term { background: var(--term-bg); border: 1px solid #20262f; border-radius: var(--radius); overflow: hidden; box-shadow: 0 30px 70px -28px rgba(8,12,20,.55); }
-  .term-bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: #161c26; border-bottom: 1px solid #20262f; }
-  .term-bar .d { width: 12px; height: 12px; border-radius: 50%; }
-  .term-bar .d:nth-child(1) { background: #ff5f56; } .term-bar .d:nth-child(2) { background: #ffbd2e; } .term-bar .d:nth-child(3) { background: #27c93f; }
-  .term-bar .t { margin-left: 10px; font: 500 12.5px/1 var(--mono); color: #6e7681; }
-  .term-body { padding: 22px clamp(16px, 2.5vw, 26px) 22px; font: 400 clamp(12.5px, 1.6vw, 14.5px)/1.95 var(--mono); color: #adbac7; max-height: clamp(330px, 50vh, 470px); overflow-y: auto; }
-  .term-body .line { white-space: nowrap; margin: 0; }
-  .term-body .p { color: #7ee787; margin-right: 10px; }
-  .term-body .ok { color: #7ee787; } .term-body .dim { color: #6e7681; } .term-body .cmt { color: #6e7681; }
-  .term-body a { color: #79c0ff; } .term-body a:hover { text-decoration: underline; }
-  .term-input-line { display: flex; align-items: center; }
-  .term-input { flex: 1; min-width: 0; background: transparent; border: 0; outline: none; color: #c9d1d9; font: inherit; caret-color: #7ee787; padding: 0; }
-  .term-input::placeholder { color: #48515c; }
-
-  /* Architecture diagram */
-  .diagram { margin: 40px 0 0; }
-  .diagram figcaption { font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
-  .arch { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(20px, 3vw, 32px); box-shadow: var(--shadow-sm); }
-  .arch-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-align: center; margin: 0 0 12px; }
-  .arch-center { display: flex; justify-content: center; }
-  .arch-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .node { background: var(--surface-2); border: 1px solid var(--line-2); border-radius: 10px; padding: 13px 14px; text-align: center; }
-  .node .nt { font-weight: 700; color: var(--ink); font-size: 14px; }
-  .node .ns { display: block; font-size: 12px; color: var(--muted); margin-top: 3px; }
-  .node.orchestrator { background: var(--accent); border-color: var(--accent); min-width: 260px; }
-  .node.orchestrator .nt { color: #fff; } .node.orchestrator .ns { color: #dbe6ff; }
-  .node.skill { background: var(--accent-soft); border-color: #dbe6ff; width: 100%; }
-  .node.integration { background: #fbfcfe; }
-  .flow { display: flex; justify-content: center; height: 28px; }
-  .flow i { width: 2px; height: 100%; background: var(--line-2); position: relative; display: block; }
-  .flow i::after { content: ""; position: absolute; left: 50%; bottom: -1px; transform: translateX(-50%); border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid var(--line-2); }
-
-  /* Contact */
-  #contact { text-align: center; }
-  #contact h2 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; }
-  #contact .lede { margin: 16px auto 0; }
-  .reply { font-size: 13px; color: var(--muted); margin-top: 14px; }
-  .contact-cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 24px; }
-
-  /* Footer + status */
-  .foot { border-top: 1px solid var(--line); }
-  .status-bar { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--line); }
-  .status-bar .status-left { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #15803d; }
-  .status-bar .status-right { color: var(--muted); font-family: var(--mono); font-size: 12.5px; }
-  .foot-row { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; padding-top: 22px; padding-bottom: 28px; }
-  .foot small { color: var(--muted); font-size: 13px; }
-  .foot .links { display: flex; gap: 18px; }
-  .foot .links a { font-size: 13px; color: var(--muted); }
-  .foot .links a:hover { color: var(--ink); }
-
-  /* Reveal */
-  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
-  .reveal.in-view { opacity: 1; transform: none; }
-
-  /* Responsive */
-  @media (max-width: 860px) {
-    .about-grid, .cs-grid, .skills, .principles { grid-template-columns: 1fr; }
-    .metrics, .certs { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 640px) {
-    .nav-links { position: absolute; top: var(--nav); left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--surface); border-bottom: 1px solid var(--line); padding: 8px; box-shadow: var(--shadow); display: none; }
-    .nav-links.open { display: flex; }
-    .nav-links a { padding: 12px 14px; border-radius: 8px; }
-    .nav-links .btn { margin: 6px 8px 4px; justify-content: center; }
-    .nav-toggle { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: var(--surface); border: 1px solid var(--line-2); border-radius: 10px; cursor: pointer; }
-    .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after { content: ""; display: block; width: 18px; height: 2px; background: var(--ink); position: relative; }
-    .nav-toggle span::before { position: absolute; top: -6px; } .nav-toggle span::after { position: absolute; top: 6px; }
-    .edu, .arch-row { grid-template-columns: repeat(2, 1fr); }
-    .node.orchestrator { min-width: 0; width: 100%; }
-  }
-
-  /* Certifications */
-  .certs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 8px; }
-  .cert { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow-sm); }
-  .cert .code { font-weight: 800; color: var(--ink); font-size: 17px; }
-  .cert .name { font-size: 13.5px; color: var(--body); margin-top: 6px; line-height: 1.4; }
-  .cert .meta { font-size: 12.5px; color: var(--muted); margin-top: 12px; font-variant-numeric: tabular-nums; }
-  .certs-more { margin-top: 18px; font-size: 14px; color: var(--muted); }
-  .certs-more a { color: var(--accent-ink); font-weight: 600; border-bottom: 1px solid #c7d6f7; }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after { animation: none !important; transition: none !important; }
-    .reveal { opacity: 1; transform: none; }
-  }
-
-  /* Auto dark theme — follows the visitor's system setting */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0b0f17;
-      --surface: #121826;
-      --surface-2: #0f1520;
-      --ink: #e9eef7;
-      --body: #aeb9cb;
-      --muted: #7d8799;
-      --line: #1f2735;
-      --line-2: #2a3346;
-      --accent: #5b8cff;
-      --accent-ink: #82a6ff;
-      --accent-soft: #16233d;
-      --green: #34d399;
-      --term-bg: #0d121b;
-    }
-    .nav { background: rgba(11,15,23,.82); }
-    .nav-links a:hover { background: #18202e; }
-    .btn-ghost:hover { border-color: #38445c; }
-    .chip { color: #c4cedd; }
-    .tags span { color: #c4cedd; }
-    .work-tags span { border-color: #2a3a5e; }
-    .node.skill { border-color: #2a3a5e; }
-    .node.integration { background: #0f1520; }
-    .certs-more a { border-bottom-color: #2a3a5e; }
-    #work { background: linear-gradient(180deg, #0e1422, #0b0f17); }
-    .status-bar .status-left { color: #34d399; }
-    ::selection { background: #21406e; }
-  }
-</style>
+<!-- pre-paint theme: set data-theme before first paint to avoid a flash -->
+<script>
+(function(){ try{ var t=localStorage.getItem('theme'); if(t==='light'||t==='dark') document.documentElement.setAttribute('data-theme',t); }catch(e){} })();
+</script>
 </head>
-<body id="top">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="#top"><span class="mark">FD</span>Fabrizio De Cicco</a>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="menu"><span></span></button>
-      <nav class="nav-links" id="menu" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#approach">How I work</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#work">Work</a>
-        <a href="#contact">Contact</a>
-        <a class="btn btn-primary" href="assets/Fabrizio-De-Cicco-Resume.pdf" download>Résumé</a>
-      </nav>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="app">
+
+  <div class="bar">
+    <a class="brand" href="#top"><b>fabrizio</b>@infra: ~</a>
+    <span class="spacer"></span>
+    <span class="barlabel">Theme</span>
+    <div class="seg" id="themeSeg" role="group" aria-label="Theme">
+      <button data-thm="dark" aria-pressed="true">Dark</button>
+      <button data-thm="light" aria-pressed="false">Light</button>
     </div>
-  </header>
+  </div>
 
   <main id="main">
-    <!-- Hero -->
-    <section class="hero" aria-label="Introduction">
-      <div class="wrap hero-inner">
-        <span class="chip reveal"><span class="dot"></span>Turin, Italy &middot; Remote</span>
-        <h1 class="reveal">Fabrizio De Cicco</h1>
-        <p class="role reveal">IoT Infrastructure Architect &amp; Lead DevOps Engineer</p>
-        <p class="tagline reveal">I build scalable, reliable, and secure cloud foundations for connected products — bridging development and operations across Azure and Kubernetes through Infrastructure as Code, CI/CD, observability, and SRE.</p>
-        <div class="hero-cta reveal">
-          <a class="btn btn-primary" href="mailto:fabri.deci@gmail.com">Get in touch</a>
-          <a class="btn btn-ghost" href="https://github.com/fabrideci" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/fabriziodecicco" target="_blank" rel="noopener">LinkedIn</a>
+
+    <!-- ===================================================================
+         1 · Hero — the terminal
+         =================================================================== -->
+    <header class="hero" id="top">
+      <div class="stage">
+        <div class="term" id="term">
+          <div class="thead">
+            <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
+            <span class="ttitle">fabrizio@infra: ~ — zsh</span>
+            <span class="tstatus"><span class="d"></span>connected</span>
+          </div>
+          <div class="tbody">
+            <div id="stream" role="log" aria-live="polite" aria-relevant="additions text" aria-label="Terminal output"></div>
+            <div class="inrow" id="inrow" hidden>
+              <span class="pr">$</span>
+              <input id="cin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal command — type help" placeholder="type a command…">
+            </div>
+          </div>
         </div>
-        <div class="metrics">
-          <div class="metric reveal"><div class="num" data-count="10" data-suffix="+">0</div><div class="cap">years in cloud &amp; DevOps</div></div>
-          <div class="metric reveal"><div class="num" data-count="4">0</div><div class="cap">core certifications</div></div>
-          <div class="metric reveal"><div class="num">Azure</div><div class="cap">+ Kubernetes, at global scale</div></div>
-          <div class="metric reveal"><div class="num">IoT</div><div class="cap">platform, cloud to edge</div></div>
+
+        <div class="hintbar" id="hints" hidden>
+          <button class="cmdchip" data-c="help">help</button>
+          <button class="cmdchip" data-c="ls">ls</button>
+          <button class="cmdchip" data-c="stack">stack</button>
+          <button class="cmdchip" data-c="devices">devices</button>
+          <button class="cmdchip" data-c="work">work</button>
+          <button class="cmdchip" data-c="topology">topology</button>
+          <button class="cmdchip" data-c="slo 99.9">slo 99.9</button>
+          <button class="cmdchip" data-c="contact">contact</button>
+        </div>
+
+        <div class="scroll" aria-hidden="true">↓ scroll for the full site</div>
+      </div>
+
+      <!-- No-JS / screen-reader fallback: a plain, fully usable version -->
+      <div class="fallback" id="about">
+        <div class="card">
+          <h1>Fabrizio De Cicco</h1>
+          <p class="role">IoT Infrastructure Architect &amp; Lead DevOps Engineer</p>
+          <p>I have 10+ years building reliable cloud infrastructure for global IoT platforms — currently
+            leading IoT infrastructure architecture and reliability at Culligan International. I run
+            <strong>50,000+ devices in production, scaling toward ~300,000</strong>, on Azure with Kubernetes,
+            Terraform-first IaC, and Datadog-backed observability. Azure handles the MQTT flows; an IoT
+            bridge speaks CoAP &amp; LWM2M.</p>
+          <ul class="facts">
+            <li><b>50,000+</b> devices in production</li>
+            <li>scaling to <b>~300,000</b></li>
+            <li>10+ years</li>
+            <li>CKA · LFCS · AZ-104 · AZ-400</li>
+            <li>Terraform-focused</li>
+          </ul>
+          <nav aria-label="Sections">
+            <a href="#work">Case study</a>
+            <a href="#principles">Principles</a>
+            <a href="#experience">Experience</a>
+            <a href="#systems">Systems I would build</a>
+            <a href="#lab">Reliability Lab</a>
+            <a href="#artifacts">Artifacts</a>
+            <a href="#skills">Skills</a>
+            <a href="#certs">Certifications</a>
+            <a href="#contact">Contact</a>
+          </nav>
         </div>
       </div>
-    </section>
 
-    <!-- About -->
-    <section class="section" id="about" aria-labelledby="about-h">
+      <p class="note hero-note">
+        The page opens as a live terminal — every command maps to a real section, so the terminal is the
+        site's navigation. Type <span class="ac">help</span> to start, press <span class="ac">Tab</span> to
+        complete, or try <span class="ac">slo 99.9</span> for a real error budget. Everything here is static:
+        <b>0 dependencies, 0 trackers</b>.
+      </p>
+    </header>
+
+    <!-- ===================================================================
+         2 · Operating principles
+         =================================================================== -->
+    <section class="section" id="principles" aria-labelledby="principles-h">
       <div class="wrap">
-        <h2 class="eyebrow reveal" id="about-h">About</h2>
-        <div class="about-grid">
-          <div class="reveal">
-            <p>I lead the IoT infrastructure domain at Culligan International — designing and evolving our global IoT Platform's cloud architecture, automation, and observability so software and data teams can ship faster with confidence.</p>
-            <p>My focus is bridging development and operations into systems that are efficient, maintainable, and resilient. Experienced across Terraform, Azure DevOps, Kubernetes, and cloud cost optimization, I care as much about reliability and security baselines as I do about developer experience.</p>
-            <p>I enjoy mentoring engineers, simplifying complexity, and driving collaboration across teams — turning infrastructure into something the whole organization can build on and trust.</p>
+        <span class="eyebrow">// how I work</span>
+        <h2 class="h" id="principles-h">Operating principles</h2>
+        <p class="sub">Six beliefs that shape how I build — and, for each, the failure mode it's insurance against and the practice that enforces it. The colour is load-bearing: <b>amber = the failure</b>, <b>green = the response</b>.</p>
+
+        <div class="grid-2">
+          <div class="pb">
+            <div class="cat">reliability</div>
+            <h3>Reliability is a feature.</h3>
+            <div class="rule"></div>
+            <div class="row fm"><span class="lab">⚠ failure mode</span><p>Reliability gets bolted on after launch — the first time you learn a path is fragile is from a user, at 3am.</p></div>
+            <div class="row rs"><span class="lab">✓ response</span><p>Design for failure, set SLOs up front, spend the error budget like real money. Datadog, Grafana and Prometheus watch what users actually feel.</p></div>
           </div>
-          <aside class="focus reveal">
-            <h3>What I focus on</h3>
-            <ul>
-              <li>Platform architecture &amp; scalability</li>
-              <li>Infrastructure automation &amp; IaC standardization</li>
-              <li>SRE &amp; observability — SLOs, DORA, MTTR</li>
-              <li>Security baselines &amp; cloud cost governance</li>
-              <li>Team leadership, mentoring &amp; enablement</li>
-            </ul>
-          </aside>
+
+          <div class="pb">
+            <div class="cat">automation</div>
+            <h3>Automate the toil.</h3>
+            <div class="rule"></div>
+            <div class="row fm"><span class="lab">⚠ failure mode</span><p>Manual steps drift, get skipped under pressure, and live in one person's head — until that person is on holiday.</p></div>
+            <div class="row rs"><span class="lab">✓ response</span><p>Done by hand twice → it becomes code. Terraform and Azure DevOps do the repetition; humans do the judgment.</p></div>
+          </div>
+
+          <div class="pb">
+            <div class="cat">observability</div>
+            <h3>You can't operate what you can't see.</h3>
+            <div class="rule"></div>
+            <div class="row fm"><span class="lab">⚠ failure mode</span><p>Without signals you debug by guesswork; MTTR balloons because a customer noticed before any dashboard did.</p></div>
+            <div class="row rs"><span class="lab">✓ response</span><p>Metrics, logs, traces and SLOs ship with the system, not after — observability is a build requirement, not a follow-up ticket.</p></div>
+          </div>
+
+          <div class="pb">
+            <div class="cat">simplicity</div>
+            <h3>Boring and predictable wins.</h3>
+            <div class="rule"></div>
+            <div class="row fm"><span class="lab">⚠ failure mode</span><p>Clever, bespoke infrastructure becomes a single point of failure only its author understands — and they won't always be on call.</p></div>
+            <div class="row rs"><span class="lab">✓ response</span><p>Pick simple, well-understood building blocks and paved roads. Predictable beats clever every time you get paged.</p></div>
+          </div>
+
+          <div class="pb">
+            <div class="cat">infrastructure as code</div>
+            <h3>Infrastructure as code, or it didn't happen.</h3>
+            <div class="rule"></div>
+            <div class="row fm"><span class="lab">⚠ failure mode</span><p>Snowflake servers and click-ops changes can't be reviewed, reproduced, or rolled back — and no one remembers why prod differs from staging.</p></div>
+            <div class="row rs"><span class="lab">✓ response</span><p>Everything reproducible, reviewable, versioned in Terraform. No snowflakes, no surprises, full history in Git.</p></div>
+          </div>
+
+          <div class="pb">
+            <div class="cat">leadership</div>
+            <h3>Lead by enabling.</h3>
+            <div class="rule"></div>
+            <div class="row fm"><span class="lab">⚠ failure mode</span><p>A hero who owns all the knowledge is a bottleneck; the team stalls whenever they're unavailable, and burnout follows.</p></div>
+            <div class="row rs"><span class="lab">✓ response</span><p>Mentor, document, and remove friction so the team moves faster than any one person could — myself included.</p></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- How I work -->
-    <section class="section" id="approach" aria-labelledby="approach-h">
+    <!-- ===================================================================
+         3 · Experience timeline
+         =================================================================== -->
+    <section class="section" id="experience" aria-labelledby="experience-h">
       <div class="wrap">
-        <h2 class="eyebrow reveal" id="approach-h">How I work</h2>
-        <div class="principles">
-          <div class="principle reveal"><h3>Reliability is a feature.</h3><p>Design for failure, measure what users actually feel, and treat error budgets as real budgets.</p></div>
-          <div class="principle reveal"><h3>Automate the toil.</h3><p>If I've done it by hand twice, it becomes code. Humans are for judgment, not repetition.</p></div>
-          <div class="principle reveal"><h3>You can't operate what you can't see.</h3><p>Observability isn't an add-on — metrics, logs, and SLOs ship with the system, not after it.</p></div>
-          <div class="principle reveal"><h3>Boring and predictable wins.</h3><p>Simple, well-understood infrastructure beats clever and fragile every single time.</p></div>
-          <div class="principle reveal"><h3>Infrastructure as code, or it didn't happen.</h3><p>Everything reproducible, reviewable, and versioned. No snowflakes, no surprises.</p></div>
-          <div class="principle reveal"><h3>Lead by enabling.</h3><p>Mentor, document, and remove friction so the team moves faster than any one person could.</p></div>
-        </div>
+        <span class="eyebrow">// experience</span>
+        <h2 class="h" id="experience-h">Where I've built things</h2>
+        <p class="sub">Each role carries a line-art glyph drawn from that company's domain — doubling as an infrastructure metaphor. Hover a role to see its motif move.</p>
+
+        <ul class="tl">
+          <!-- CULLIGAN -->
+          <li class="role">
+            <span class="badge">
+              <svg class="glyph drop" viewBox="0 0 48 48" aria-hidden="true">
+                <path class="body" d="M24 7 C24 7 33 20 33 29 a9 9 0 0 1 -18 0 C15 20 24 7 24 7 Z" fill="none" stroke="currentColor" stroke-width="1.7"/>
+                <path class="body" d="M21 27 a3 3 0 0 0 3 3" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".7"/>
+                <ellipse class="ripple" cx="24" cy="40" rx="8" ry="2.4" fill="none" stroke="currentColor" stroke-width="1.3"/>
+              </svg>
+            </span>
+            <div class="meta">
+              <h3>Infrastructure Architect <span style="color:var(--dim); font-weight:500">(prev. DevOps Engineer)</span></h3>
+              <span class="when">Jul 2023 — present</span>
+            </div>
+            <div class="meta" style="margin-top:4px"><span class="co">Culligan International</span><span class="tag-pill">Milan · IoT · water</span></div>
+            <ul class="bul">
+              <li>Lead IoT infrastructure architecture &amp; reliability for the Culligan IoT Platform.</li>
+              <li>Own end-to-end infra design &amp; operations — scalability, security, cost.</li>
+              <li>Mentor the DevOps/SRE team; evolve CI/CD, IaC &amp; Datadog across global IoT.</li>
+            </ul>
+          </li>
+
+          <!-- MSC -->
+          <li class="role">
+            <span class="badge">
+              <svg class="glyph ship" viewBox="0 0 48 48" aria-hidden="true">
+                <g class="stack">
+                  <rect x="14" y="17" width="8" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                  <rect x="23" y="17" width="8" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                  <rect x="18.5" y="10" width="8" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                </g>
+                <path d="M10 24 H38 L34.5 31 H13.5 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                <path class="wave" d="M6 37 q4 -3 8 0 t8 0 t8 0 t8 0" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".75"/>
+              </svg>
+            </span>
+            <div class="meta">
+              <h3>DevOps Engineer</h3>
+              <span class="when">Mar 2022 — Jul 2023</span>
+            </div>
+            <div class="meta" style="margin-top:4px"><span class="co">MSC Mediterranean Shipping</span><span class="tag-pill">Turin · containers · scale</span></div>
+            <ul class="bul">
+              <li>Built &amp; maintained scalable CI/CD pipelines on Azure DevOps (YAML).</li>
+              <li>Automated provisioning with Ansible, Bicep &amp; Rundeck — less manual config.</li>
+              <li>Stood up observability &amp; logging with Datadog for faster detection.</li>
+            </ul>
+          </li>
+
+          <!-- DELTATRE -->
+          <li class="role">
+            <span class="badge">
+              <svg class="glyph ball" viewBox="0 0 48 48" aria-hidden="true">
+                <circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" stroke-width="1.7"/>
+                <g class="seam">
+                  <polygon points="24,16 30,20.5 27.7,27.5 20.3,27.5 18,20.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                  <line x1="24" y1="16" x2="24" y2="8.5" stroke="currentColor" stroke-width="1.4"/>
+                  <line x1="30" y1="20.5" x2="36" y2="17" stroke="currentColor" stroke-width="1.4"/>
+                  <line x1="27.7" y1="27.5" x2="32" y2="34" stroke="currentColor" stroke-width="1.4"/>
+                  <line x1="20.3" y1="27.5" x2="16" y2="34" stroke="currentColor" stroke-width="1.4"/>
+                  <line x1="18" y1="20.5" x2="12" y2="17" stroke="currentColor" stroke-width="1.4"/>
+                </g>
+              </svg>
+            </span>
+            <div class="meta">
+              <h3>Support Supervisor <span style="color:var(--dim); font-weight:500">→ Software Engineer</span></h3>
+              <span class="when">Aug 2015 — Mar 2022</span>
+            </div>
+            <div class="meta" style="margin-top:4px"><span class="co">Deltatre</span><span class="tag-pill">Turin · sports · real-time</span></div>
+            <ul class="bul">
+              <li>Supervised a <strong style="color:var(--text)">12-person</strong> application support team.</li>
+              <li>Built backend &amp; web apps (C#, SQL, ASP.NET, Angular) — Agile / TDD.</li>
+              <li>Kept microservices highly available on Azure with Docker &amp; Kubernetes.</li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <!-- Experience -->
-    <section class="section" id="experience" aria-labelledby="exp-h">
-      <div class="wrap">
-        <h2 class="eyebrow reveal" id="exp-h">Experience</h2>
-        <div class="timeline">
-          <div class="job reveal">
-            <div class="top"><span class="org">Culligan International</span><span class="when">Jul 2023 — Present</span></div>
-            <div class="title">Infrastructure Architect (previously DevOps Engineer)</div>
-            <div class="where">Milan, Italy &middot; Remote</div>
-            <ul>
-              <li>Promoted to lead IoT infrastructure architecture and reliability across the Culligan IoT Platform organization.</li>
-              <li>Own end-to-end infrastructure design and operations, ensuring scalability, security, and cost efficiency.</li>
-              <li>Architect and evolve the platform's CI/CD, IaC, and observability frameworks supporting global IoT solutions.</li>
-              <li>Automate provisioning with Terraform and Azure DevOps pipelines; implement Datadog monitoring that reduced incident MTTR.</li>
-              <li>Mentor and guide the DevOps/SRE team, driving automation, observability, and reliability practices.</li>
-            </ul>
-          </div>
-          <div class="job reveal">
-            <div class="top"><span class="org">MSC Mediterranean Shipping Company</span><span class="when">Mar 2022 — Jul 2023</span></div>
-            <div class="title">DevOps Engineer</div>
-            <div class="where">Turin, Italy &middot; Hybrid</div>
-            <ul>
-              <li>Built and maintained scalable CI/CD pipelines on Azure DevOps using YAML across a large application portfolio.</li>
-              <li>Automated infrastructure provisioning with Ansible, Bicep, and Rundeck, cutting manual configuration work.</li>
-              <li>Wrote automation tooling in PowerShell and Bash that accelerated deployment cycles and reduced errors.</li>
-              <li>Rolled out observability and logging with Datadog, improving issue detection and resolution.</li>
-            </ul>
-          </div>
-          <div class="job reveal">
-            <div class="top"><span class="org">Deltatre</span><span class="when">Aug 2015 — Mar 2022</span></div>
-            <div class="title">Application Support Supervisor &middot; Analyst &middot; Software Engineer</div>
-            <div class="where">Turin, Italy</div>
-            <ul>
-              <li>Supervised and mentored a 12-person application support team, improving SLA compliance and productivity.</li>
-              <li>Collaborated across developers, analysts, and vendors to accelerate incident resolution and customer satisfaction.</li>
-              <li>Developed backend and web applications in C#, SQL, ASP.NET, and Angular using Agile and TDD.</li>
-              <li>Maintained high availability of microservices on Azure with Docker and Kubernetes.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="edu">
-          <div class="card reveal">
-            <div class="school">ITS ICT — Foundation for Information &amp; Communication Technologies</div>
-            <div class="deg">Associate's degree, Integrated Backend Services</div>
-            <div class="yr">2016 — 2018</div>
-          </div>
-          <div class="card reveal">
-            <div class="school">IIS Piero Martinetti</div>
-            <div class="deg">High School Diploma, Scientific &amp; Technological</div>
-            <div class="yr">2009 — 2014</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section class="section" id="skills" aria-labelledby="skills-h">
-      <div class="wrap">
-        <h2 class="eyebrow reveal" id="skills-h">Skills &amp; stack</h2>
-        <div class="skills">
-          <div class="skillset reveal"><h3>Cloud &amp; platform</h3><div class="tags"><span>Azure</span><span>AKS</span><span>Azure Functions</span><span>Linux</span><span>Windows</span></div></div>
-          <div class="skillset reveal"><h3>IaC &amp; automation</h3><div class="tags"><span>Terraform</span><span>Terragrunt</span><span>Ansible</span><span>Bicep</span><span>Rundeck</span></div></div>
-          <div class="skillset reveal"><h3>CI/CD &amp; delivery</h3><div class="tags"><span>Azure DevOps</span><span>Jenkins</span><span>YAML pipelines</span><span>Release management</span></div></div>
-          <div class="skillset reveal"><h3>Containers &amp; orchestration</h3><div class="tags"><span>Docker</span><span>Kubernetes</span></div></div>
-          <div class="skillset reveal"><h3>Observability &amp; SRE</h3><div class="tags"><span>Datadog</span><span>SLO / SLI</span><span>DORA</span><span>MTTR</span><span>Cost optimization</span></div></div>
-          <div class="skillset reveal"><h3>Languages &amp; data</h3><div class="tags"><span>Node.js</span><span>Python</span><span>PowerShell</span><span>Bash</span><span>C#</span><span>SQL</span><span>Cosmos DB</span><span>PostgreSQL</span><span>Redis</span><span>MongoDB</span></div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Selected work / case study -->
+    <!-- ===================================================================
+         4 · Case study — multi-agent engineering assistant
+         =================================================================== -->
     <section class="section" id="work" aria-labelledby="work-h">
       <div class="wrap">
-        <p class="eyebrow reveal">Selected work</p>
-        <h2 class="work-title reveal" id="work-h">Multi-agent engineering assistant</h2>
-        <p class="work-hook reveal">A multi-agent AI system that helps a platform team review, test, ship, and operate software with more consistency and less toil — adopted across the lead engineering team.</p>
-
-        <div class="cs-meta reveal">
-          <div><span class="k">Role</span><span class="v">Design &amp; build</span></div>
-          <div><span class="k">Context</span><span class="v">Internal IoT platform tooling</span></div>
-          <div><span class="k">Built with</span><span class="v">Claude Code &middot; MCP &middot; TypeScript</span></div>
+        <span class="eyebrow">// selected work</span>
+        <h2 class="h" id="work-h">Multi-agent engineering assistant</h2>
+        <p class="sub">A multi-agent AI system that helps a platform team review, test, ship, and operate software with more consistency and less toil — adopted across the lead engineering team.</p>
+        <div class="metachips">
+          <span class="mc">Role: <b>Design &amp; build</b></span>
+          <span class="mc">Context: <b>Internal IoT platform tooling</b></span>
+          <span class="mc">Built with: <b>Claude Code · MCP · TypeScript</b></span>
         </div>
 
-        <div class="cs-grid">
-          <div class="cs-narrative reveal">
-            <div class="cs-block">
-              <h3>Problem</h3>
-              <p>Across a growing set of repositories, code review, QA, release coordination, and reliability monitoring were largely manual — slow to perform, hard to keep consistent, and a constant pull on senior engineers' time.</p>
-            </div>
-            <div class="cs-block">
-              <h3>Approach</h3>
-              <p>I designed and built a set of specialist AI agents in Claude Code, each owning a single workflow and sharing a common library of reusable skills. They integrate with the team's existing toolchain through MCP, sit behind safety guardrails that gate anything destructive, and feed a weekly self-analysis loop that surfaces gaps. Two decisions shaped it: organizing agents by workflow rather than by role, so each carries only the context it needs, and pushing shared conventions into a skills layer to avoid duplicating knowledge.</p>
-            </div>
-            <div class="cs-block">
-              <h3>Outcome</h3>
-              <p>Rolled out to the lead engineering team and now part of how the platform ships. I measure it against adoption, cycle time, and defect-leakage baselines rather than vanity metrics — with the feedback loop steadily improving the agents over time.</p>
-            </div>
+        <p class="layerlab">High-level architecture — tap any block</p>
+        <div class="diagram">
+          <p class="layerlab">control</p>
+          <button class="node orch" data-id="orchestrator" aria-pressed="true">
+            <span class="nm">Orchestrator</span>
+            <span class="ro">routes work · plays the developer</span>
+          </button>
+
+          <p class="conn">↓ dispatches to specialists</p>
+
+          <p class="layerlab">specialist agents</p>
+          <div class="agents">
+            <button class="node" data-id="code-review"><span class="nm">Code Review</span><span class="ro">PRs · standards</span></button>
+            <button class="node" data-id="qa"><span class="nm">QA</span><span class="ro">tests</span></button>
+            <button class="node" data-id="release"><span class="nm">Release</span><span class="ro">promotion</span></button>
+            <button class="node" data-id="infrastructure"><span class="nm">Infrastructure</span><span class="ro">IaC checks</span></button>
+            <button class="node" data-id="reliability"><span class="nm">Reliability</span><span class="ro">SLOs · incidents</span></button>
+            <button class="node" data-id="self-improvement"><span class="nm">Self-improvement</span><span class="ro">weekly loop</span></button>
           </div>
 
-          <div class="term reveal">
-            <div class="term-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="t">engineering-assistant — review</span></div>
-            <div class="term-body" id="termBody">
-              <div id="termStream">
-                <p class="line"><span class="p">$</span>review --pr 1487</p>
-                <p class="line dim">&rarr; orchestrator dispatching specialists</p>
-                <p class="line"><span class="ok">&check;</span> code review&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">standards + pipeline impact</span></p>
-                <p class="line"><span class="ok">&check;</span> qa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">branch checkout + tests</span></p>
-                <p class="line"><span class="ok">&check;</span> release&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">promotion readiness</span></p>
-                <p class="line"><span class="ok">&check;</span> reliability&nbsp;&nbsp;&nbsp;<span class="dim">SLOs + incident signals</span></p>
-                <p class="line"><span class="ok">&check;</span> review ready <span class="dim">— 0 blocking, 2 suggestions</span></p>
-                <p class="line cmt"># tip: this prompt is live — type 'help'</p>
-              </div>
-              <form class="term-input-line" id="termForm" autocomplete="off">
-                <label class="sr-only" for="termInput">Terminal command</label>
-                <span class="p">$</span>
-                <input id="termInput" class="term-input" type="text" spellcheck="false" placeholder="type 'help'" aria-label="Terminal command, type help">
-              </form>
-            </div>
+          <p class="conn">↑ all built on a shared foundation</p>
+
+          <p class="layerlab">shared</p>
+          <button class="node skills" data-id="skills">
+            <span class="nm">Reusable skills layer</span>
+            <span class="ro">shared conventions · safety guardrails</span>
+          </button>
+
+          <p class="conn">↕ connected to the toolchain via MCP</p>
+
+          <p class="layerlab">integrations · MCP</p>
+          <div class="integ">
+            <span class="ichip">Source &amp; PRs</span><span class="ichip">Issues</span><span class="ichip">CI/CD</span>
+            <span class="ichip">Code quality</span><span class="ichip">Observability</span><span class="ichip">Chat</span>
           </div>
         </div>
 
-        <figure class="diagram reveal">
-          <figcaption>High-level architecture</figcaption>
-          <div class="arch" role="img" aria-label="An orchestrator routes work to six specialist agents — code review, QA, release, infrastructure, reliability, and self-improvement — which draw on a shared skills layer with safety guardrails and connect to the team's toolchain (source control and pull requests, issue tracking, CI/CD, code quality, observability, and chat) through MCP.">
-            <p class="arch-label" aria-hidden="true">Orchestrator</p>
-            <div class="arch-center"><div class="node orchestrator"><span class="nt">Orchestrator</span><span class="ns">routes work &middot; plays the developer</span></div></div>
-            <div class="flow" aria-hidden="true"><i></i></div>
-            <p class="arch-label" aria-hidden="true">Specialist agents</p>
-            <div class="arch-row" aria-hidden="true">
-              <div class="node"><span class="nt">Code Review</span></div>
-              <div class="node"><span class="nt">QA</span></div>
-              <div class="node"><span class="nt">Release</span></div>
-              <div class="node"><span class="nt">Infrastructure</span></div>
-              <div class="node"><span class="nt">Reliability</span></div>
-              <div class="node"><span class="nt">Self-improvement</span></div>
-            </div>
-            <div class="flow" aria-hidden="true"><i></i></div>
-            <p class="arch-label" aria-hidden="true">Shared layer</p>
-            <div class="arch-center" aria-hidden="true"><div class="node skill"><span class="nt">Reusable skills layer</span><span class="ns">shared conventions &middot; safety guardrails</span></div></div>
-            <div class="flow" aria-hidden="true"><i></i></div>
-            <p class="arch-label" aria-hidden="true">Integrations &middot; MCP</p>
-            <div class="arch-row" aria-hidden="true">
-              <div class="node integration"><span class="nt">Source &amp; PRs</span></div>
-              <div class="node integration"><span class="nt">Issues</span></div>
-              <div class="node integration"><span class="nt">CI/CD</span></div>
-              <div class="node integration"><span class="nt">Code quality</span></div>
-              <div class="node integration"><span class="nt">Observability</span></div>
-              <div class="node integration"><span class="nt">Chat</span></div>
+        <div class="detail" id="detail" aria-live="polite"></div>
+        <p class="hintline">Each agent owns <b>one workflow</b> and carries only the context it needs — organised by workflow, not by role.</p>
+
+        <div class="run">
+          <div class="rh"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="t">engineering-assistant — review</span></div>
+          <pre><span class="pr">$</span> review --pr 1487
+<span class="ar">→ orchestrator dispatching specialists</span>
+<span class="ok">✓</span> code review — standards + pipeline impact
+<span class="ok">✓</span> qa — branch checkout + tests
+<span class="ok">✓</span> release — promotion readiness
+<span class="ok">✓</span> reliability — SLOs + incident signals
+<span class="ok">✓</span> <span class="b">review ready — 0 blocking, 2 suggestions</span></pre>
+        </div>
+
+        <div class="story">
+          <div class="block">
+            <h4>Problem</h4>
+            <p>Across a growing set of repositories, code review, QA, release coordination, and reliability monitoring were largely manual — slow to perform, hard to keep consistent, and a constant pull on senior engineers' time.</p>
+          </div>
+          <div class="block">
+            <h4>Approach</h4>
+            <p>I designed and built a set of specialist AI agents in Claude Code, each owning a single workflow and sharing a common library of reusable skills. They integrate with the team's existing toolchain through MCP, sit behind <b>safety guardrails that gate anything destructive</b>, and feed a weekly self-analysis loop that surfaces gaps.</p>
+            <div class="decisions">
+              <div class="dl">two decisions that shaped it</div>
+              <ul>
+                <li>Organise agents <b>by workflow, not by role</b> — so each carries only the context it needs.</li>
+                <li>Push shared conventions into a <b>skills layer</b> — so knowledge isn't duplicated across agents.</li>
+              </ul>
             </div>
           </div>
-        </figure>
-
-        <div class="work-tags reveal">
-          <span>Multi-agent orchestration</span><span>Claude Code</span><span>MCP integrations</span><span>Self-improving loop</span><span>Safety guardrails</span>
+          <div class="block">
+            <h4>Outcome</h4>
+            <p>Rolled out to the lead engineering team and now part of how the platform ships. I measure it against <b>adoption, cycle time, and defect-leakage baselines</b> rather than vanity metrics — with the feedback loop steadily improving the agents over time.</p>
+          </div>
         </div>
-        <p class="work-note reveal">Internal tooling — happy to walk through the architecture and the results.</p>
       </div>
     </section>
 
-    <!-- Certifications -->
+    <!-- ===================================================================
+         5 · Systems I would build
+         =================================================================== -->
+    <section class="section" id="systems" aria-labelledby="systems-h">
+      <div class="wrap">
+        <span class="eyebrow">// architecture</span>
+        <h2 class="h" id="systems-h">Systems I would build</h2>
+        <p class="sub">Past work shows what I've done; this shows how I <b>think</b>. Five positions I'd defend about building and scaling a platform — opinionated on purpose.</p>
+
+        <div class="grid-auto">
+          <article class="op">
+            <div class="tag">platform baseline</div>
+            <h3 class="stance">Ship identity, updates, and observability before a single feature.</h3>
+            <p class="why">For connected products, the platform's job is to keep a fleet secure, updatable, and visible — not to ship features on day one. Device identity, over-the-air update, and end-to-end telemetry are the load-bearing walls; <b>bolt them on later and you're rebuilding the foundation under a live fleet.</b></p>
+            <div class="move"><span class="ml">first move</span>identity + OTA + telemetry pipeline, before product features.</div>
+          </article>
+
+          <article class="op">
+            <div class="tag">standardization</div>
+            <h3 class="stance">Pick the boring defaults before the team is big enough to argue.</h3>
+            <p class="why">The cheapest time to standardize IaC modules, secret management, pipelines, and an SLO convention is at two repos, not twenty. Every week you wait, divergence compounds and migration turns political. <b>Standardization isn't bureaucracy — it's the paved road</b> that lets people stop reinventing plumbing.</p>
+            <div class="move"><span class="ml">first move</span>a Terraform module library + one pipeline template + one observability convention.</div>
+          </article>
+
+          <article class="op">
+            <div class="tag">kubernetes</div>
+            <h3 class="stance">Don't run Kubernetes until the problem is Kubernetes-shaped.</h3>
+            <p class="why">AKS is right when you have many services, real scaling needs, and a team that can own the operational surface. For a handful of services it's a tax — managed container platforms ship the same outcome with a fraction of the ops. <b>Complexity should be earned by load, not adopted for the résumé.</b></p>
+            <div class="move"><span class="ml">first move</span>justify the cluster against service count and on-call capacity.</div>
+          </article>
+
+          <article class="op">
+            <div class="tag">AI in delivery</div>
+            <h3 class="stance">Let agents propose; never let them push unattended.</h3>
+            <p class="why">AI agents are a force-multiplier on review, QA, and release prep — but anything destructive stays behind a human gate and a guardrail. Organize them by workflow so each carries minimal context, give them a shared skills layer so conventions don't drift. <b>The win is consistency and removed toil, not autonomy for its own sake.</b></p>
+            <div class="move"><span class="ml">first move</span>agents behind guardrails, gated on anything irreversible.</div>
+          </article>
+
+          <article class="op">
+            <div class="tag">reliability vs cost</div>
+            <h3 class="stance">An SLO is a budget — spend it, don't gold-plate.</h3>
+            <p class="why">Chasing more nines than users actually feel just burns money and engineering time. Define the SLO from real user experience, then spend the error budget: ship faster while it's healthy, slow down and harden when it's not. <b>Reliability and cost aren't opposites — the error budget is the dial that trades them on purpose.</b></p>
+            <div class="move"><span class="ml">first move</span>set SLOs from user-felt signals, then let the budget drive pace.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         6 · Reliability Lab — error-budget calculator
+         =================================================================== -->
+    <section class="section" id="lab" aria-labelledby="lab-h">
+      <div class="wrap">
+        <span class="eyebrow">// reliability lab</span>
+        <h2 class="h" id="lab-h">Error-budget calculator</h2>
+        <p class="sub">Pick an availability target and see how much downtime that actually buys you — the number behind every "we need more nines" conversation.</p>
+
+        <div class="panel">
+          <div class="inhead">
+            <div class="field">
+              <label for="num">Target SLO</label>
+              <input id="num" type="number" min="0" max="100" step="0.001" value="99.9"><span class="pct">%</span>
+            </div>
+            <div class="field" style="flex:1; min-width:200px">
+              <label id="presets-label">Common targets</label>
+              <div class="presets" id="presets" role="group" aria-labelledby="presets-label">
+                <button data-v="99">99%</button>
+                <button data-v="99.9">99.9%</button>
+                <button data-v="99.95">99.95%</button>
+                <button data-v="99.99">99.99%</button>
+                <button data-v="99.999">99.999%</button>
+              </div>
+            </div>
+          </div>
+          <input id="range" class="range" type="range" min="90" max="99.999" step="0.001" value="99.9" aria-label="SLO target slider">
+
+          <div class="budget">
+            <span class="lab">Error budget</span>
+            <span class="val" id="budget">0.100%</span>
+            <span class="of">of the time you're allowed to be down</span>
+          </div>
+
+          <div class="windows" id="windows">
+            <div class="wcard"><div class="wt">per day</div><div class="wv">1.44 min</div></div>
+            <div class="wcard"><div class="wt">per week</div><div class="wv">10.1 min</div></div>
+            <div class="wcard mo"><div class="wt">per month</div><div class="wv">43.2 min</div></div>
+            <div class="wcard"><div class="wt">per quarter</div><div class="wv">2.16 h</div></div>
+            <div class="wcard"><div class="wt">per year</div><div class="wv">8.76 h</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         7 · Engineering artifacts
+         =================================================================== -->
+    <section class="section" id="artifacts" aria-labelledby="artifacts-h">
+      <div class="wrap">
+        <span class="eyebrow">// artifacts</span>
+        <h2 class="h" id="artifacts-h">Engineering artifacts</h2>
+        <p class="sub">Templates I actually use, de-identified and free to take — the difference between a portfolio that <em>describes</em> competence and one that <em>hands you</em> some. Each is a real <code>.md</code> in the <a href="https://github.com/fabrideci/fabrideci.github.io/tree/main/lab">/lab</a> folder.</p>
+
+        <div class="grid-auto" id="grid">
+          <article class="art" data-id="adr">
+            <span class="afmt">▢ .md</span>
+            <h3>Architecture Decision Record</h3>
+            <p>Capture a decision, its context, and the trade-offs — so future-you (and the team) knows <em>why</em>.</p>
+            <div class="aact">
+              <button class="view" data-id="adr">View</button>
+              <button class="dl" data-id="adr">Download</button>
+              <a class="repo" href="lab/adr-template.md">Repo</a>
+            </div>
+          </article>
+
+          <article class="art" data-id="slo">
+            <span class="afmt">▢ .md</span>
+            <h3>SLO definition</h3>
+            <p>A one-page spec for an objective: SLI, target, error budget, and the burn-rate alerts that back it.</p>
+            <div class="aact">
+              <button class="view" data-id="slo">View</button>
+              <button class="dl" data-id="slo">Download</button>
+              <a class="repo" href="lab/slo-definition.md">Repo</a>
+            </div>
+          </article>
+
+          <article class="art" data-id="incident">
+            <span class="afmt">▢ .md</span>
+            <h3>Incident review</h3>
+            <p>A blameless postmortem skeleton: timeline, impact, root cause, and action items with owners.</p>
+            <div class="aact">
+              <button class="view" data-id="incident">View</button>
+              <button class="dl" data-id="incident">Download</button>
+              <a class="repo" href="lab/incident-review.md">Repo</a>
+            </div>
+          </article>
+
+          <article class="art" data-id="tf">
+            <span class="afmt">▢ .md</span>
+            <h3>Terraform module checklist</h3>
+            <p>The production-readiness gate a module passes before it's allowed on the paved road.</p>
+            <div class="aact">
+              <button class="view" data-id="tf">View</button>
+              <button class="dl" data-id="tf">Download</button>
+              <a class="repo" href="lab/terraform-module-checklist.md">Repo</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="preview">
+          <div class="ph">
+            <span class="dots"><i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i></span>
+            <span class="fn" id="fn">adr-template.md</span>
+            <span class="pmeta">markdown · template</span>
+          </div>
+          <pre id="pv" tabindex="0" aria-label="Artifact preview"></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         8 · Skills & stack
+         =================================================================== -->
+    <section class="section" id="skills" aria-labelledby="skills-h">
+      <div class="wrap">
+        <span class="eyebrow">// skills &amp; stack</span>
+        <h2 class="h" id="skills-h">Skills &amp; stack</h2>
+        <div class="clusters">
+          <div class="cluster"><h3>Cloud &amp; containers</h3><div class="tags"><span>Azure</span><span>AKS</span><span>Container Apps</span><span>Azure Functions</span><span>Kubernetes</span><span>Docker</span><span>Helm</span><span>VMs</span></div></div>
+          <div class="cluster"><h3>IoT &amp; messaging</h3><div class="tags"><span>IoT Hub</span><span>Event Hub</span><span>MQTT</span><span>CoAP</span><span>LWM2M</span><span>device identity</span><span>OTA</span></div></div>
+          <div class="cluster"><h3>Data &amp; analytics</h3><div class="tags"><span>Cosmos DB</span><span>Storage</span><span>Data Factory</span><span>Databricks</span><span>Microsoft Fabric</span></div></div>
+          <div class="cluster"><h3>Networking &amp; security</h3><div class="tags"><span>VNet</span><span>VPN</span><span>DNS Zones</span><span>Key Vault</span></div></div>
+          <div class="cluster"><h3>Infrastructure as Code</h3><div class="tags"><span>Terraform</span><span>Terragrunt</span><span>ARM/Bicep</span><span>Ansible</span></div></div>
+          <div class="cluster"><h3>CI/CD &amp; automation</h3><div class="tags"><span>Azure DevOps</span><span>Managed DevOps Pools</span><span>YAML pipelines</span><span>Bash</span><span>PowerShell</span></div></div>
+          <div class="cluster"><h3>Observability &amp; SRE</h3><div class="tags"><span>Datadog</span><span>Grafana</span><span>Prometheus</span><span>SLOs</span><span>error budgets</span><span>incident response</span></div></div>
+          <div class="cluster"><h3>Practices &amp; leadership</h3><div class="tags"><span>Agile</span><span>TDD</span><span>ADRs</span><span>mentoring</span><span>AI-assisted delivery</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         9 · Certifications
+         =================================================================== -->
     <section class="section" id="certs" aria-labelledby="certs-h">
       <div class="wrap">
-        <h2 class="eyebrow reveal" id="certs-h">Certifications</h2>
+        <span class="eyebrow">// certifications</span>
+        <h2 class="h" id="certs-h">Certifications</h2>
         <div class="certs">
-          <div class="cert reveal"><div class="code">CKA</div><div class="name">Certified Kubernetes Administrator</div><div class="meta">CNCF &middot; earned 2022</div></div>
-          <div class="cert reveal"><div class="code">LFCS</div><div class="name">Linux Foundation Certified Systems Administrator</div><div class="meta">Linux Foundation &middot; earned 2023</div></div>
-          <div class="cert reveal"><div class="code">AZ-104</div><div class="name">Microsoft Certified: Azure Administrator Associate</div><div class="meta">Microsoft &middot; earned 2023</div></div>
-          <div class="cert reveal"><div class="code">AZ-400</div><div class="name">Microsoft Certified: DevOps Engineer Expert</div><div class="meta">Microsoft &middot; earned 2023</div></div>
+          <div class="cert"><div class="code">CKA</div><div class="cname">Certified Kubernetes Administrator</div><div class="ci">Linux Foundation · 2022</div></div>
+          <div class="cert"><div class="code">LFCS</div><div class="cname">Linux Foundation Certified Sysadmin</div><div class="ci">Linux Foundation · 2023</div></div>
+          <div class="cert"><div class="code">AZ-104</div><div class="cname">Microsoft Azure Administrator</div><div class="ci">Microsoft · 2023</div></div>
+          <div class="cert"><div class="code">AZ-400</div><div class="cname">Designing &amp; Implementing DevOps Solutions</div><div class="ci">Microsoft · 2023</div></div>
         </div>
-        <p class="certs-more reveal">Full list of licenses &amp; certifications on <a href="https://www.linkedin.com/in/fabriziodecicco" target="_blank" rel="noopener">LinkedIn</a>.</p>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section class="section" id="contact" aria-labelledby="contact-h">
+    <!-- ===================================================================
+         10 · Contact
+         =================================================================== -->
+    <section class="section contact" id="contact" aria-labelledby="contact-h">
       <div class="wrap">
-        <p class="eyebrow reveal">Contact</p>
-        <h2 class="reveal" id="contact-h">Let's build something reliable.</h2>
-        <p class="lede reveal">Happy to talk infrastructure, reliability, or AI-assisted engineering — reach out and let's chat.</p>
-        <p class="reply reveal">Usually responds within a day.</p>
-        <div class="contact-cta reveal">
-          <a class="btn btn-primary" href="mailto:fabri.deci@gmail.com">fabri.deci@gmail.com</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/fabriziodecicco" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn btn-ghost" href="https://github.com/fabrideci" target="_blank" rel="noopener">GitHub</a>
+        <span class="eyebrow">// contact</span>
+        <h2 class="h" id="contact-h">Let's build something reliable.</h2>
+        <p class="lead">Architecture, platform reliability, or AI-assisted delivery — if any of that is on your plate, I'm happy to talk.</p>
+        <div class="links">
+          <a class="btn primary" href="mailto:fabri.deci@gmail.com">Email</a>
+          <a class="btn" href="https://github.com/fabrideci">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/fabriziodecicco">LinkedIn</a>
+          <a class="btn" href="assets/Fabrizio-De-Cicco-Resume.pdf">Résumé (PDF)</a>
         </div>
+        <div class="loc">based in <b>Turin, Italy</b> · open to remote</div>
       </div>
     </section>
+
   </main>
 
-  <footer class="foot">
-    <div class="wrap">
-      <div class="status-bar" role="status" aria-label="Site status">
-        <span class="status-left"><span class="dot"></span>All systems operational</span>
-        <span class="status-right">static &middot; 0 dependencies &middot; 0 trackers</span>
-      </div>
-      <div class="foot-row">
-        <small>&copy; <span id="year"></span> Fabrizio De Cicco</small>
-        <div class="links">
-          <a href="https://github.com/fabrideci" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/fabriziodecicco" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="mailto:fabri.deci@gmail.com">Email</a>
-        </div>
-      </div>
-    </div>
+  <!-- ===================================================================
+       11 · Footer status bar
+       =================================================================== -->
+  <footer class="status">
+    <span class="l"><span class="dot"></span> All systems operational</span>
+    <span class="sp"></span>
+    <span>static · <b>0 dependencies</b> · <b>0 trackers</b></span>
+    <span>·</span>
+    <span>hand-coded — <a href="https://github.com/fabrideci/fabrideci.github.io">source</a></span>
+    <span>·</span>
+    <span>© 2026 Fabrizio De Cicco</span>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const toggle = document.querySelector('.nav-toggle');
-    const menu = document.getElementById('menu');
-    const setMenu = (open) => {
-      menu.classList.toggle('open', open);
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    };
-    toggle.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-    // Dismiss the open menu the way users expect a disclosure to behave: Escape
-    // (returning focus to the toggle for keyboard users) or a click outside it.
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); toggle.focus(); }
-    });
-    document.addEventListener('click', (e) => {
-      if (menu.classList.contains('open') && !menu.contains(e.target) && !toggle.contains(e.target)) setMenu(false);
-    });
-
-    // Run a callback the first time each element scrolls into view, then stop
-    // watching it. Where IntersectionObserver is unavailable we run immediately,
-    // so nothing stays hidden behind an observer that would never fire.
-    function onceInView(els, cb, options) {
-      if (!('IntersectionObserver' in window)) { els.forEach(cb); return; }
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { cb(e.target); io.unobserve(e.target); } });
-      }, options);
-      els.forEach(el => io.observe(el));
-    }
-
-    const reveals = document.querySelectorAll('.reveal');
-    if (reduce) reveals.forEach(el => el.classList.add('in-view'));
-    else onceInView(reveals, el => el.classList.add('in-view'), { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-    function countUp(el) {
-      const target = parseInt(el.dataset.count, 10);
-      const suffix = el.dataset.suffix || '';
-      if (reduce) { el.textContent = target + suffix; return; }
-      const dur = 1100, start = performance.now();
-      (function step(now){
-        const t = Math.min((now - start) / dur, 1);
-        el.textContent = Math.round((1 - Math.pow(1 - t, 3)) * target) + suffix;
-        if (t < 1) requestAnimationFrame(step);
-      })(performance.now());
-    }
-    onceInView(document.querySelectorAll('.num[data-count]'), countUp, { threshold: 0.6 });
-
-    // Highlight the nav link for the section under the viewport's midline. Unlike
-    // onceInView, this observer keeps watching so the highlight tracks scrolling.
-    const sections = ['about','approach','experience','skills','work','contact'].map(id => document.getElementById(id)).filter(Boolean);
-    const linkFor = {};
-    document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => { linkFor[a.getAttribute('href').slice(1)] = a; });
-    if ('IntersectionObserver' in window) {
-      const io3 = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          const a = linkFor[e.target.id]; if (!a) return;
-          if (e.isIntersecting) { Object.values(linkFor).forEach(x => x.classList.remove('active')); a.classList.add('active'); }
-        });
-      }, { rootMargin: '-45% 0px -50% 0px' });
-      sections.forEach(s => io3.observe(s));
-    }
-
-    // Interactive + typing terminal
-    (function(){
-      const term = document.getElementById('termBody');
-      const stream = document.getElementById('termStream');
-      const form = document.getElementById('termForm');
-      const input = document.getElementById('termInput');
-      if (!term || !stream || !form || !input) return;
-
-      // Stagger the demo lines in once the terminal scrolls into view. Under
-      // reduced-motion we leave them visible rather than hiding then animating.
-      const demo = Array.from(stream.children);
-      if (!reduce && 'IntersectionObserver' in window) {
-        demo.forEach(l => { l.style.opacity = '0'; });
-        onceInView([term], () => {
-          demo.forEach((l, i) => setTimeout(() => { l.style.transition = 'opacity .18s ease'; l.style.opacity = '1'; }, i * 230));
-        }, { threshold: 0.4 });
-      }
-
-      function esc(s){ return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-      function print(html, cls){ const p = document.createElement('p'); p.className = 'line' + (cls ? ' ' + cls : ''); p.innerHTML = html; stream.appendChild(p); term.scrollTop = term.scrollHeight; }
-      function go(id){ const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }
-
-      const cmds = {
-        help(){ print("commands: <span class='ok'>about</span> stack experience work certs contact resume social sudo clear"); },
-        about(){ print("Fabrizio De Cicco — IoT Infrastructure Architect &amp; Lead DevOps Engineer", 'ok'); print("10+ years making cloud infrastructure scalable, reliable, and secure.", 'dim'); },
-        whoami(){ this.about(); },
-        stack(){ print("Azure · Terraform · Terragrunt · Kubernetes · Datadog · Azure DevOps · CI/CD · SRE", 'dim'); },
-        experience(){ print("&rarr; opening experience", 'dim'); go('experience'); },
-        work(){ print("&rarr; you are here", 'dim'); go('work'); },
-        certs(){ print("CKA · LFCS · AZ-104 · AZ-400", 'dim'); go('certs'); },
-        contact(){ print("email: <a href='mailto:fabri.deci@gmail.com'>fabri.deci@gmail.com</a>"); print("links: <a href='https://github.com/fabrideci' target='_blank' rel='noopener'>github.com/fabrideci</a> · <a href='https://www.linkedin.com/in/fabriziodecicco' target='_blank' rel='noopener'>linkedin.com/in/fabriziodecicco</a>"); },
-        social(){ this.contact(); },
-        resume(){ print("&rarr; downloading résumé…", 'dim'); const a = document.querySelector('a[href$="Resume.pdf"]'); if (a) a.click(); },
-        sudo(){ print("nice try — you don't have root here :)", 'ok'); },
-        ls(){ print("about  stack  experience  work  certs  contact  resume", 'dim'); },
-        clear(){ stream.innerHTML = ''; }
-      };
-
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        const raw = input.value.trim();
-        input.value = '';
-        if (raw === '') { print("<span class='p'>$</span>"); return; }
-        print("<span class='p'>$</span>" + esc(raw));
-        const cmd = raw.split(/\s+/)[0].toLowerCase();
-        if (Object.prototype.hasOwnProperty.call(cmds, cmd)) { cmds[cmd](); }
-        else { print("command not found: " + esc(cmd) + " — try <span class='ok'>help</span>"); }
-      });
-
-      // Press "/" to focus the terminal
-      document.addEventListener('keydown', function(e){
-        const tag = (document.activeElement && document.activeElement.tagName) || '';
-        if (e.key === '/' && !/^(INPUT|TEXTAREA)$/.test(tag)) {
-          e.preventDefault();
-          term.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
-          input.focus();
-        }
-      });
-    })();
-  </script>
+</div>
+<script src="main.js" defer></script>
 </body>
 </html>
