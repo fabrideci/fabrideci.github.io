@@ -124,8 +124,9 @@
   })();
 
   /* ---------------------------------------------------------------------
-     Engineering artifacts — inline viewer + working Blob download.
-     Bodies are byte-identical to the files in /lab/.
+     Engineering artifacts — the inline viewer fetches the real /lab/*.md
+     files (same-origin, no third party) and Download is a native <a download>
+     link in the HTML. The files in /lab/ are the single source of truth.
      --------------------------------------------------------------------- */
   (function artifacts(){
     var grid = document.getElementById('grid'),
@@ -133,91 +134,25 @@
         fn = document.getElementById('fn');
     if(!grid || !pv || !fn) return;
 
-    var tpl = {
-      adr:{ file:'adr-template.md', body:
-"# ADR-NNN — <short title>\n\n"+
-"- Status:     Proposed | Accepted | Superseded by ADR-XXX\n"+
-"- Date:       YYYY-MM-DD\n"+
-"- Deciders:   <names / roles>\n\n"+
-"## Context\n"+
-"What problem are we solving? What constraints and forces are at play?\n"+
-"(Keep it factual — no solution yet.)\n\n"+
-"## Decision\n"+
-"What we are doing, in one or two plain sentences.\n\n"+
-"## Consequences\n"+
-"  + Positive:   ...\n"+
-"  - Trade-off:  ...\n"+
-"  ~ Follow-up:  ...\n\n"+
-"## Alternatives considered\n"+
-"- <Option A> — why not\n"+
-"- <Option B> — why not\n" },
-
-      slo:{ file:'slo-definition.md', body:
-"# SLO — <service> · <user journey>\n\n"+
-"Owner:        <team>\n"+
-"SLI:          proportion of valid requests served < 300 ms with a 2xx/3xx\n"+
-"Measurement:  <source — e.g. Datadog APM / load-balancer logs>\n"+
-"Window:       rolling 30 days\n\n"+
-"Target:       99.9%\n"+
-"Error budget: 0.1%   (~43 min / 30 days)\n\n"+
-"Alerting (multi-window burn-rate):\n"+
-"  - page     14.4x over 1h    /   6x over 6h\n"+
-"  - ticket    3x  over 1d     /   1x over 3d\n\n"+
-"Exclusions:   planned maintenance windows\n"+
-"Review:       monthly, with the error-budget policy\n" },
-
-      incident:{ file:'incident-review.md', body:
-"# Incident review — INC-NNN              (blameless)\n\n"+
-"Date / duration:  YYYY-MM-DD · Xh Ym\n"+
-"Severity:         SEV-?\n"+
-"Author:           <name>\n\n"+
-"## Summary\n"+
-"One paragraph: what broke, who was affected, how it ended.\n\n"+
-"## Timeline (UTC)\n"+
-"  T0       detect     — how we found out\n"+
-"  T+0m     triage     — first responders / hypothesis\n"+
-"  T+0m     mitigate   — what stopped the bleeding\n"+
-"  T+0m     resolve    — full restoration\n\n"+
-"## Impact\n"+
-"Users affected, SLO impact, error budget consumed.\n\n"+
-"## Root cause\n"+
-"The actual cause — systems, not people.\n\n"+
-"## What went well / what didn't\n\n"+
-"## Action items\n"+
-"  - [ ] <owner> — <fix> — due <date>\n" },
-
-      tf:{ file:'terraform-module-checklist.md', body:
-"# Terraform module — production-readiness checklist\n\n"+
-"  [ ] README with inputs, outputs, and a usage example\n"+
-"  [ ] examples/ directory that `terraform plan`s cleanly\n"+
-"  [ ] Provider and module versions pinned\n"+
-"  [ ] No hardcoded secrets — values via variables / key vault\n"+
-"  [ ] Required vs optional inputs are obvious; sane defaults\n"+
-"  [ ] fmt + validate + tflint + trivy (security) run in CI\n"+
-"  [ ] Consistent tags / labels on every resource\n"+
-"  [ ] Remote state backend + locking configured\n"+
-"  [ ] Idempotent — a second apply shows no changes\n"+
-"  [ ] CHANGELOG + semver tag on release\n" }
+    var FILES = {
+      adr:'adr-template.md', slo:'slo-definition.md',
+      incident:'incident-review.md', tf:'terraform-module-checklist.md'
     };
-
+    var cache = {};
     var cards = Array.prototype.slice.call(document.querySelectorAll('.art'));
     function view(id){
-      var t = tpl[id]; if(!t) return;
-      pv.textContent = t.body; fn.textContent = t.file;
+      var file = FILES[id]; if(!file) return;
+      fn.textContent = file;
       cards.forEach(function(c){ c.classList.toggle('on', c.dataset.id === id); });
-    }
-    function download(id){
-      var t = tpl[id]; if(!t) return;
-      try{
-        var blob = new Blob([t.body], {type:'text/markdown;charset=utf-8'});
-        var url = URL.createObjectURL(blob), a = document.createElement('a');
-        a.href = url; a.download = t.file; document.body.appendChild(a); a.click();
-        setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); }, 120);
-      }catch(e){ view(id); }
+      if(cache[id] != null){ pv.textContent = cache[id]; return; }
+      pv.textContent = 'Loading…';
+      fetch('lab/' + file).then(function(r){ return r.text(); }).then(function(t){
+        cache[id] = t; if(fn.textContent === file) pv.textContent = t;   // ignore a stale fetch
+      }).catch(function(){ pv.textContent = 'Preview unavailable — open lab/' + file; });
     }
     grid.addEventListener('click', function(e){
-      var b = e.target.closest('button'); if(!b) return;
-      if(b.classList.contains('dl')) download(b.dataset.id); else view(b.dataset.id);
+      var b = e.target.closest('.view'); if(!b) return;   // Download is a native link
+      view(b.dataset.id);
     });
     view('adr');
   })();
@@ -333,7 +268,10 @@
     function ready(){
       if(inrow) inrow.hidden = false;
       if(hints) hints.hidden = false;
-      input.focus();
+      // Ready to type — but don't scroll the page or yank focus back if the
+      // user already moved into it (e.g. tabbed to the skip link during boot).
+      var ae = document.activeElement;
+      if(!ae || ae === document.body) input.focus({ preventScroll:true });
     }
 
     var boot = [
