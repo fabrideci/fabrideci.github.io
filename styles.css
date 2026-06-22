@@ -167,8 +167,8 @@ img,svg{ max-width:100%; }
    ========================================================================= */
 .tl{ position:relative; margin:0; padding:0; list-style:none; max-width:760px; }
 .tl::before{ content:""; position:absolute; left:27px; top:8px; bottom:8px; width:1px; background:var(--border); }
-.role{ position:relative; padding:0 0 30px 74px; }
-.role:last-child{ padding-bottom:0; }
+li.role{ position:relative; padding:0 0 30px 74px; }
+li.role:last-child{ padding-bottom:0; }
 .badge{ position:absolute; left:0; top:0; width:56px; height:56px; border-radius:14px;
   background:var(--bg2); border:1px solid var(--border); display:grid; place-items:center;
   color:var(--accent); box-shadow:var(--shadow); transition:border-color .2s, transform .2s; }
