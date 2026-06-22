@@ -226,7 +226,8 @@ img,svg{ max-width:100%; }
 .agents{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
 .agents .node{ padding:12px 13px; }
 .skills{ width:100%; padding:13px 16px; border-style:dashed; }
-.skills .nm::before{ content:"\2B21 "; color:var(--accent); }
+.skills .nm{ display:flex; align-items:center; gap:8px; }
+.skills .nm::before{ content:"\2B22"; color:var(--accent); }   /* filled hexagon, no trailing space */
 .integ{ display:flex; flex-wrap:wrap; gap:7px; }
 .ichip{ font:11px/1 var(--mono); color:var(--muted); background:var(--bg3); border:1px solid var(--border); border-radius:7px; padding:7px 10px; }
 .detail{ margin-top:16px; border:1px solid var(--border); border-radius:14px; background:var(--bg2); padding:18px 20px; min-height:132px; box-shadow:var(--shadow); }
@@ -275,6 +276,9 @@ img,svg{ max-width:100%; }
 .field input[type=number]{ width:140px; background:var(--bg3); border:1px solid var(--border); color:var(--text);
   font:700 22px/1 var(--mono); padding:10px 12px; border-radius:9px; font-variant-numeric:tabular-nums; }
 .field input:focus-visible{ outline:2px solid var(--accent); outline-offset:1px; }
+#num{ -webkit-appearance:none; -moz-appearance:textfield; appearance:textfield; padding-right:34px; }
+#num::-webkit-outer-spin-button,
+#num::-webkit-inner-spin-button{ -webkit-appearance:none; margin:0; }
 .pct{ font:700 22px/1 var(--mono); color:var(--dim); margin-left:-30px; pointer-events:none; }
 .presets{ display:flex; gap:7px; flex-wrap:wrap; }
 .presets button{ font:600 12.5px/1 var(--mono); color:var(--muted); background:var(--bg3); border:1px solid var(--border);
@@ -371,6 +375,18 @@ img,svg{ max-width:100%; }
 @media (max-width:560px){
   .tbody{ font-size:13px; } .ttitle{ display:none; }
   .when{ margin-left:0; width:100%; }
+}
+@media (max-width:400px){
+  .agents, .windows{ grid-template-columns:1fr; }
+}
+
+/* =========================================================================
+   Touch-target comfort — coarse pointers only (desktop density preserved)
+   ========================================================================= */
+@media (pointer: coarse){
+  .seg button, .cmdchip, .presets button{
+    min-height:40px; display:inline-flex; align-items:center; justify-content:center;
+  }
 }
 
 /* =========================================================================
