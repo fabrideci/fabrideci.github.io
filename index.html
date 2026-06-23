@@ -43,22 +43,32 @@
   "knowsAbout":["Azure","Kubernetes","Terraform","Infrastructure as Code","SRE","Observability","IoT Platforms","CI/CD"] }
 </script>
 
-<!-- pre-paint theme: set data-theme before first paint to avoid a flash -->
+<!-- pre-paint theme + language: set attributes before first paint to avoid a flash -->
 <script>
 (function(){ try{ var t=localStorage.getItem('theme'); if(t==='light'||t==='dark') document.documentElement.setAttribute('data-theme',t); }catch(e){} })();
+(function(){ try{
+  var l=localStorage.getItem('lang');
+  if(l!=='en' && l!=='it'){ l=(navigator.language||'').toLowerCase().indexOf('it')===0 ? 'it' : 'en'; }
+  document.documentElement.setAttribute('lang', l);
+}catch(e){} })();
 </script>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
 <div class="app">
 
   <div class="bar">
     <a class="brand" href="#top"><b>fabrizio</b>@infra: ~</a>
     <span class="spacer"></span>
-    <span class="barlabel">Theme</span>
-    <div class="seg" id="themeSeg" role="group" aria-label="Theme">
-      <button data-thm="dark" aria-pressed="true">Dark</button>
-      <button data-thm="light" aria-pressed="false">Light</button>
+    <span class="barlabel" data-i18n="bar.lang">Language</span>
+    <div class="seg" id="langSeg" role="group" aria-label="Language" data-i18n-aria="aria.lang">
+      <button data-lng="en" aria-pressed="true">EN</button>
+      <button data-lng="it" aria-pressed="false">IT</button>
+    </div>
+    <span class="barlabel" data-i18n="bar.theme">Theme</span>
+    <div class="seg" id="themeSeg" role="group" aria-label="Theme" data-i18n-aria="aria.theme">
+      <button data-thm="dark" aria-pressed="true" data-i18n="bar.dark">Dark</button>
+      <button data-thm="light" aria-pressed="false" data-i18n="bar.light">Light</button>
     </div>
   </div>
 
@@ -73,13 +83,13 @@
           <div class="thead">
             <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
             <span class="ttitle">fabrizio@infra: ~ — zsh</span>
-            <span class="tstatus"><span class="d"></span>connected</span>
+            <span class="tstatus"><span class="d"></span><span data-i18n="term.connected">connected</span></span>
           </div>
           <div class="tbody">
-            <div id="stream" role="log" aria-live="polite" aria-relevant="additions" aria-label="Terminal output"></div>
+            <div id="stream" role="log" aria-live="polite" aria-relevant="additions" aria-label="Terminal output" data-i18n-aria="aria.stream"></div>
             <div class="inrow" id="inrow" hidden>
               <span class="pr">$</span>
-              <input id="cin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal command — type help" placeholder="type a command…">
+              <input id="cin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal command — type help" data-i18n-aria="aria.cin" placeholder="type a command…">
             </div>
           </div>
         </div>
@@ -95,41 +105,41 @@
           <button class="cmdchip" data-c="contact">contact</button>
         </div>
 
-        <div class="scroll" aria-hidden="true">↓ scroll for the full site</div>
+        <div class="scroll" aria-hidden="true" data-i18n="hero.scroll">↓ scroll for the full site</div>
       </div>
 
       <!-- No-JS / screen-reader fallback: a plain, fully usable version -->
       <div class="fallback" id="about">
         <div class="card">
           <h1>Fabrizio De Cicco</h1>
-          <p class="role">IoT Infrastructure Architect &amp; Lead DevOps Engineer</p>
-          <p>I have 10+ years building reliable cloud infrastructure for global IoT platforms — currently
+          <p class="role" data-i18n="hero.role">IoT Infrastructure Architect &amp; Lead DevOps Engineer</p>
+          <p data-i18n="hero.bio">I have 10+ years building reliable cloud infrastructure for global IoT platforms — currently
             leading IoT infrastructure architecture and reliability at Culligan International. I run
             <strong>50,000+ devices in production, scaling toward ~300,000</strong>, on Azure with Kubernetes,
             Terraform-first IaC, and Datadog-backed observability. Azure handles the MQTT flows; an IoT
             bridge speaks CoAP &amp; LWM2M.</p>
           <ul class="facts">
-            <li><b>50,000+</b> devices in production</li>
-            <li>scaling to <b>~300,000</b></li>
-            <li>10+ years</li>
-            <li>CKA · LFCS · AZ-104 · AZ-400</li>
-            <li>Terraform-focused</li>
+            <li data-i18n="hero.fact1"><b>50,000+</b> devices in production</li>
+            <li data-i18n="hero.fact2">scaling to <b>~300,000</b></li>
+            <li data-i18n="hero.fact3">10+ years</li>
+            <li data-i18n="hero.fact4">CKA · LFCS · AZ-104 · AZ-400</li>
+            <li data-i18n="hero.fact5">Terraform-focused</li>
           </ul>
-          <nav aria-label="Sections">
-            <a href="#work">Case study</a>
-            <a href="#principles">Principles</a>
-            <a href="#experience">Experience</a>
-            <a href="#systems">Systems I would build</a>
-            <a href="#lab">Reliability Lab</a>
-            <a href="#artifacts">Artifacts</a>
-            <a href="#skills">Skills</a>
-            <a href="#certs">Certifications</a>
-            <a href="#contact">Contact</a>
+          <nav aria-label="Sections" data-i18n-aria="aria.sections">
+            <a href="#work" data-i18n="nav.work">Case study</a>
+            <a href="#principles" data-i18n="nav.principles">Principles</a>
+            <a href="#experience" data-i18n="nav.experience">Experience</a>
+            <a href="#systems" data-i18n="nav.systems">Systems I would build</a>
+            <a href="#lab" data-i18n="nav.lab">Reliability Lab</a>
+            <a href="#artifacts" data-i18n="nav.artifacts">Artifacts</a>
+            <a href="#skills" data-i18n="nav.skills">Skills</a>
+            <a href="#certs" data-i18n="nav.certs">Certifications</a>
+            <a href="#contact" data-i18n="nav.contact">Contact</a>
           </nav>
         </div>
       </div>
 
-      <p class="note hero-note">
+      <p class="note hero-note" data-i18n="hero.note">
         The page opens as a live terminal — every command maps to a real section, so the terminal is the
         site's navigation. Type <span class="ac">help</span> to start, press <span class="ac">Tab</span> to
         complete, or try <span class="ac">slo 99.9</span> for a real error budget. Everything here is static:
@@ -142,57 +152,57 @@
          =================================================================== -->
     <section class="section" id="principles" aria-labelledby="principles-h">
       <div class="wrap">
-        <span class="eyebrow">// how I work</span>
-        <h2 class="h" id="principles-h">Operating principles</h2>
-        <p class="sub">Six beliefs that shape how I build — and, for each, the failure mode it's insurance against and the practice that enforces it. The colour is load-bearing: <b>amber = the failure</b>, <b>green = the response</b>.</p>
+        <span class="eyebrow" data-i18n="principles.eyebrow">// how I work</span>
+        <h2 class="h" id="principles-h" data-i18n="principles.h">Operating principles</h2>
+        <p class="sub" data-i18n="principles.sub">Six beliefs that shape how I build — and, for each, the failure mode it's insurance against and the practice that enforces it. The colour is load-bearing: <b>amber = the failure</b>, <b>green = the response</b>.</p>
 
         <div class="grid-2">
           <div class="pb">
-            <div class="cat">reliability</div>
-            <h3>Reliability is a feature.</h3>
+            <div class="cat" data-i18n="pr1.cat">reliability</div>
+            <h3 data-i18n="pr1.h">Reliability is a feature.</h3>
             <div class="rule"></div>
-            <div class="row fm"><span class="lab">⚠ failure mode</span><p>Reliability gets bolted on after launch — the first time you learn a path is fragile is from a user, at 3am.</p></div>
-            <div class="row rs"><span class="lab">✓ response</span><p>Design for failure, set SLOs up front, spend the error budget like real money. Datadog, Grafana and Prometheus watch what users actually feel.</p></div>
+            <div class="row fm"><span class="lab" data-i18n="principles.fmlab">⚠ failure mode</span><p data-i18n="pr1.fm">Reliability gets bolted on after launch — the first time you learn a path is fragile is from a user, at 3am.</p></div>
+            <div class="row rs"><span class="lab" data-i18n="principles.rslab">✓ response</span><p data-i18n="pr1.rs">Design for failure, set SLOs up front, spend the error budget like real money. Datadog, Grafana and Prometheus watch what users actually feel.</p></div>
           </div>
 
           <div class="pb">
-            <div class="cat">automation</div>
-            <h3>Automate the toil.</h3>
+            <div class="cat" data-i18n="pr2.cat">automation</div>
+            <h3 data-i18n="pr2.h">Automate the toil.</h3>
             <div class="rule"></div>
-            <div class="row fm"><span class="lab">⚠ failure mode</span><p>Manual steps drift, get skipped under pressure, and live in one person's head — until that person is on holiday.</p></div>
-            <div class="row rs"><span class="lab">✓ response</span><p>Done by hand twice → it becomes code. Terraform and Azure DevOps do the repetition; humans do the judgment.</p></div>
+            <div class="row fm"><span class="lab" data-i18n="principles.fmlab">⚠ failure mode</span><p data-i18n="pr2.fm">Manual steps drift, get skipped under pressure, and live in one person's head — until that person is on holiday.</p></div>
+            <div class="row rs"><span class="lab" data-i18n="principles.rslab">✓ response</span><p data-i18n="pr2.rs">Done by hand twice → it becomes code. Terraform and Azure DevOps do the repetition; humans do the judgment.</p></div>
           </div>
 
           <div class="pb">
-            <div class="cat">observability</div>
-            <h3>You can't operate what you can't see.</h3>
+            <div class="cat" data-i18n="pr3.cat">observability</div>
+            <h3 data-i18n="pr3.h">You can't operate what you can't see.</h3>
             <div class="rule"></div>
-            <div class="row fm"><span class="lab">⚠ failure mode</span><p>Without signals you debug by guesswork; MTTR balloons because a customer noticed before any dashboard did.</p></div>
-            <div class="row rs"><span class="lab">✓ response</span><p>Metrics, logs, traces and SLOs ship with the system, not after — observability is a build requirement, not a follow-up ticket.</p></div>
+            <div class="row fm"><span class="lab" data-i18n="principles.fmlab">⚠ failure mode</span><p data-i18n="pr3.fm">Without signals you debug by guesswork; MTTR balloons because a customer noticed before any dashboard did.</p></div>
+            <div class="row rs"><span class="lab" data-i18n="principles.rslab">✓ response</span><p data-i18n="pr3.rs">Metrics, logs, traces and SLOs ship with the system, not after — observability is a build requirement, not a follow-up ticket.</p></div>
           </div>
 
           <div class="pb">
-            <div class="cat">simplicity</div>
-            <h3>Boring and predictable wins.</h3>
+            <div class="cat" data-i18n="pr4.cat">simplicity</div>
+            <h3 data-i18n="pr4.h">Boring and predictable wins.</h3>
             <div class="rule"></div>
-            <div class="row fm"><span class="lab">⚠ failure mode</span><p>Clever, bespoke infrastructure becomes a single point of failure only its author understands — and they won't always be on call.</p></div>
-            <div class="row rs"><span class="lab">✓ response</span><p>Pick simple, well-understood building blocks and paved roads. Predictable beats clever every time you get paged.</p></div>
+            <div class="row fm"><span class="lab" data-i18n="principles.fmlab">⚠ failure mode</span><p data-i18n="pr4.fm">Clever, bespoke infrastructure becomes a single point of failure only its author understands — and they won't always be on call.</p></div>
+            <div class="row rs"><span class="lab" data-i18n="principles.rslab">✓ response</span><p data-i18n="pr4.rs">Pick simple, well-understood building blocks and paved roads. Predictable beats clever every time you get paged.</p></div>
           </div>
 
           <div class="pb">
-            <div class="cat">infrastructure as code</div>
-            <h3>Infrastructure as code, or it didn't happen.</h3>
+            <div class="cat" data-i18n="pr5.cat">infrastructure as code</div>
+            <h3 data-i18n="pr5.h">Infrastructure as code, or it didn't happen.</h3>
             <div class="rule"></div>
-            <div class="row fm"><span class="lab">⚠ failure mode</span><p>Snowflake servers and click-ops changes can't be reviewed, reproduced, or rolled back — and no one remembers why prod differs from staging.</p></div>
-            <div class="row rs"><span class="lab">✓ response</span><p>Everything reproducible, reviewable, versioned in Terraform. No snowflakes, no surprises, full history in Git.</p></div>
+            <div class="row fm"><span class="lab" data-i18n="principles.fmlab">⚠ failure mode</span><p data-i18n="pr5.fm">Snowflake servers and click-ops changes can't be reviewed, reproduced, or rolled back — and no one remembers why prod differs from staging.</p></div>
+            <div class="row rs"><span class="lab" data-i18n="principles.rslab">✓ response</span><p data-i18n="pr5.rs">Everything reproducible, reviewable, versioned in Terraform. No snowflakes, no surprises, full history in Git.</p></div>
           </div>
 
           <div class="pb">
-            <div class="cat">leadership</div>
-            <h3>Lead by enabling.</h3>
+            <div class="cat" data-i18n="pr6.cat">leadership</div>
+            <h3 data-i18n="pr6.h">Lead by enabling.</h3>
             <div class="rule"></div>
-            <div class="row fm"><span class="lab">⚠ failure mode</span><p>A hero who owns all the knowledge is a bottleneck; the team stalls whenever they're unavailable, and burnout follows.</p></div>
-            <div class="row rs"><span class="lab">✓ response</span><p>Mentor, document, and remove friction so the team moves faster than any one person could — myself included.</p></div>
+            <div class="row fm"><span class="lab" data-i18n="principles.fmlab">⚠ failure mode</span><p data-i18n="pr6.fm">A hero who owns all the knowledge is a bottleneck; the team stalls whenever they're unavailable, and burnout follows.</p></div>
+            <div class="row rs"><span class="lab" data-i18n="principles.rslab">✓ response</span><p data-i18n="pr6.rs">Mentor, document, and remove friction so the team moves faster than any one person could — myself included.</p></div>
           </div>
         </div>
       </div>
@@ -203,9 +213,9 @@
          =================================================================== -->
     <section class="section" id="experience" aria-labelledby="experience-h">
       <div class="wrap">
-        <span class="eyebrow">// experience</span>
-        <h2 class="h" id="experience-h">Where I've built things</h2>
-        <p class="sub">Each role carries a line-art glyph drawn from that company's domain — doubling as an infrastructure metaphor. Hover a role to see its motif move.</p>
+        <span class="eyebrow" data-i18n="exp.eyebrow">// experience</span>
+        <h2 class="h" id="experience-h" data-i18n="exp.h">Where I've built things</h2>
+        <p class="sub" data-i18n="exp.sub">Each role carries a line-art glyph drawn from that company's domain — doubling as an infrastructure metaphor. Hover a role to see its motif move.</p>
 
         <ul class="tl">
           <!-- CULLIGAN -->
@@ -218,14 +228,14 @@
               </svg>
             </span>
             <div class="meta">
-              <h3>Infrastructure Architect <span style="color:var(--dim); font-weight:500">(prev. DevOps Engineer)</span></h3>
-              <span class="when">Jul 2023 — present</span>
+              <h3 data-i18n="exp1.h">Infrastructure Architect <span style="color:var(--dim); font-weight:500">(prev. DevOps Engineer)</span></h3>
+              <span class="when" data-i18n="exp1.when">Jul 2023 — present</span>
             </div>
-            <div class="meta" style="margin-top:4px"><span class="co">Culligan International</span><span class="tag-pill">Milan · IoT · water</span></div>
+            <div class="meta" style="margin-top:4px"><span class="co">Culligan International</span><span class="tag-pill" data-i18n="exp1.pill">Milan · IoT · water</span></div>
             <ul class="bul">
-              <li>Lead IoT infrastructure architecture &amp; reliability for the Culligan IoT Platform.</li>
-              <li>Own end-to-end infra design &amp; operations — scalability, security, cost.</li>
-              <li>Mentor the DevOps/SRE team; evolve CI/CD, IaC &amp; Datadog across global IoT.</li>
+              <li data-i18n="exp1.b1">Lead IoT infrastructure architecture &amp; reliability for the Culligan IoT Platform.</li>
+              <li data-i18n="exp1.b2">Own end-to-end infra design &amp; operations — scalability, security, cost.</li>
+              <li data-i18n="exp1.b3">Mentor the DevOps/SRE team; evolve CI/CD, IaC &amp; Datadog across global IoT.</li>
             </ul>
           </li>
 
@@ -243,14 +253,14 @@
               </svg>
             </span>
             <div class="meta">
-              <h3>DevOps Engineer</h3>
-              <span class="when">Mar 2022 — Jul 2023</span>
+              <h3 data-i18n="exp2.h">DevOps Engineer</h3>
+              <span class="when" data-i18n="exp2.when">Mar 2022 — Jul 2023</span>
             </div>
-            <div class="meta" style="margin-top:4px"><span class="co">MSC Mediterranean Shipping</span><span class="tag-pill">Turin · containers · scale</span></div>
+            <div class="meta" style="margin-top:4px"><span class="co">MSC Mediterranean Shipping</span><span class="tag-pill" data-i18n="exp2.pill">Turin · containers · scale</span></div>
             <ul class="bul">
-              <li>Built &amp; maintained scalable CI/CD pipelines on Azure DevOps (YAML).</li>
-              <li>Automated provisioning with Ansible, Bicep &amp; Rundeck — less manual config.</li>
-              <li>Stood up observability &amp; logging with Datadog for faster detection.</li>
+              <li data-i18n="exp2.b1">Built &amp; maintained scalable CI/CD pipelines on Azure DevOps (YAML).</li>
+              <li data-i18n="exp2.b2">Automated provisioning with Ansible, Bicep &amp; Rundeck — less manual config.</li>
+              <li data-i18n="exp2.b3">Stood up observability &amp; logging with Datadog for faster detection.</li>
             </ul>
           </li>
 
@@ -270,14 +280,14 @@
               </svg>
             </span>
             <div class="meta">
-              <h3>Support Supervisor <span style="color:var(--dim); font-weight:500">→ Software Engineer</span></h3>
-              <span class="when">Aug 2015 — Mar 2022</span>
+              <h3 data-i18n="exp3.h">Support Supervisor <span style="color:var(--dim); font-weight:500">→ Software Engineer</span></h3>
+              <span class="when" data-i18n="exp3.when">Aug 2015 — Mar 2022</span>
             </div>
-            <div class="meta" style="margin-top:4px"><span class="co">Deltatre</span><span class="tag-pill">Turin · sports · real-time</span></div>
+            <div class="meta" style="margin-top:4px"><span class="co">Deltatre</span><span class="tag-pill" data-i18n="exp3.pill">Turin · sports · real-time</span></div>
             <ul class="bul">
-              <li>Supervised a <strong style="color:var(--text)">12-person</strong> application support team.</li>
-              <li>Built backend &amp; web apps (C#, SQL, ASP.NET, Angular) — Agile / TDD.</li>
-              <li>Kept microservices highly available on Azure with Docker &amp; Kubernetes.</li>
+              <li data-i18n="exp3.b1">Supervised a <strong style="color:var(--text)">12-person</strong> application support team.</li>
+              <li data-i18n="exp3.b2">Built backend &amp; web apps (C#, SQL, ASP.NET, Angular) — Agile / TDD.</li>
+              <li data-i18n="exp3.b3">Kept microservices highly available on Azure with Docker &amp; Kubernetes.</li>
             </ul>
           </li>
         </ul>
@@ -289,58 +299,58 @@
          =================================================================== -->
     <section class="section" id="work" aria-labelledby="work-h">
       <div class="wrap">
-        <span class="eyebrow">// selected work</span>
-        <h2 class="h" id="work-h">Multi-agent engineering assistant</h2>
-        <p class="sub">A multi-agent AI system that helps a platform team review, test, ship, and operate software with more consistency and less toil — adopted across the lead engineering team.</p>
+        <span class="eyebrow" data-i18n="work.eyebrow">// selected work</span>
+        <h2 class="h" id="work-h" data-i18n="work.h">Multi-agent engineering assistant</h2>
+        <p class="sub" data-i18n="work.sub">A multi-agent AI system that helps a platform team review, test, ship, and operate software with more consistency and less toil — adopted across the lead engineering team.</p>
         <div class="metachips">
-          <span class="mc">Role: <b>Design &amp; build</b></span>
-          <span class="mc">Context: <b>Internal IoT platform tooling</b></span>
-          <span class="mc">Built with: <b>Claude Code · MCP · TypeScript</b></span>
+          <span class="mc" data-i18n="work.mc1">Role: <b>Design &amp; build</b></span>
+          <span class="mc" data-i18n="work.mc2">Context: <b>Internal IoT platform tooling</b></span>
+          <span class="mc" data-i18n="work.mc3">Built with: <b>Claude Code · MCP · TypeScript</b></span>
         </div>
 
-        <p class="layerlab">High-level architecture — tap any block</p>
+        <p class="layerlab" data-i18n="work.arch">High-level architecture — tap any block</p>
         <div class="diagram">
-          <p class="layerlab">control</p>
+          <p class="layerlab" data-i18n="work.lab.control">control</p>
           <button class="node orch" data-id="orchestrator" aria-pressed="true">
-            <span class="nm">Orchestrator</span>
-            <span class="ro">routes work · plays the developer</span>
+            <span class="nm" data-i18n="node.orchestrator.nm">Orchestrator</span>
+            <span class="ro" data-i18n="node.orchestrator.ro">routes work · plays the developer</span>
           </button>
 
-          <p class="conn">↓ dispatches to specialists</p>
+          <p class="conn" data-i18n="work.conn1">↓ dispatches to specialists</p>
 
-          <p class="layerlab">specialist agents</p>
+          <p class="layerlab" data-i18n="work.lab.specialists">specialist agents</p>
           <div class="agents">
-            <button class="node" data-id="code-review"><span class="nm">Code Review</span><span class="ro">PRs · standards</span></button>
-            <button class="node" data-id="qa"><span class="nm">QA</span><span class="ro">tests</span></button>
-            <button class="node" data-id="release"><span class="nm">Release</span><span class="ro">promotion</span></button>
-            <button class="node" data-id="infrastructure"><span class="nm">Infrastructure</span><span class="ro">IaC checks</span></button>
-            <button class="node" data-id="reliability"><span class="nm">Reliability</span><span class="ro">SLOs · incidents</span></button>
-            <button class="node" data-id="self-improvement"><span class="nm">Self-improvement</span><span class="ro">weekly loop</span></button>
+            <button class="node" data-id="code-review"><span class="nm" data-i18n="node.code-review.nm">Code Review</span><span class="ro" data-i18n="node.code-review.ro">PRs · standards</span></button>
+            <button class="node" data-id="qa"><span class="nm" data-i18n="node.qa.nm">QA</span><span class="ro" data-i18n="node.qa.ro">tests</span></button>
+            <button class="node" data-id="release"><span class="nm" data-i18n="node.release.nm">Release</span><span class="ro" data-i18n="node.release.ro">promotion</span></button>
+            <button class="node" data-id="infrastructure"><span class="nm" data-i18n="node.infrastructure.nm">Infrastructure</span><span class="ro" data-i18n="node.infrastructure.ro">IaC checks</span></button>
+            <button class="node" data-id="reliability"><span class="nm" data-i18n="node.reliability.nm">Reliability</span><span class="ro" data-i18n="node.reliability.ro">SLOs · incidents</span></button>
+            <button class="node" data-id="self-improvement"><span class="nm" data-i18n="node.self-improvement.nm">Self-improvement</span><span class="ro" data-i18n="node.self-improvement.ro">weekly loop</span></button>
           </div>
 
-          <p class="conn">↑ all built on a shared foundation</p>
+          <p class="conn" data-i18n="work.conn2">↑ all built on a shared foundation</p>
 
-          <p class="layerlab">shared</p>
+          <p class="layerlab" data-i18n="work.lab.shared">shared</p>
           <button class="node skills" data-id="skills">
-            <span class="nm">Reusable skills layer</span>
-            <span class="ro">shared conventions · safety guardrails</span>
+            <span class="nm" data-i18n="node.skills.nm">Reusable skills layer</span>
+            <span class="ro" data-i18n="node.skills.ro">shared conventions · safety guardrails</span>
           </button>
 
-          <p class="conn">↕ connected to the toolchain via MCP</p>
+          <p class="conn" data-i18n="work.conn3">↕ connected to the toolchain via MCP</p>
 
-          <p class="layerlab">integrations · MCP</p>
+          <p class="layerlab" data-i18n="work.lab.integ">integrations · MCP</p>
           <div class="integ">
-            <span class="ichip">Source &amp; PRs</span><span class="ichip">Issues</span><span class="ichip">CI/CD</span>
-            <span class="ichip">Code quality</span><span class="ichip">Observability</span><span class="ichip">Chat</span>
+            <span class="ichip" data-i18n="work.ichip1">Source &amp; PRs</span><span class="ichip" data-i18n="work.ichip2">Issues</span><span class="ichip" data-i18n="work.ichip3">CI/CD</span>
+            <span class="ichip" data-i18n="work.ichip4">Code quality</span><span class="ichip" data-i18n="work.ichip5">Observability</span><span class="ichip" data-i18n="work.ichip6">Chat</span>
           </div>
         </div>
 
         <div class="detail" id="detail" aria-live="polite"></div>
-        <p class="hintline">Each agent owns <b>one workflow</b> and carries only the context it needs — organised by workflow, not by role.</p>
+        <p class="hintline" data-i18n="work.hintline">Each agent owns <b>one workflow</b> and carries only the context it needs — organised by workflow, not by role.</p>
 
         <div class="run">
           <div class="rh"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="t">engineering-assistant — review</span></div>
-          <pre><span class="pr">$</span> review --pr 1487
+          <pre data-i18n="work.run"><span class="pr">$</span> review --pr 1487
 <span class="ar">→ orchestrator dispatching specialists</span>
 <span class="ok">✓</span> code review — standards + pipeline impact
 <span class="ok">✓</span> qa — branch checkout + tests
@@ -351,23 +361,23 @@
 
         <div class="story">
           <div class="block">
-            <h4>Problem</h4>
-            <p>Across a growing set of repositories, code review, QA, release coordination, and reliability monitoring were largely manual — slow to perform, hard to keep consistent, and a constant pull on senior engineers' time.</p>
+            <h4 data-i18n="work.problem.h">Problem</h4>
+            <p data-i18n="work.problem.p">Across a growing set of repositories, code review, QA, release coordination, and reliability monitoring were largely manual — slow to perform, hard to keep consistent, and a constant pull on senior engineers' time.</p>
           </div>
           <div class="block">
-            <h4>Approach</h4>
-            <p>I designed and built a set of specialist AI agents in Claude Code, each owning a single workflow and sharing a common library of reusable skills. They integrate with the team's existing toolchain through MCP, sit behind <b>safety guardrails that gate anything destructive</b>, and feed a weekly self-analysis loop that surfaces gaps.</p>
+            <h4 data-i18n="work.approach.h">Approach</h4>
+            <p data-i18n="work.approach.p">I designed and built a set of specialist AI agents in Claude Code, each owning a single workflow and sharing a common library of reusable skills. They integrate with the team's existing toolchain through MCP, sit behind <b>safety guardrails that gate anything destructive</b>, and feed a weekly self-analysis loop that surfaces gaps.</p>
             <div class="decisions">
-              <div class="dl">two decisions that shaped it</div>
+              <div class="dl" data-i18n="work.dl">two decisions that shaped it</div>
               <ul>
-                <li>Organise agents <b>by workflow, not by role</b> — so each carries only the context it needs.</li>
-                <li>Push shared conventions into a <b>skills layer</b> — so knowledge isn't duplicated across agents.</li>
+                <li data-i18n="work.dec1">Organise agents <b>by workflow, not by role</b> — so each carries only the context it needs.</li>
+                <li data-i18n="work.dec2">Push shared conventions into a <b>skills layer</b> — so knowledge isn't duplicated across agents.</li>
               </ul>
             </div>
           </div>
           <div class="block">
-            <h4>Outcome</h4>
-            <p>Rolled out to the lead engineering team and now part of how the platform ships. I measure it against <b>adoption, cycle time, and defect-leakage baselines</b> rather than vanity metrics — with the feedback loop steadily improving the agents over time.</p>
+            <h4 data-i18n="work.outcome.h">Outcome</h4>
+            <p data-i18n="work.outcome.p">Rolled out to the lead engineering team and now part of how the platform ships. I measure it against <b>adoption, cycle time, and defect-leakage baselines</b> rather than vanity metrics — with the feedback loop steadily improving the agents over time.</p>
           </div>
         </div>
       </div>
@@ -378,44 +388,44 @@
          =================================================================== -->
     <section class="section" id="systems" aria-labelledby="systems-h">
       <div class="wrap">
-        <span class="eyebrow">// architecture</span>
-        <h2 class="h" id="systems-h">Systems I would build</h2>
-        <p class="sub">Past work shows what I've done; this shows how I <b>think</b>. Five positions I'd defend about building and scaling a platform — opinionated on purpose.</p>
+        <span class="eyebrow" data-i18n="sys.eyebrow">// architecture</span>
+        <h2 class="h" id="systems-h" data-i18n="sys.h">Systems I would build</h2>
+        <p class="sub" data-i18n="sys.sub">Past work shows what I've done; this shows how I <b>think</b>. Five positions I'd defend about building and scaling a platform — opinionated on purpose.</p>
 
         <div class="grid-auto">
           <article class="op">
-            <div class="tag">platform baseline</div>
-            <h3 class="stance">Ship identity, updates, and observability before a single feature.</h3>
-            <p class="why">For connected products, the platform's job is to keep a fleet secure, updatable, and visible — not to ship features on day one. Device identity, over-the-air update, and end-to-end telemetry are the load-bearing walls; <b>bolt them on later and you're rebuilding the foundation under a live fleet.</b></p>
-            <div class="move"><span class="ml">first move</span>identity + OTA + telemetry pipeline, before product features.</div>
+            <div class="tag" data-i18n="sys1.tag">platform baseline</div>
+            <h3 class="stance" data-i18n="sys1.stance">Ship identity, updates, and observability before a single feature.</h3>
+            <p class="why" data-i18n="sys1.why">For connected products, the platform's job is to keep a fleet secure, updatable, and visible — not to ship features on day one. Device identity, over-the-air update, and end-to-end telemetry are the load-bearing walls; <b>bolt them on later and you're rebuilding the foundation under a live fleet.</b></p>
+            <div class="move"><span class="ml" data-i18n="sys.movelab">first move</span><span data-i18n="sys1.move">identity + OTA + telemetry pipeline, before product features.</span></div>
           </article>
 
           <article class="op">
-            <div class="tag">standardization</div>
-            <h3 class="stance">Pick the boring defaults before the team is big enough to argue.</h3>
-            <p class="why">The cheapest time to standardize IaC modules, secret management, pipelines, and an SLO convention is at two repos, not twenty. Every week you wait, divergence compounds and migration turns political. <b>Standardization isn't bureaucracy — it's the paved road</b> that lets people stop reinventing plumbing.</p>
-            <div class="move"><span class="ml">first move</span>a Terraform module library + one pipeline template + one observability convention.</div>
+            <div class="tag" data-i18n="sys2.tag">standardization</div>
+            <h3 class="stance" data-i18n="sys2.stance">Pick the boring defaults before the team is big enough to argue.</h3>
+            <p class="why" data-i18n="sys2.why">The cheapest time to standardize IaC modules, secret management, pipelines, and an SLO convention is at two repos, not twenty. Every week you wait, divergence compounds and migration turns political. <b>Standardization isn't bureaucracy — it's the paved road</b> that lets people stop reinventing plumbing.</p>
+            <div class="move"><span class="ml" data-i18n="sys.movelab">first move</span><span data-i18n="sys2.move">a Terraform module library + one pipeline template + one observability convention.</span></div>
           </article>
 
           <article class="op">
-            <div class="tag">kubernetes</div>
-            <h3 class="stance">Don't run Kubernetes until the problem is Kubernetes-shaped.</h3>
-            <p class="why">AKS is right when you have many services, real scaling needs, and a team that can own the operational surface. For a handful of services it's a tax — managed container platforms ship the same outcome with a fraction of the ops. <b>Complexity should be earned by load, not adopted for the résumé.</b></p>
-            <div class="move"><span class="ml">first move</span>justify the cluster against service count and on-call capacity.</div>
+            <div class="tag" data-i18n="sys3.tag">kubernetes</div>
+            <h3 class="stance" data-i18n="sys3.stance">Don't run Kubernetes until the problem is Kubernetes-shaped.</h3>
+            <p class="why" data-i18n="sys3.why">AKS is right when you have many services, real scaling needs, and a team that can own the operational surface. For a handful of services it's a tax — managed container platforms ship the same outcome with a fraction of the ops. <b>Complexity should be earned by load, not adopted for the résumé.</b></p>
+            <div class="move"><span class="ml" data-i18n="sys.movelab">first move</span><span data-i18n="sys3.move">justify the cluster against service count and on-call capacity.</span></div>
           </article>
 
           <article class="op">
-            <div class="tag">AI in delivery</div>
-            <h3 class="stance">Let agents propose; never let them push unattended.</h3>
-            <p class="why">AI agents are a force-multiplier on review, QA, and release prep — but anything destructive stays behind a human gate and a guardrail. Organize them by workflow so each carries minimal context, give them a shared skills layer so conventions don't drift. <b>The win is consistency and removed toil, not autonomy for its own sake.</b></p>
-            <div class="move"><span class="ml">first move</span>agents behind guardrails, gated on anything irreversible.</div>
+            <div class="tag" data-i18n="sys4.tag">AI in delivery</div>
+            <h3 class="stance" data-i18n="sys4.stance">Let agents propose; never let them push unattended.</h3>
+            <p class="why" data-i18n="sys4.why">AI agents are a force-multiplier on review, QA, and release prep — but anything destructive stays behind a human gate and a guardrail. Organize them by workflow so each carries minimal context, give them a shared skills layer so conventions don't drift. <b>The win is consistency and removed toil, not autonomy for its own sake.</b></p>
+            <div class="move"><span class="ml" data-i18n="sys.movelab">first move</span><span data-i18n="sys4.move">agents behind guardrails, gated on anything irreversible.</span></div>
           </article>
 
           <article class="op">
-            <div class="tag">reliability vs cost</div>
-            <h3 class="stance">An SLO is a budget — spend it, don't gold-plate.</h3>
-            <p class="why">Chasing more nines than users actually feel just burns money and engineering time. Define the SLO from real user experience, then spend the error budget: ship faster while it's healthy, slow down and harden when it's not. <b>Reliability and cost aren't opposites — the error budget is the dial that trades them on purpose.</b></p>
-            <div class="move"><span class="ml">first move</span>set SLOs from user-felt signals, then let the budget drive pace.</div>
+            <div class="tag" data-i18n="sys5.tag">reliability vs cost</div>
+            <h3 class="stance" data-i18n="sys5.stance">An SLO is a budget — spend it, don't gold-plate.</h3>
+            <p class="why" data-i18n="sys5.why">Chasing more nines than users actually feel just burns money and engineering time. Define the SLO from real user experience, then spend the error budget: ship faster while it's healthy, slow down and harden when it's not. <b>Reliability and cost aren't opposites — the error budget is the dial that trades them on purpose.</b></p>
+            <div class="move"><span class="ml" data-i18n="sys.movelab">first move</span><span data-i18n="sys5.move">set SLOs from user-felt signals, then let the budget drive pace.</span></div>
           </article>
         </div>
       </div>
@@ -426,18 +436,18 @@
          =================================================================== -->
     <section class="section" id="lab" aria-labelledby="lab-h">
       <div class="wrap">
-        <span class="eyebrow">// reliability lab</span>
-        <h2 class="h" id="lab-h">Error-budget calculator</h2>
-        <p class="sub">Pick an availability target and see how much downtime that actually buys you — the number behind every "we need more nines" conversation.</p>
+        <span class="eyebrow" data-i18n="lab.eyebrow">// reliability lab</span>
+        <h2 class="h" id="lab-h" data-i18n="lab.h">Error-budget calculator</h2>
+        <p class="sub" data-i18n="lab.sub">Pick an availability target and see how much downtime that actually buys you — the number behind every "we need more nines" conversation.</p>
 
         <div class="panel">
           <div class="inhead">
             <div class="field">
-              <label for="num">Target SLO</label>
+              <label for="num" data-i18n="lab.targetslo">Target SLO</label>
               <input id="num" type="number" min="0" max="100" step="0.001" value="99.9"><span class="pct">%</span>
             </div>
             <div class="field" style="flex:1; min-width:200px">
-              <label id="presets-label">Common targets</label>
+              <label id="presets-label" data-i18n="lab.commontargets">Common targets</label>
               <div class="presets" id="presets" role="group" aria-labelledby="presets-label">
                 <button data-v="99">99%</button>
                 <button data-v="99.9">99.9%</button>
@@ -447,12 +457,12 @@
               </div>
             </div>
           </div>
-          <input id="range" class="range" type="range" min="90" max="99.999" step="0.001" value="99.9" aria-label="SLO target slider">
+          <input id="range" class="range" type="range" min="90" max="99.999" step="0.001" value="99.9" aria-label="SLO target slider" data-i18n-aria="aria.slider">
 
           <div class="budget">
-            <span class="lab">Error budget</span>
+            <span class="lab" data-i18n="lab.budgetlab">Error budget</span>
             <span class="val" id="budget">0.100%</span>
-            <span class="of">of the time you're allowed to be down</span>
+            <span class="of" data-i18n="lab.budgetof">of the time you're allowed to be down</span>
           </div>
 
           <div class="windows" id="windows">
@@ -471,52 +481,52 @@
          =================================================================== -->
     <section class="section" id="artifacts" aria-labelledby="artifacts-h">
       <div class="wrap">
-        <span class="eyebrow">// artifacts</span>
-        <h2 class="h" id="artifacts-h">Engineering artifacts</h2>
-        <p class="sub">Templates I actually use, de-identified and free to take — the difference between a portfolio that <em>describes</em> competence and one that <em>hands you</em> some. Each is a real <code>.md</code> in the <a href="https://github.com/fabrideci/fabrideci.github.io/tree/main/lab">/lab</a> folder.</p>
+        <span class="eyebrow" data-i18n="art.eyebrow">// artifacts</span>
+        <h2 class="h" id="artifacts-h" data-i18n="art.h">Engineering artifacts</h2>
+        <p class="sub" data-i18n="art.sub">Templates I actually use, de-identified and free to take — the difference between a portfolio that <em>describes</em> competence and one that <em>hands you</em> some. Each is a real <code>.md</code> in the <a href="https://github.com/fabrideci/fabrideci.github.io/tree/main/lab">/lab</a> folder.</p>
 
         <div class="grid-auto" id="grid">
           <article class="art" data-id="adr">
             <span class="afmt">▢ .md</span>
-            <h3>Architecture Decision Record</h3>
-            <p>Capture a decision, its context, and the trade-offs — so future-you (and the team) knows <em>why</em>.</p>
+            <h3 data-i18n="art.adr.h">Architecture Decision Record</h3>
+            <p data-i18n="art.adr.p">Capture a decision, its context, and the trade-offs — so future-you (and the team) knows <em>why</em>.</p>
             <div class="aact">
-              <button class="view" data-id="adr">View</button>
-              <a class="dl" href="lab/adr-template.md" download>Download</a>
-              <a class="repo" href="https://github.com/fabrideci/fabrideci.github.io/blob/main/lab/adr-template.md">Repo</a>
+              <button class="view" data-id="adr" data-i18n="art.view">View</button>
+              <a class="dl" href="lab/adr-template.md" download data-i18n="art.dl">Download</a>
+              <a class="repo" href="https://github.com/fabrideci/fabrideci.github.io/blob/main/lab/adr-template.md" data-i18n="art.repo">Repo</a>
             </div>
           </article>
 
           <article class="art" data-id="slo">
             <span class="afmt">▢ .md</span>
-            <h3>SLO definition</h3>
-            <p>A one-page spec for an objective: SLI, target, error budget, and the burn-rate alerts that back it.</p>
+            <h3 data-i18n="art.slo.h">SLO definition</h3>
+            <p data-i18n="art.slo.p">A one-page spec for an objective: SLI, target, error budget, and the burn-rate alerts that back it.</p>
             <div class="aact">
-              <button class="view" data-id="slo">View</button>
-              <a class="dl" href="lab/slo-definition.md" download>Download</a>
-              <a class="repo" href="https://github.com/fabrideci/fabrideci.github.io/blob/main/lab/slo-definition.md">Repo</a>
+              <button class="view" data-id="slo" data-i18n="art.view">View</button>
+              <a class="dl" href="lab/slo-definition.md" download data-i18n="art.dl">Download</a>
+              <a class="repo" href="https://github.com/fabrideci/fabrideci.github.io/blob/main/lab/slo-definition.md" data-i18n="art.repo">Repo</a>
             </div>
           </article>
 
           <article class="art" data-id="incident">
             <span class="afmt">▢ .md</span>
-            <h3>Incident review</h3>
-            <p>A blameless postmortem skeleton: timeline, impact, root cause, and action items with owners.</p>
+            <h3 data-i18n="art.incident.h">Incident review</h3>
+            <p data-i18n="art.incident.p">A blameless postmortem skeleton: timeline, impact, root cause, and action items with owners.</p>
             <div class="aact">
-              <button class="view" data-id="incident">View</button>
-              <a class="dl" href="lab/incident-review.md" download>Download</a>
-              <a class="repo" href="https://github.com/fabrideci/fabrideci.github.io/blob/main/lab/incident-review.md">Repo</a>
+              <button class="view" data-id="incident" data-i18n="art.view">View</button>
+              <a class="dl" href="lab/incident-review.md" download data-i18n="art.dl">Download</a>
+              <a class="repo" href="https://github.com/fabrideci/fabrideci.github.io/blob/main/lab/incident-review.md" data-i18n="art.repo">Repo</a>
             </div>
           </article>
 
           <article class="art" data-id="tf">
             <span class="afmt">▢ .md</span>
-            <h3>Terraform module checklist</h3>
-            <p>The production-readiness gate a module passes before it's allowed on the paved road.</p>
+            <h3 data-i18n="art.tf.h">Terraform module checklist</h3>
+            <p data-i18n="art.tf.p">The production-readiness gate a module passes before it's allowed on the paved road.</p>
             <div class="aact">
-              <button class="view" data-id="tf">View</button>
-              <a class="dl" href="lab/terraform-module-checklist.md" download>Download</a>
-              <a class="repo" href="https://github.com/fabrideci/fabrideci.github.io/blob/main/lab/terraform-module-checklist.md">Repo</a>
+              <button class="view" data-id="tf" data-i18n="art.view">View</button>
+              <a class="dl" href="lab/terraform-module-checklist.md" download data-i18n="art.dl">Download</a>
+              <a class="repo" href="https://github.com/fabrideci/fabrideci.github.io/blob/main/lab/terraform-module-checklist.md" data-i18n="art.repo">Repo</a>
             </div>
           </article>
         </div>
@@ -525,9 +535,9 @@
           <div class="ph">
             <span class="dots"><i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i></span>
             <span class="fn" id="fn">adr-template.md</span>
-            <span class="pmeta">markdown · template</span>
+            <span class="pmeta" data-i18n="art.pmeta">markdown · template</span>
           </div>
-          <pre id="pv" tabindex="0" aria-label="Artifact preview"></pre>
+          <pre id="pv" tabindex="0" aria-label="Artifact preview" data-i18n-aria="aria.preview"></pre>
         </div>
       </div>
     </section>
@@ -537,17 +547,17 @@
          =================================================================== -->
     <section class="section" id="skills" aria-labelledby="skills-h">
       <div class="wrap">
-        <span class="eyebrow">// skills &amp; stack</span>
-        <h2 class="h" id="skills-h">Skills &amp; stack</h2>
+        <span class="eyebrow" data-i18n="skills.eyebrow">// skills &amp; stack</span>
+        <h2 class="h" id="skills-h" data-i18n="skills.h">Skills &amp; stack</h2>
         <div class="clusters">
-          <div class="cluster"><h3>Cloud &amp; containers</h3><div class="tags"><span>Azure</span><span>AKS</span><span>Container Apps</span><span>Azure Functions</span><span>Kubernetes</span><span>Docker</span><span>Helm</span><span>VMs</span></div></div>
-          <div class="cluster"><h3>IoT &amp; messaging</h3><div class="tags"><span>IoT Hub</span><span>Event Hub</span><span>MQTT</span><span>CoAP</span><span>LWM2M</span><span>device identity</span><span>OTA</span></div></div>
-          <div class="cluster"><h3>Data &amp; analytics</h3><div class="tags"><span>Cosmos DB</span><span>Storage</span><span>Data Factory</span><span>Databricks</span><span>Microsoft Fabric</span></div></div>
-          <div class="cluster"><h3>Networking &amp; security</h3><div class="tags"><span>VNet</span><span>VPN</span><span>DNS Zones</span><span>Key Vault</span></div></div>
-          <div class="cluster"><h3>Infrastructure as Code</h3><div class="tags"><span>Terraform</span><span>Terragrunt</span><span>ARM/Bicep</span><span>Ansible</span></div></div>
-          <div class="cluster"><h3>CI/CD &amp; automation</h3><div class="tags"><span>Azure DevOps</span><span>Managed DevOps Pools</span><span>YAML pipelines</span><span>Bash</span><span>PowerShell</span></div></div>
-          <div class="cluster"><h3>Observability &amp; SRE</h3><div class="tags"><span>Datadog</span><span>Grafana</span><span>Prometheus</span><span>SLOs</span><span>error budgets</span><span>incident response</span></div></div>
-          <div class="cluster"><h3>Practices &amp; leadership</h3><div class="tags"><span>Agile</span><span>TDD</span><span>ADRs</span><span>mentoring</span><span>AI-assisted delivery</span></div></div>
+          <div class="cluster"><h3 data-i18n="skills.c1">Cloud &amp; containers</h3><div class="tags"><span>Azure</span><span>AKS</span><span>Container Apps</span><span>Azure Functions</span><span>Kubernetes</span><span>Docker</span><span>Helm</span><span>VMs</span></div></div>
+          <div class="cluster"><h3 data-i18n="skills.c2">IoT &amp; messaging</h3><div class="tags"><span>IoT Hub</span><span>Event Hub</span><span>MQTT</span><span>CoAP</span><span>LWM2M</span><span>device identity</span><span>OTA</span></div></div>
+          <div class="cluster"><h3 data-i18n="skills.c3">Data &amp; analytics</h3><div class="tags"><span>Cosmos DB</span><span>Storage</span><span>Data Factory</span><span>Databricks</span><span>Microsoft Fabric</span></div></div>
+          <div class="cluster"><h3 data-i18n="skills.c4">Networking &amp; security</h3><div class="tags"><span>VNet</span><span>VPN</span><span>DNS Zones</span><span>Key Vault</span></div></div>
+          <div class="cluster"><h3 data-i18n="skills.c5">Infrastructure as Code</h3><div class="tags"><span>Terraform</span><span>Terragrunt</span><span>ARM/Bicep</span><span>Ansible</span></div></div>
+          <div class="cluster"><h3 data-i18n="skills.c6">CI/CD &amp; automation</h3><div class="tags"><span>Azure DevOps</span><span>Managed DevOps Pools</span><span>YAML pipelines</span><span>Bash</span><span>PowerShell</span></div></div>
+          <div class="cluster"><h3 data-i18n="skills.c7">Observability &amp; SRE</h3><div class="tags"><span>Datadog</span><span>Grafana</span><span>Prometheus</span><span>SLOs</span><span>error budgets</span><span>incident response</span></div></div>
+          <div class="cluster"><h3 data-i18n="skills.c8">Practices &amp; leadership</h3><div class="tags"><span>Agile</span><span>TDD</span><span>ADRs</span><span>mentoring</span><span>AI-assisted delivery</span></div></div>
         </div>
       </div>
     </section>
@@ -557,8 +567,8 @@
          =================================================================== -->
     <section class="section" id="certs" aria-labelledby="certs-h">
       <div class="wrap">
-        <span class="eyebrow">// certifications</span>
-        <h2 class="h" id="certs-h">Certifications</h2>
+        <span class="eyebrow" data-i18n="certs.eyebrow">// certifications</span>
+        <h2 class="h" id="certs-h" data-i18n="certs.h">Certifications</h2>
         <div class="certs">
           <div class="cert"><div class="code">CKA</div><div class="cname">Certified Kubernetes Administrator</div><div class="ci">Linux Foundation · 2022</div></div>
           <div class="cert"><div class="code">LFCS</div><div class="cname">Linux Foundation Certified Sysadmin</div><div class="ci">Linux Foundation · 2023</div></div>
@@ -573,16 +583,16 @@
          =================================================================== -->
     <section class="section contact" id="contact" aria-labelledby="contact-h">
       <div class="wrap">
-        <span class="eyebrow">// contact</span>
-        <h2 class="h" id="contact-h">Let's build something reliable.</h2>
-        <p class="lead">Architecture, platform reliability, or AI-assisted delivery — if any of that is on your plate, I'm happy to talk.</p>
+        <span class="eyebrow" data-i18n="contact.eyebrow">// contact</span>
+        <h2 class="h" id="contact-h" data-i18n="contact.h">Let's build something reliable.</h2>
+        <p class="lead" data-i18n="contact.lead">Architecture, platform reliability, or AI-assisted delivery — if any of that is on your plate, I'm happy to talk.</p>
         <div class="links">
-          <a class="btn primary" href="mailto:fabri.deci@gmail.com">Email</a>
+          <a class="btn primary" href="mailto:fabri.deci@gmail.com" data-i18n="contact.email">Email</a>
           <a class="btn" href="https://github.com/fabrideci">GitHub</a>
           <a class="btn" href="https://www.linkedin.com/in/fabriziodecicco">LinkedIn</a>
-          <a class="btn" href="assets/Fabrizio-De-Cicco-Resume.pdf">Résumé (PDF)</a>
+          <a class="btn" href="assets/Fabrizio-De-Cicco-Resume.pdf" data-i18n="contact.resume">Résumé (PDF)</a>
         </div>
-        <div class="loc">based in <b>Turin, Italy</b> · open to remote</div>
+        <div class="loc" data-i18n="contact.loc">based in <b>Turin, Italy</b> · open to remote</div>
       </div>
     </section>
 
@@ -592,11 +602,11 @@
        11 · Footer status bar
        =================================================================== -->
   <footer class="status">
-    <span class="l"><span class="dot"></span> All systems operational</span>
+    <span class="l"><span class="dot"></span> <span data-i18n="foot.status">All systems operational</span></span>
     <span class="sp"></span>
-    <span>static · <b>0 dependencies</b> · <b>0 trackers</b></span>
+    <span data-i18n="foot.static">static · <b>0 dependencies</b> · <b>0 trackers</b></span>
     <span>·</span>
-    <span>hand-coded — <a href="https://github.com/fabrideci/fabrideci.github.io">source</a></span>
+    <span data-i18n="foot.handcoded">hand-coded — <a href="https://github.com/fabrideci/fabrideci.github.io">source</a></span>
     <span>·</span>
     <span>© 2026 Fabrizio De Cicco</span>
   </footer>
