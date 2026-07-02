@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fabrizio De Cicco — IoT Infrastructure Architect</title>
-<meta name="description" content="Fabrizio De Cicco — IoT Infrastructure Architect & Lead DevOps Engineer. 10+ years building reliable cloud infrastructure for global IoT platforms. Azure, Kubernetes, Terraform, Datadog, SRE.">
+<meta name="description" content="Fabrizio De Cicco — IoT Infrastructure Architect & Lead DevOps Engineer. 10+ years building reliable cloud infrastructure for global IoT platforms. Azure, Kubernetes, Terraform, Datadog, SRE. Also builds multi-agent AI delivery tooling on Claude Code.">
 <meta name="author" content="Fabrizio De Cicco">
 <meta name="theme-color" content="#0d1117">
 <link rel="canonical" href="https://fabriziodecicco.dev/">
@@ -16,7 +16,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Fabrizio De Cicco — IoT Infrastructure Architect & Lead DevOps Engineer">
-<meta property="og:description" content="10+ years building reliable cloud infrastructure for global IoT platforms. Azure, Kubernetes, Terraform, Datadog, SRE.">
+<meta property="og:description" content="10+ years building reliable cloud infrastructure for global IoT platforms. Azure, Kubernetes, Terraform, Datadog, SRE. Plus multi-agent AI delivery tooling on Claude Code.">
 <meta property="og:url" content="https://fabriziodecicco.dev/">
 <meta property="og:image" content="https://fabriziodecicco.dev/assets/og.png">
 <meta property="og:image:width" content="1200">
@@ -25,7 +25,7 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Fabrizio De Cicco — IoT Infrastructure Architect & Lead DevOps Engineer">
-<meta name="twitter:description" content="10+ years building reliable cloud infrastructure for global IoT platforms.">
+<meta name="twitter:description" content="10+ years building reliable cloud infrastructure for global IoT platforms — and multi-agent AI delivery tooling on Claude Code.">
 <meta name="twitter:image" content="https://fabriziodecicco.dev/assets/og.png">
 
 <link rel="stylesheet" href="styles.css">
@@ -40,7 +40,7 @@
   "worksFor":{"@type":"Organization","name":"Culligan International"},
   "address":{"@type":"PostalAddress","addressLocality":"Turin","addressCountry":"IT"},
   "sameAs":["https://github.com/fabrideci","https://www.linkedin.com/in/fabriziodecicco"],
-  "knowsAbout":["Azure","Kubernetes","Terraform","Infrastructure as Code","SRE","Observability","IoT Platforms","CI/CD"] }
+  "knowsAbout":["Azure","Kubernetes","Terraform","Infrastructure as Code","SRE","Observability","IoT Platforms","CI/CD","AI-Assisted Software Delivery","Multi-Agent Systems","LLM Orchestration","Claude Code"] }
 </script>
 
 <!-- pre-paint theme + language: set attributes before first paint to avoid a flash -->
@@ -131,6 +131,7 @@
             <a href="#experience" data-i18n="nav.experience">Experience</a>
             <a href="#systems" data-i18n="nav.systems">Systems I would build</a>
             <a href="#lab" data-i18n="nav.lab">Reliability Lab</a>
+            <a href="#orchestration" data-i18n="nav.orchestration">Orchestration Lab</a>
             <a href="#artifacts" data-i18n="nav.artifacts">Artifacts</a>
             <a href="#skills" data-i18n="nav.skills">Skills</a>
             <a href="#certs" data-i18n="nav.certs">Certifications</a>
@@ -325,7 +326,7 @@
             <button class="node" data-id="release"><span class="nm" data-i18n="node.release.nm">Release</span><span class="ro" data-i18n="node.release.ro">promotion</span></button>
             <button class="node" data-id="infrastructure"><span class="nm" data-i18n="node.infrastructure.nm">Infrastructure</span><span class="ro" data-i18n="node.infrastructure.ro">IaC checks</span></button>
             <button class="node" data-id="reliability"><span class="nm" data-i18n="node.reliability.nm">Reliability</span><span class="ro" data-i18n="node.reliability.ro">SLOs · incidents</span></button>
-            <button class="node" data-id="self-improvement"><span class="nm" data-i18n="node.self-improvement.nm">Self-improvement</span><span class="ro" data-i18n="node.self-improvement.ro">weekly loop</span></button>
+            <button class="node" data-id="self-improvement"><span class="nm" data-i18n="node.self-improvement.nm">Self-improvement</span><span class="ro" data-i18n="node.self-improvement.ro">scheduled loop</span></button>
           </div>
 
           <p class="conn" data-i18n="work.conn2">↑ all built on a shared foundation</p>
@@ -351,11 +352,12 @@
         <div class="run">
           <div class="rh"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="t">engineering-assistant — review</span></div>
           <pre data-i18n="work.run"><span class="pr">$</span> review --pr 1487
-<span class="ar">→ orchestrator dispatching specialists</span>
+<span class="ar">→ orchestrator fans out specialists in parallel</span>
 <span class="ok">✓</span> code review — standards + pipeline impact
 <span class="ok">✓</span> qa — branch checkout + tests
 <span class="ok">✓</span> release — promotion readiness
 <span class="ok">✓</span> reliability — SLOs + incident signals
+<span class="ok">✓</span> verify — 2 findings confirmed, 1 refuted
 <span class="ok">✓</span> <span class="b">review ready — 0 blocking, 2 suggestions</span></pre>
         </div>
 
@@ -366,12 +368,13 @@
           </div>
           <div class="block">
             <h4 data-i18n="work.approach.h">Approach</h4>
-            <p data-i18n="work.approach.p">I designed and built a set of specialist AI agents in Claude Code, each owning a single workflow and sharing a common library of reusable skills. They integrate with the team's existing toolchain through MCP, sit behind <b>safety guardrails that gate anything destructive</b>, and feed a weekly self-analysis loop that surfaces gaps.</p>
+            <p data-i18n="work.approach.p">I designed and built a set of specialist AI agents in Claude Code, each owning a single workflow and sharing a common library of reusable skills. The orchestrator composes them into <b>dynamic workflows that fan work out in parallel and adversarially verify findings</b> before anything is surfaced. They integrate with the team's existing toolchain through MCP, sit behind <b>safety guardrails that gate anything destructive</b>, and the read-only ones run as <b>scheduled loops</b> that catch drift and post a summary — never acting unattended.</p>
             <div class="decisions">
-              <div class="dl" data-i18n="work.dl">two decisions that shaped it</div>
+              <div class="dl" data-i18n="work.dl">three decisions that shaped it</div>
               <ul>
                 <li data-i18n="work.dec1">Organise agents <b>by workflow, not by role</b> — so each carries only the context it needs.</li>
                 <li data-i18n="work.dec2">Push shared conventions into a <b>skills layer</b> — so knowledge isn't duplicated across agents.</li>
+                <li data-i18n="work.dec3">Make orchestration a <b>workflow, not a script</b> — fan out, verify, then synthesize.</li>
               </ul>
             </div>
           </div>
@@ -417,7 +420,7 @@
           <article class="op">
             <div class="tag" data-i18n="sys4.tag">AI in delivery</div>
             <h3 class="stance" data-i18n="sys4.stance">Let agents propose; never let them push unattended.</h3>
-            <p class="why" data-i18n="sys4.why">AI agents are a force-multiplier on review, QA, and release prep — but anything destructive stays behind a human gate and a guardrail. Organize them by workflow so each carries minimal context, give them a shared skills layer so conventions don't drift. <b>The win is consistency and removed toil, not autonomy for its own sake.</b></p>
+            <p class="why" data-i18n="sys4.why">AI agents are a force-multiplier on review, QA, and release prep — but anything destructive stays behind a human gate and a guardrail. Compose them into <b>workflows that fan out and self-verify</b>, give them a shared skills layer so conventions don't drift, and run the read-only ones <b>on a schedule</b> so problems surface on their own. <b>The win is consistency and removed toil, not autonomy for its own sake.</b></p>
             <div class="move"><span class="ml" data-i18n="sys.movelab">first move</span><span data-i18n="sys4.move">agents behind guardrails, gated on anything irreversible.</span></div>
           </article>
 
@@ -477,6 +480,69 @@
     </section>
 
     <!-- ===================================================================
+         7b · Orchestration Lab — dynamic workflows & scheduled loops
+         =================================================================== -->
+    <section class="section" id="orchestration" aria-labelledby="orch-h">
+      <div class="wrap">
+        <span class="eyebrow" data-i18n="orch.eyebrow">// orchestration lab</span>
+        <h2 class="h" id="orch-h" data-i18n="orch.h">Orchestration Lab</h2>
+        <p class="sub" data-i18n="orch.sub">The payoff behind "just orchestrate it with agents" — fan work out in parallel, or run it on a schedule. Two views, real numbers.</p>
+
+        <div class="seg orchtabs" id="orchtabs" role="tablist" aria-label="Orchestration lab views" data-i18n-aria="aria.orchtabs">
+          <button type="button" role="tab" id="tabbtn-fanout" aria-controls="tab-fanout" aria-selected="true" data-tab="fanout" data-i18n="orch.tab.fanout">Fan-out</button>
+          <button type="button" role="tab" id="tabbtn-schedule" aria-controls="tab-schedule" aria-selected="false" data-tab="schedule" data-i18n="orch.tab.schedule">Schedule</button>
+        </div>
+
+        <div class="panel orchpanel" id="tab-fanout" role="tabpanel" aria-labelledby="tabbtn-fanout">
+          <div class="inhead">
+            <div class="field">
+              <label for="oc-n" data-i18n="orch.n">Subtasks</label>
+              <input id="oc-n" type="number" min="1" max="500" step="1" value="12">
+            </div>
+            <div class="field">
+              <label for="oc-t" data-i18n="orch.t">Seconds / agent</label>
+              <input id="oc-t" type="number" min="1" max="3600" step="1" value="40">
+            </div>
+            <div class="field">
+              <label for="oc-c" data-i18n="orch.c">Concurrency cap</label>
+              <input id="oc-c" type="number" min="1" max="64" step="1" value="8">
+            </div>
+          </div>
+
+          <p class="hintline" data-i18n="orch.model">Modeled as a two-phase workflow: fan out → adversarially verify.</p>
+
+          <div class="budget">
+            <span class="lab" data-i18n="orch.best">Best speedup</span>
+            <span class="val" id="oc-speedup">8.0×</span>
+            <span class="of" data-i18n="orch.vs">vs running them one after another</span>
+          </div>
+
+          <div class="windows octhree" id="oc-rows"></div>
+
+          <p class="hintline" data-i18n="orch.hint">The cap — not the count — sets the wall-clock; a pipeline skips the barrier's idle wave.</p>
+        </div>
+
+        <div class="panel orchpanel" id="tab-schedule" role="tabpanel" aria-labelledby="tabbtn-schedule" hidden>
+          <div class="inhead">
+            <div class="field" style="flex:1; min-width:220px">
+              <label id="oc-loops-label" data-i18n="orch.loops">Scheduled loops</label>
+              <div class="presets" id="oc-loops" role="group" aria-labelledby="oc-loops-label">
+                <button type="button" data-loop="triage" aria-pressed="true" data-i18n="orch.loop.triage">dependency triage</button>
+                <button type="button" data-loop="analysis" aria-pressed="false" data-i18n="orch.loop.analysis">self-analysis</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="weekgrid" id="oc-week" aria-hidden="true"></div>
+
+          <div class="windows octhree loopdet" id="oc-loopdetail"></div>
+
+          <p class="hintline" data-i18n="orch.loop.hint">Loops read and notify on a schedule — they never act unattended. Anything destructive stays behind a human gate.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
          7 · Engineering artifacts
          =================================================================== -->
     <section class="section" id="artifacts" aria-labelledby="artifacts-h">
@@ -527,6 +593,17 @@
               <button class="view" data-id="tf" data-i18n="art.view">View</button>
               <a class="dl" href="lab/terraform-module-checklist.md" download data-i18n="art.dl">Download</a>
               <a class="repo" href="https://github.com/fabrideci/fabrideci.github.io/blob/main/lab/terraform-module-checklist.md" data-i18n="art.repo">Repo</a>
+            </div>
+          </article>
+
+          <article class="art" data-id="skill">
+            <span class="afmt">▢ .md</span>
+            <h3 data-i18n="art.skill.h">Claude Code skill</h3>
+            <p data-i18n="art.skill.p">A de-identified skill scaffold — description-as-trigger, progressive disclosure, and read-only-by-default guardrails.</p>
+            <div class="aact">
+              <button class="view" data-id="skill" data-i18n="art.view">View</button>
+              <a class="dl" href="lab/skill-template.md" download data-i18n="art.dl">Download</a>
+              <a class="repo" href="https://github.com/fabrideci/fabrideci.github.io/blob/main/lab/skill-template.md" data-i18n="art.repo">Repo</a>
             </div>
           </article>
         </div>

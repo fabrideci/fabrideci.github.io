@@ -45,6 +45,7 @@
     'aria.lang':'Lingua', 'aria.theme':'Tema', 'aria.stream':'Output del terminale',
     'aria.cin':'Comando terminale — scrivi help', 'aria.sections':'Sezioni',
     'aria.slider':'Cursore obiettivo SLO', 'aria.preview':'Anteprima artefatto',
+    'aria.orchtabs':'Viste del laboratorio di orchestrazione',
     'bar.lang':'Lingua', 'bar.theme':'Tema', 'bar.dark':'Scuro', 'bar.light':'Chiaro',
     'term.connected':'connesso',
     'hero.scroll':'↓ scorri per il sito completo',
@@ -56,7 +57,7 @@
     'hero.fact4':'CKA · LFCS · AZ-104 · AZ-400',
     'hero.fact5':'Focalizzato su Terraform',
     'nav.work':'Caso di studio', 'nav.principles':'Principi', 'nav.experience':'Esperienza',
-    'nav.systems':'Sistemi che costruirei', 'nav.lab':'Reliability Lab', 'nav.artifacts':'Artefatti',
+    'nav.systems':'Sistemi che costruirei', 'nav.lab':'Reliability Lab', 'nav.orchestration':'Laboratorio di orchestrazione', 'nav.artifacts':'Artefatti',
     'nav.skills':'Competenze', 'nav.certs':'Certificazioni', 'nav.contact':'Contatti',
     'hero.note':'La pagina si apre come un terminale interattivo — ogni comando corrisponde a una sezione reale, quindi il terminale è la navigazione del sito. Scrivi <span class="ac">help</span> per iniziare, premi <span class="ac">Tab</span> per completare, oppure prova <span class="ac">slo 99.9</span> per un vero error budget. Qui è tutto statico: <b>0 dipendenze, 0 tracker</b>.',
 
@@ -118,19 +119,20 @@
     'node.release.nm':'Release', 'node.release.ro':'promozione',
     'node.infrastructure.nm':'Infrastruttura', 'node.infrastructure.ro':'controlli IaC',
     'node.reliability.nm':'Reliability', 'node.reliability.ro':'SLO · incidenti',
-    'node.self-improvement.nm':'Auto-miglioramento', 'node.self-improvement.ro':'ciclo settimanale',
+    'node.self-improvement.nm':'Auto-miglioramento', 'node.self-improvement.ro':'loop schedulato',
     'node.skills.nm':'Livello di skill riutilizzabili', 'node.skills.ro':'convenzioni condivise · guardrail di sicurezza',
     'work.ichip1':'Sorgente e PR', 'work.ichip2':'Issue', 'work.ichip3':'CI/CD',
     'work.ichip4':'Qualità del codice', 'work.ichip5':'Osservabilità', 'work.ichip6':'Chat',
     'work.hintline':'Ogni agente è responsabile di <b>un singolo workflow</b> e porta solo il contesto che gli serve — organizzato per workflow, non per ruolo.',
-    'work.run':'<span class="pr">$</span> review --pr 1487\n<span class="ar">→ orchestratore: smistamento agli specialisti</span>\n<span class="ok">✓</span> code review — standard + impatto pipeline\n<span class="ok">✓</span> qa — checkout branch + test\n<span class="ok">✓</span> release — pronto per la promozione\n<span class="ok">✓</span> reliability — SLO + segnali di incidente\n<span class="ok">✓</span> <span class="b">review pronta — 0 bloccanti, 2 suggerimenti</span>',
+    'work.run':'<span class="pr">$</span> review --pr 1487\n<span class="ar">→ l\'orchestratore distribuisce gli specialisti in parallelo</span>\n<span class="ok">✓</span> code review — standard + impatto pipeline\n<span class="ok">✓</span> qa — checkout branch + test\n<span class="ok">✓</span> release — pronto per la promozione\n<span class="ok">✓</span> reliability — SLO + segnali di incidente\n<span class="ok">✓</span> verify — 2 risultati confermati, 1 respinto\n<span class="ok">✓</span> <span class="b">review pronta — 0 bloccanti, 2 suggerimenti</span>',
     'work.problem.h':'Problema',
     'work.problem.p':'In un insieme crescente di repository, code review, QA, coordinamento dei rilasci e monitoraggio dell\'affidabilità erano in gran parte manuali — lenti da eseguire, difficili da mantenere coerenti e un costante drenaggio del tempo degli ingegneri senior.',
     'work.approach.h':'Approccio',
-    'work.approach.p':'Ho progettato e costruito un insieme di agenti AI specialisti in Claude Code, ciascuno responsabile di un singolo workflow e con una libreria comune di skill riutilizzabili. Si integrano con il toolchain esistente del team tramite MCP, stanno dietro a <b>guardrail di sicurezza che bloccano qualsiasi cosa distruttiva</b> e alimentano un ciclo settimanale di auto-analisi che fa emergere le lacune.',
-    'work.dl':'due decisioni che l\'hanno plasmato',
+    'work.approach.p':'Ho progettato e costruito un insieme di agenti AI specialisti in Claude Code, ciascuno responsabile di un singolo workflow e con una libreria comune di skill riutilizzabili. L\'orchestratore li compone in <b>workflow dinamici che distribuiscono il lavoro in parallelo e verificano in modo avversariale i risultati</b> prima che emergano. Si integrano con il toolchain esistente del team tramite MCP, stanno dietro a <b>guardrail di sicurezza che bloccano qualsiasi cosa distruttiva</b> e quelli di sola lettura girano come <b>loop schedulati</b> che intercettano le derive e pubblicano un riepilogo — senza mai agire in autonomia.',
+    'work.dl':'tre decisioni che l\'hanno plasmato',
     'work.dec1':'Organizzare gli agenti <b>per workflow, non per ruolo</b> — così ciascuno porta solo il contesto che gli serve.',
     'work.dec2':'Spostare le convenzioni condivise in un <b>livello di skill</b> — così la conoscenza non è duplicata tra gli agenti.',
+    'work.dec3':'Fare dell\'orchestrazione un <b>workflow, non uno script</b> — distribuisci, verifica, poi sintetizza.',
     'work.outcome.h':'Risultato',
     'work.outcome.p':'Distribuito al team di lead engineering e ora parte di come la piattaforma rilascia. Lo misuro rispetto a <b>baseline di adozione, cycle time e defect-leakage</b> piuttosto che a metriche di vanità — con il ciclo di feedback che migliora costantemente gli agenti nel tempo.',
 
@@ -152,7 +154,7 @@
     'sys3.move':'giustifica il cluster rispetto al numero di servizi e alla capacità di on-call.',
     'sys4.tag':'AI nella delivery',
     'sys4.stance':'Lascia che gli agenti propongano; non lasciarli mai pushare senza supervisione.',
-    'sys4.why':'Gli agenti AI sono un moltiplicatore di forza su review, QA e preparazione dei rilasci — ma qualsiasi cosa distruttiva resta dietro un gate umano e un guardrail. Organizzali per workflow così ciascuno porta contesto minimo, dai loro un livello di skill condiviso così le convenzioni non divergono. <b>La vittoria è coerenza e meno lavoro ripetitivo, non autonomia fine a se stessa.</b>',
+    'sys4.why':'Gli agenti AI sono un moltiplicatore di forza su review, QA e preparazione dei rilasci — ma qualsiasi cosa distruttiva resta dietro un gate umano e un guardrail. Componili in <b>workflow che distribuiscono il lavoro e si auto-verificano</b>, dai loro un livello di skill condiviso così le convenzioni non divergono, e fai girare quelli di sola lettura <b>su una schedulazione</b> così i problemi emergono da soli. <b>La vittoria è coerenza e meno lavoro ripetitivo, non autonomia fine a se stessa.</b>',
     'sys4.move':'agenti dietro guardrail, con gate su qualsiasi cosa irreversibile.',
     'sys5.tag':'affidabilità vs costo',
     'sys5.stance':'Uno SLO è un budget — spendilo, non sovra-ingegnerizzare.',
@@ -165,6 +167,18 @@
     'lab.targetslo':'SLO obiettivo', 'lab.commontargets':'Obiettivi comuni',
     'lab.budgetlab':'Error budget', 'lab.budgetof':'del tempo in cui puoi essere down',
 
+    'orch.eyebrow':'// laboratorio di orchestrazione',
+    'orch.h':'Laboratorio di orchestrazione',
+    'orch.sub':'Il vantaggio dietro "orchestralo con gli agenti" — distribuisci il lavoro in parallelo, o eseguilo su una schedulazione. Due viste, numeri reali.',
+    'orch.tab.fanout':'Fan-out', 'orch.tab.schedule':'Schedulazione',
+    'orch.n':'Sottotask', 'orch.t':'Secondi / agente', 'orch.c':'Limite di concorrenza',
+    'orch.model':'Modellato come workflow a due fasi: distribuisci → verifica in modo avversariale.',
+    'orch.best':'Miglior speedup', 'orch.vs':'rispetto a eseguirli uno dopo l\'altro',
+    'orch.hint':'È il limite — non il numero — a fissare il wall-clock; una pipeline salta l\'onda ferma della barriera.',
+    'orch.loops':'Loop schedulati',
+    'orch.loop.triage':'triage dipendenze', 'orch.loop.analysis':'auto-analisi',
+    'orch.loop.hint':'I loop leggono e notificano su una schedulazione — non agiscono mai in autonomia. Qualsiasi cosa distruttiva resta dietro un gate umano.',
+
     'art.eyebrow':'// artefatti',
     'art.h':'Artefatti di ingegneria',
     'art.sub':'Template che uso davvero, anonimizzati e liberi da usare — la differenza tra un portfolio che <em>descrive</em> competenza e uno che te ne <em>mette in mano un pezzo</em>. Ognuno è un vero <code>.md</code> nella cartella <a href="https://github.com/fabrideci/fabrideci.github.io/tree/main/lab">/lab</a>.',
@@ -176,6 +190,8 @@
     'art.incident.p':'Uno scheletro di postmortem senza colpe: timeline, impatto, causa radice e azioni con responsabili.',
     'art.tf.h':'Checklist modulo Terraform',
     'art.tf.p':'Il gate di production-readiness che un modulo supera prima di essere ammesso sul percorso consolidato.',
+    'art.skill.h':'Skill di Claude Code',
+    'art.skill.p':'Uno scaffold di skill anonimizzato — descrizione-come-trigger, divulgazione progressiva e guardrail di sola lettura per impostazione predefinita.',
     'art.view':'Vedi', 'art.dl':'Scarica', 'art.repo':'Repo', 'art.pmeta':'markdown · template',
 
     'skills.eyebrow':'// competenze e stack', 'skills.h':'Competenze e stack',
@@ -199,7 +215,7 @@
   // Document-level strings that live in attributes, not innerHTML.
   var META_IT = {
     title:'Fabrizio De Cicco — Architetto di Infrastrutture IoT',
-    desc:'Fabrizio De Cicco — Architetto di Infrastrutture IoT e Lead DevOps Engineer. 10+ anni a costruire infrastrutture cloud affidabili per piattaforme IoT globali. Azure, Kubernetes, Terraform, Datadog, SRE.',
+    desc:'Fabrizio De Cicco — Architetto di Infrastrutture IoT e Lead DevOps Engineer. 10+ anni a costruire infrastrutture cloud affidabili per piattaforme IoT globali. Azure, Kubernetes, Terraform, Datadog, SRE. Costruisce anche tooling di delivery AI multi-agente su Claude Code.',
     cinPh:'scrivi un comando…'
   };
 
@@ -317,6 +333,137 @@
   })();
 
   /* ---------------------------------------------------------------------
+     Orchestration Lab — a tabbed widget with the same 0-dependency shape as
+     the Reliability Lab above. Tab 1 turns the fan-out → verify workflow into
+     concrete wall-clock (sequential vs parallel vs pipeline); tab 2 shows the
+     scheduled loops as read-and-notify, never act.
+     --------------------------------------------------------------------- */
+  (function orchestration(){
+    var root = document.getElementById('orchestration');
+    if(!root) return;
+
+    // JS-rendered copy, per language (static labels use data-i18n in the HTML).
+    var OTX = {
+      en: {
+        rows:{ sequential:'sequential', parallel:'parallel', pipeline:'pipeline' },
+        faster:'faster',
+        days:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+        det:{ reads:'reads', emits:'emits', acts:'acts' },
+        loops:{
+          triage:  { reads:'open dependency PRs',    emits:'one chat summary', acts:'never · read + notify' },
+          analysis:{ reads:'recent session history', emits:'one chat summary', acts:'never · read + notify' }
+        }
+      },
+      it: {
+        rows:{ sequential:'sequenziale', parallel:'parallelo', pipeline:'pipeline' },
+        faster:'più veloce',
+        days:['Lun','Mar','Mer','Gio','Ven','Sab','Dom'],
+        det:{ reads:'legge', emits:'pubblica', acts:'agisce' },
+        loops:{
+          triage:  { reads:'PR di dipendenze aperte',     emits:'un riepilogo in chat', acts:'mai · legge e notifica' },
+          analysis:{ reads:'cronologia sessioni recente', emits:'un riepilogo in chat', acts:'mai · legge e notifica' }
+        }
+      }
+    };
+    // Generic cadence (Mon-indexed 0..6) — illustrative, not a real config.
+    var LOOPS = { triage:{ day:0, time:'09:00' }, analysis:{ day:0, time:'10:30' } };
+
+    function T(){ return OTX[currentLang()]; }
+    function clampInt(v, lo, hi){ v = parseInt(v, 10); if(!isFinite(v)) v = lo; return Math.max(lo, Math.min(hi, v)); }
+    function fmtClock(s){
+      s = Math.round(s);
+      if(s < 60) return s + 's';
+      if(s < 3600){ var m = Math.floor(s/60), r = s%60; return m + 'm ' + (r<10?'0':'') + r + 's'; }
+      var h = Math.floor(s/3600), mm = Math.floor((s%3600)/60); return h + 'h ' + (mm<10?'0':'') + mm + 'm';
+    }
+    function fmtX(x){ return (x < 10 ? x.toFixed(1) : String(Math.round(x))) + '×'; }
+    function card(label, value, opts){
+      opts = opts || {};
+      return '<div class="wcard' + (opts.best ? ' mo' : '') + '">' +
+               '<div class="wt">' + label + '</div>' +
+               '<div class="wv' + (opts.sm ? ' sm' : '') + '">' + value + '</div>' +
+               (opts.sub != null ? '<span class="wsub">' + opts.sub + '</span>' : '') +
+             '</div>';
+    }
+
+    // ---- tabs ----
+    var tabsWrap = root.querySelector('.orchtabs');
+    function selectTab(name){
+      Array.prototype.forEach.call(root.querySelectorAll('[role="tab"]'), function(t){
+        var on = t.dataset.tab === name;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        var panel = document.getElementById('tab-' + t.dataset.tab);
+        if(panel) panel.hidden = !on;
+      });
+    }
+    if(tabsWrap) tabsWrap.addEventListener('click', function(e){
+      var b = e.target.closest('[role="tab"]'); if(b) selectTab(b.dataset.tab);
+    });
+
+    // ---- tab 1: fan-out calculator (fixed 2-phase model: fan out → verify) ----
+    var nEl = document.getElementById('oc-n'),
+        tEl = document.getElementById('oc-t'),
+        cEl = document.getElementById('oc-c'),
+        rowsEl = document.getElementById('oc-rows'),
+        spEl = document.getElementById('oc-speedup');
+    function calc(){
+      if(!rowsEl) return;
+      var N = clampInt(nEl.value, 1, 500),
+          t = clampInt(tEl.value, 1, 3600),
+          c = clampInt(cEl.value, 1, 64),
+          waves = Math.ceil(N / c),
+          seq = N * 2 * t,
+          par = 2 * waves * t,
+          pipe = (waves + 1) * t,
+          lab = T().rows, faster = T().faster;
+      var data = [
+        { k:'sequential', v:seq,  x:1 },
+        { k:'parallel',   v:par,  x:seq/par },
+        { k:'pipeline',   v:pipe, x:seq/pipe, best:true }
+      ];
+      rowsEl.innerHTML = data.map(function(d){
+        return card(lab[d.k], fmtClock(d.v), { best:d.best, sub:(d.x > 1.001 ? fmtX(d.x) + ' ' + faster : '—') });
+      }).join('');
+      if(spEl) spEl.textContent = fmtX(seq / pipe);
+    }
+    [nEl, tEl, cEl].forEach(function(el){ if(el) el.addEventListener('input', calc); });
+
+    // ---- tab 2: loop schedule ----
+    var loopBtns = document.getElementById('oc-loops'),
+        weekEl = document.getElementById('oc-week'),
+        detEl = document.getElementById('oc-loopdetail'),
+        curLoop = 'triage';
+    function renderLoop(){
+      if(!weekEl || !detEl) return;
+      var days = T().days, spec = LOOPS[curLoop], info = T().loops[curLoop], det = T().det;
+      weekEl.innerHTML = days.map(function(d, i){
+        var on = i === spec.day;
+        return '<div class="day' + (on ? ' on' : '') + '"><span class="dn">' + d + '</span>' +
+               '<span class="dt">' + (on ? spec.time : '') + '</span></div>';
+      }).join('');
+      detEl.innerHTML = [
+        { k:'reads', v:info.reads },
+        { k:'emits', v:info.emits },
+        { k:'acts',  v:info.acts, best:true }
+      ].map(function(cd){
+        return card(det[cd.k], cd.v, { best:cd.best, sm:true });
+      }).join('');
+    }
+    if(loopBtns) loopBtns.addEventListener('click', function(e){
+      var b = e.target.closest('button'); if(!b) return;
+      curLoop = b.dataset.loop;
+      Array.prototype.forEach.call(loopBtns.querySelectorAll('button'), function(x){
+        x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+      });
+      renderLoop();
+    });
+
+    calc();
+    renderLoop();
+    addLangListener(function(){ calc(); renderLoop(); });
+  })();
+
+  /* ---------------------------------------------------------------------
      Case study — interactive architecture diagram
      --------------------------------------------------------------------- */
   (function caseStudy(){
@@ -342,9 +489,9 @@
         reliability:{ n:'Reliability agent', r:'SLOs · incident signals', o:[
           'Watches SLOs and incident signals.',
           'Surfaces reliability risk tied to a specific change.'] },
-        'self-improvement':{ n:'Self-improvement loop', r:'weekly self-analysis', o:[
-          'Weekly self-analysis that surfaces gaps.',
-          'Feeds improvements back into the agents.'] },
+        'self-improvement':{ n:'Self-improvement loop', r:'scheduled · read + notify', o:[
+          'A scheduled loop that reads recent history and surfaces gaps.',
+          'Posts a summary to chat — never acts on its own.'] },
         skills:{ n:'Shared skills layer', r:'conventions · safety guardrails', o:[
           'Reusable conventions every agent draws on — plus safety guardrails.',
           'Guardrails gate anything destructive.'] }
@@ -368,9 +515,9 @@
         reliability:{ n:'Agente Reliability', r:'SLO · segnali di incidente', o:[
           'Osserva SLO e segnali di incidente.',
           'Fa emergere il rischio di affidabilità legato a una modifica specifica.'] },
-        'self-improvement':{ n:'Ciclo di auto-miglioramento', r:'auto-analisi settimanale', o:[
-          'Auto-analisi settimanale che fa emergere le lacune.',
-          'Riporta i miglioramenti negli agenti.'] },
+        'self-improvement':{ n:'Ciclo di auto-miglioramento', r:'schedulato · legge e notifica', o:[
+          'Un loop schedulato che legge la cronologia recente e fa emergere le lacune.',
+          'Pubblica un riepilogo in chat — non agisce mai da solo.'] },
         skills:{ n:'Livello di skill condivise', r:'convenzioni · guardrail di sicurezza', o:[
           'Convenzioni riutilizzabili a cui ogni agente attinge — più guardrail di sicurezza.',
           'I guardrail bloccano qualsiasi cosa distruttiva.'] }
@@ -411,7 +558,8 @@
 
     var FILES = {
       adr:'adr-template.md', slo:'slo-definition.md',
-      incident:'incident-review.md', tf:'terraform-module-checklist.md'
+      incident:'incident-review.md', tf:'terraform-module-checklist.md',
+      skill:'skill-template.md'
     };
     var TXT = {
       en: { loading:'Loading…', err:function(f){ return 'Preview unavailable — open lab/' + f; } },
@@ -454,7 +602,7 @@
         desc:{ about:'one-line profile', stack:'core stack', devices:'platform scale',
           certs:'certifications', experience:'work history', topology:'platform diagram',
           contact:'links', work:'open the case study', principles:'how I work',
-          systems:'systems I would build', lab:'reliability lab', artifacts:'downloadable templates',
+          systems:'systems I would build', lab:'reliability lab', orchestration:'orchestration lab', artifacts:'downloadable templates',
           slo:'compute an error budget', theme:'switch theme', ls:'list sections',
           resume:'download résumé (PDF)', clear:'clear the screen', sudo:'(try it)',
           coffee:'(try it)', help:'list commands' },
@@ -476,12 +624,13 @@
               principles:['operating principles', ['each one: principle · failure mode · response']],
               systems:['“systems I would build”', ['architectural opinions, not just past work']],
               lab:['Reliability Lab', ['try: <span class="ac">slo 99.9</span>']],
+              orchestration:['Orchestration Lab', ['try: fan-out vs. schedule']],
               artifacts:['engineering artifacts', ['ADR · SLO · incident-review · Terraform module checklist']] },
         sloUsage:'usage: <span class="ac">slo &lt;target%&gt;</span>   e.g. <span class="ac">slo 99.9</span>',
         sloResult:function(t, disp){ return 'SLO <span class="b">'+t+'%</span> → error budget <span class="ok">'+disp+'</span> / 30 days'; },
         themeUsage:'usage: <span class="ac">theme dark|light</span>',
         themeSet:function(m){ return 'theme → <span class="ac">'+m+'</span>'; },
-        ls:'about.md   experience/   work/   principles/   lab/   artifacts/   contact.md',
+        ls:'about.md   experience/   work/   principles/   lab/   orchestration/   artifacts/   contact.md',
         resume:'→ downloading <span class="ac">Fabrizio-De-Cicco-Resume.pdf</span>',
         sudo:'sudo: permission denied — you’re not on the on-call rotation 🙂',
         coffee:'☕ brewing… <span class="dm">deploy responsibly.</span>',
@@ -494,7 +643,7 @@
         desc:{ about:'profilo in una riga', stack:'stack principale', devices:'scala della piattaforma',
           certs:'certificazioni', experience:'storia lavorativa', topology:'diagramma della piattaforma',
           contact:'link', work:'apri il caso di studio', principles:'come lavoro',
-          systems:'sistemi che costruirei', lab:'reliability lab', artifacts:'template scaricabili',
+          systems:'sistemi che costruirei', lab:'reliability lab', orchestration:'laboratorio di orchestrazione', artifacts:'template scaricabili',
           slo:'calcola un error budget', theme:'cambia tema', ls:'elenca le sezioni',
           resume:'scarica il curriculum (PDF)', clear:'pulisci lo schermo', sudo:'(provalo)',
           coffee:'(provalo)', help:'elenca i comandi' },
@@ -516,12 +665,13 @@
               principles:['principi operativi', ['ognuno: principio · modalità di guasto · risposta']],
               systems:['“sistemi che costruirei”', ['opinioni architetturali, non solo lavoro passato']],
               lab:['Reliability Lab', ['prova: <span class="ac">slo 99.9</span>']],
+              orchestration:['Laboratorio di orchestrazione', ['prova: fan-out vs. schedulazione']],
               artifacts:['artefatti di ingegneria', ['ADR · SLO · revisione incidente · checklist modulo Terraform']] },
         sloUsage:'uso: <span class="ac">slo &lt;target%&gt;</span>   es. <span class="ac">slo 99.9</span>',
         sloResult:function(t, disp){ return 'SLO <span class="b">'+t+'%</span> → error budget <span class="ok">'+disp+'</span> / 30 giorni'; },
         themeUsage:'uso: <span class="ac">theme dark|light</span>',
         themeSet:function(m){ return 'tema → <span class="ac">'+m+'</span>'; },
-        ls:'about.md   experience/   work/   principles/   lab/   artifacts/   contact.md',
+        ls:'about.md   experience/   work/   principles/   lab/   orchestration/   artifacts/   contact.md',
         resume:'→ scaricamento <span class="ac">Fabrizio-De-Cicco-Resume.pdf</span>',
         sudo:'sudo: permesso negato — non sei nel turno di reperibilità 🙂',
         coffee:'☕ in preparazione… <span class="dm">fai deploy responsabilmente.</span>',
@@ -566,6 +716,7 @@
       principles: { run:function(){ var n=L().nav.principles; nav('principles', n[0], n[1]); } },
       systems:    { run:function(){ var n=L().nav.systems;    nav('systems', n[0], n[1]); } },
       lab:        { run:function(){ var n=L().nav.lab;        nav('lab', n[0], n[1]); } },
+      orchestration: { run:function(){ var n=L().nav.orchestration; nav('orchestration', n[0], n[1]); } },
       artifacts:  { run:function(){ var n=L().nav.artifacts;  nav('artifacts', n[0], n[1]); } },
 
       slo:   { run:function(a){
@@ -590,9 +741,10 @@
       sudo:  { run:function(){ el(L().sudo, 'al'); } },
       coffee:{ run:function(){ el(L().coffee); } }
     };
+    cmds.orch = cmds.orchestration;   // convenience alias
 
     var helpGroups = [
-      ['navigate', ['work','principles','systems','lab','artifacts']],
+      ['navigate', ['work','principles','systems','lab','orchestration','artifacts']],
       ['info',     ['about','stack','devices','certs','experience','topology','contact']],
       ['tools',    ['slo','theme','ls','resume','clear']],
       ['fun',      ['sudo','coffee']]
