@@ -52,20 +52,27 @@
   document.documentElement.setAttribute('lang', l);
 }catch(e){} })();
 </script>
+<noscript><style>.term,.hintbar{display:none}</style></noscript>
 </head>
 <body>
 <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
 <div class="app">
 
   <div class="bar">
-    <a class="brand" href="#top"><b>fabrizio</b>@infra: ~</a>
+    <a class="brand" href="#top">Fabrizio De Cicco</a>
+    <nav class="barnav" aria-label="Sections" data-i18n-aria="aria.sections">
+      <a href="#work" data-i18n="nav.work">Case study</a>
+      <a href="#principles" data-i18n="nav.principles">How I build</a>
+      <a href="#experience" data-i18n="nav.experience">Experience</a>
+      <a href="#lab" data-i18n="nav.lab">Lab</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
     <span class="spacer"></span>
-    <span class="barlabel" data-i18n="bar.lang">Language</span>
+    <a class="barcta" href="assets/Fabrizio-De-Cicco-Resume.pdf" data-i18n="contact.resume">Résumé (PDF)</a>
     <div class="seg" id="langSeg" role="group" aria-label="Language" data-i18n-aria="aria.lang">
       <button data-lng="en" aria-pressed="true">EN</button>
       <button data-lng="it" aria-pressed="false">IT</button>
     </div>
-    <span class="barlabel" data-i18n="bar.theme">Theme</span>
     <div class="seg" id="themeSeg" role="group" aria-label="Theme" data-i18n-aria="aria.theme">
       <button data-thm="dark" aria-pressed="true" data-i18n="bar.dark">Dark</button>
       <button data-thm="light" aria-pressed="false" data-i18n="bar.light">Light</button>
@@ -75,10 +82,26 @@
   <main id="main">
 
     <!-- ===================================================================
-         1 · Hero — the terminal
+         1 · Hero — name, value line, proof, then the (optional) terminal
          =================================================================== -->
     <header class="hero" id="top">
-      <div class="stage">
+      <div class="wrap">
+        <h1 class="name">Fabrizio De Cicco</h1>
+        <p class="value" data-i18n="hero.value">I run the cloud infrastructure behind <b>50,000+ connected devices</b> — and build the AI tooling that helps ship it.</p>
+        <p class="support" data-i18n="hero.support">Infrastructure Architect at Culligan International · Azure, Kubernetes, Terraform, Datadog · Turin, Italy — open to remote</p>
+        <ul class="stats">
+          <li data-i18n="hero.fact1"><b>50,000+</b> devices in production</li>
+          <li data-i18n="hero.fact2">scaling toward <b>~300,000</b></li>
+          <li data-i18n="hero.fact3"><b>10+ years</b> in infrastructure</li>
+          <li data-i18n="hero.fact4">CKA · LFCS · AZ-104 · AZ-400</li>
+        </ul>
+        <div class="cta">
+          <a class="btn primary" href="assets/Fabrizio-De-Cicco-Resume.pdf" data-i18n="contact.resume">Résumé (PDF)</a>
+          <a class="btn" href="mailto:fabri.deci@gmail.com" data-i18n="contact.email">Email</a>
+          <a class="btn quiet" href="https://github.com/fabrideci">GitHub</a>
+          <a class="btn quiet" href="https://www.linkedin.com/in/fabriziodecicco">LinkedIn</a>
+        </div>
+
         <div class="term" id="term">
           <div class="thead">
             <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
@@ -93,210 +116,18 @@
             </div>
           </div>
         </div>
-
         <div class="hintbar" id="hints" hidden>
           <button class="cmdchip" data-c="help">help</button>
-          <button class="cmdchip" data-c="ls">ls</button>
-          <button class="cmdchip" data-c="stack">stack</button>
-          <button class="cmdchip" data-c="devices">devices</button>
           <button class="cmdchip" data-c="work">work</button>
           <button class="cmdchip" data-c="topology">topology</button>
           <button class="cmdchip" data-c="slo 99.9">slo 99.9</button>
           <button class="cmdchip" data-c="contact">contact</button>
         </div>
-
-        <div class="scroll" aria-hidden="true" data-i18n="hero.scroll">↓ scroll for the full site</div>
       </div>
-
-      <!-- No-JS / screen-reader fallback: a plain, fully usable version -->
-      <div class="fallback" id="about">
-        <div class="card">
-          <h1>Fabrizio De Cicco</h1>
-          <p class="role" data-i18n="hero.role">IoT Infrastructure Architect &amp; Lead DevOps Engineer</p>
-          <p data-i18n="hero.bio">I have 10+ years building reliable cloud infrastructure for global IoT platforms — currently
-            leading IoT infrastructure architecture and reliability at Culligan International. I run
-            <strong>50,000+ devices in production, scaling toward ~300,000</strong>, on Azure with Kubernetes,
-            Terraform-first IaC, and Datadog-backed observability. Azure handles the MQTT flows; an IoT
-            bridge speaks CoAP &amp; LWM2M.</p>
-          <ul class="facts">
-            <li data-i18n="hero.fact1"><b>50,000+</b> devices in production</li>
-            <li data-i18n="hero.fact2">scaling to <b>~300,000</b></li>
-            <li data-i18n="hero.fact3">10+ years</li>
-            <li data-i18n="hero.fact4">CKA · LFCS · AZ-104 · AZ-400</li>
-            <li data-i18n="hero.fact5">Terraform-focused</li>
-          </ul>
-          <nav aria-label="Sections" data-i18n-aria="aria.sections">
-            <a href="#work" data-i18n="nav.work">Case study</a>
-            <a href="#principles" data-i18n="nav.principles">Principles</a>
-            <a href="#experience" data-i18n="nav.experience">Experience</a>
-            <a href="#systems" data-i18n="nav.systems">Systems I would build</a>
-            <a href="#lab" data-i18n="nav.lab">Reliability Lab</a>
-            <a href="#orchestration" data-i18n="nav.orchestration">Orchestration Lab</a>
-            <a href="#artifacts" data-i18n="nav.artifacts">Artifacts</a>
-            <a href="#skills" data-i18n="nav.skills">Skills</a>
-            <a href="#certs" data-i18n="nav.certs">Certifications</a>
-            <a href="#contact" data-i18n="nav.contact">Contact</a>
-          </nav>
-        </div>
-      </div>
-
-      <p class="note hero-note" data-i18n="hero.note">
-        The page opens as a live terminal — every command maps to a real section, so the terminal is the
-        site's navigation. Type <span class="ac">help</span> to start, press <span class="ac">Tab</span> to
-        complete, or try <span class="ac">slo 99.9</span> for a real error budget. Everything here is static:
-        <b>0 dependencies, 0 trackers</b>.
-      </p>
     </header>
 
     <!-- ===================================================================
-         2 · Operating principles
-         =================================================================== -->
-    <section class="section" id="principles" aria-labelledby="principles-h">
-      <div class="wrap">
-        <span class="eyebrow" data-i18n="principles.eyebrow">// how I work</span>
-        <h2 class="h" id="principles-h" data-i18n="principles.h">Operating principles</h2>
-        <p class="sub" data-i18n="principles.sub">Six beliefs that shape how I build — and, for each, the failure mode it's insurance against and the practice that enforces it. The colour is load-bearing: <b>amber = the failure</b>, <b>green = the response</b>.</p>
-
-        <div class="grid-2">
-          <div class="pb">
-            <div class="cat" data-i18n="pr1.cat">reliability</div>
-            <h3 data-i18n="pr1.h">Reliability is a feature.</h3>
-            <div class="rule"></div>
-            <div class="row fm"><span class="lab" data-i18n="principles.fmlab">⚠ failure mode</span><p data-i18n="pr1.fm">Reliability gets bolted on after launch — the first time you learn a path is fragile is from a user, at 3am.</p></div>
-            <div class="row rs"><span class="lab" data-i18n="principles.rslab">✓ response</span><p data-i18n="pr1.rs">Design for failure, set SLOs up front, spend the error budget like real money. Datadog, Grafana and Prometheus watch what users actually feel.</p></div>
-          </div>
-
-          <div class="pb">
-            <div class="cat" data-i18n="pr2.cat">automation</div>
-            <h3 data-i18n="pr2.h">Automate the toil.</h3>
-            <div class="rule"></div>
-            <div class="row fm"><span class="lab" data-i18n="principles.fmlab">⚠ failure mode</span><p data-i18n="pr2.fm">Manual steps drift, get skipped under pressure, and live in one person's head — until that person is on holiday.</p></div>
-            <div class="row rs"><span class="lab" data-i18n="principles.rslab">✓ response</span><p data-i18n="pr2.rs">Done by hand twice → it becomes code. Terraform and Azure DevOps do the repetition; humans do the judgment.</p></div>
-          </div>
-
-          <div class="pb">
-            <div class="cat" data-i18n="pr3.cat">observability</div>
-            <h3 data-i18n="pr3.h">You can't operate what you can't see.</h3>
-            <div class="rule"></div>
-            <div class="row fm"><span class="lab" data-i18n="principles.fmlab">⚠ failure mode</span><p data-i18n="pr3.fm">Without signals you debug by guesswork; MTTR balloons because a customer noticed before any dashboard did.</p></div>
-            <div class="row rs"><span class="lab" data-i18n="principles.rslab">✓ response</span><p data-i18n="pr3.rs">Metrics, logs, traces and SLOs ship with the system, not after — observability is a build requirement, not a follow-up ticket.</p></div>
-          </div>
-
-          <div class="pb">
-            <div class="cat" data-i18n="pr4.cat">simplicity</div>
-            <h3 data-i18n="pr4.h">Boring and predictable wins.</h3>
-            <div class="rule"></div>
-            <div class="row fm"><span class="lab" data-i18n="principles.fmlab">⚠ failure mode</span><p data-i18n="pr4.fm">Clever, bespoke infrastructure becomes a single point of failure only its author understands — and they won't always be on call.</p></div>
-            <div class="row rs"><span class="lab" data-i18n="principles.rslab">✓ response</span><p data-i18n="pr4.rs">Pick simple, well-understood building blocks and paved roads. Predictable beats clever every time you get paged.</p></div>
-          </div>
-
-          <div class="pb">
-            <div class="cat" data-i18n="pr5.cat">infrastructure as code</div>
-            <h3 data-i18n="pr5.h">Infrastructure as code, or it didn't happen.</h3>
-            <div class="rule"></div>
-            <div class="row fm"><span class="lab" data-i18n="principles.fmlab">⚠ failure mode</span><p data-i18n="pr5.fm">Snowflake servers and click-ops changes can't be reviewed, reproduced, or rolled back — and no one remembers why prod differs from staging.</p></div>
-            <div class="row rs"><span class="lab" data-i18n="principles.rslab">✓ response</span><p data-i18n="pr5.rs">Everything reproducible, reviewable, versioned in Terraform. No snowflakes, no surprises, full history in Git.</p></div>
-          </div>
-
-          <div class="pb">
-            <div class="cat" data-i18n="pr6.cat">leadership</div>
-            <h3 data-i18n="pr6.h">Lead by enabling.</h3>
-            <div class="rule"></div>
-            <div class="row fm"><span class="lab" data-i18n="principles.fmlab">⚠ failure mode</span><p data-i18n="pr6.fm">A hero who owns all the knowledge is a bottleneck; the team stalls whenever they're unavailable, and burnout follows.</p></div>
-            <div class="row rs"><span class="lab" data-i18n="principles.rslab">✓ response</span><p data-i18n="pr6.rs">Mentor, document, and remove friction so the team moves faster than any one person could — myself included.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         3 · Experience timeline
-         =================================================================== -->
-    <section class="section" id="experience" aria-labelledby="experience-h">
-      <div class="wrap">
-        <span class="eyebrow" data-i18n="exp.eyebrow">// experience</span>
-        <h2 class="h" id="experience-h" data-i18n="exp.h">Where I've built things</h2>
-        <p class="sub" data-i18n="exp.sub">Each role carries a line-art glyph drawn from that company's domain — doubling as an infrastructure metaphor. Hover a role to see its motif move.</p>
-
-        <ul class="tl">
-          <!-- CULLIGAN -->
-          <li class="role">
-            <span class="badge">
-              <svg class="glyph drop" viewBox="0 0 48 48" aria-hidden="true">
-                <path class="body" d="M24 7 C24 7 33 20 33 29 a9 9 0 0 1 -18 0 C15 20 24 7 24 7 Z" fill="none" stroke="currentColor" stroke-width="1.7"/>
-                <path class="body" d="M21 27 a3 3 0 0 0 3 3" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".7"/>
-                <ellipse class="ripple" cx="24" cy="40" rx="8" ry="2.4" fill="none" stroke="currentColor" stroke-width="1.3"/>
-              </svg>
-            </span>
-            <div class="meta">
-              <h3 data-i18n="exp1.h">Infrastructure Architect <span style="color:var(--dim); font-weight:500">(prev. DevOps Engineer)</span></h3>
-              <span class="when" data-i18n="exp1.when">Jul 2023 — present</span>
-            </div>
-            <div class="meta" style="margin-top:4px"><span class="co">Culligan International</span><span class="tag-pill" data-i18n="exp1.pill">Milan · IoT · water</span></div>
-            <ul class="bul">
-              <li data-i18n="exp1.b1">Lead IoT infrastructure architecture &amp; reliability for the Culligan IoT Platform.</li>
-              <li data-i18n="exp1.b2">Own end-to-end infra design &amp; operations — scalability, security, cost.</li>
-              <li data-i18n="exp1.b3">Mentor the DevOps/SRE team; evolve CI/CD, IaC &amp; Datadog across global IoT.</li>
-            </ul>
-          </li>
-
-          <!-- MSC -->
-          <li class="role">
-            <span class="badge">
-              <svg class="glyph ship" viewBox="0 0 48 48" aria-hidden="true">
-                <g class="stack">
-                  <rect x="14" y="17" width="8" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/>
-                  <rect x="23" y="17" width="8" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/>
-                  <rect x="18.5" y="10" width="8" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/>
-                </g>
-                <path d="M10 24 H38 L34.5 31 H13.5 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
-                <path class="wave" d="M6 37 q4 -3 8 0 t8 0 t8 0 t8 0" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".75"/>
-              </svg>
-            </span>
-            <div class="meta">
-              <h3 data-i18n="exp2.h">DevOps Engineer</h3>
-              <span class="when" data-i18n="exp2.when">Mar 2022 — Jul 2023</span>
-            </div>
-            <div class="meta" style="margin-top:4px"><span class="co">MSC Mediterranean Shipping</span><span class="tag-pill" data-i18n="exp2.pill">Turin · containers · scale</span></div>
-            <ul class="bul">
-              <li data-i18n="exp2.b1">Built &amp; maintained scalable CI/CD pipelines on Azure DevOps (YAML).</li>
-              <li data-i18n="exp2.b2">Automated provisioning with Ansible, Bicep &amp; Rundeck — less manual config.</li>
-              <li data-i18n="exp2.b3">Stood up observability &amp; logging with Datadog for faster detection.</li>
-            </ul>
-          </li>
-
-          <!-- DELTATRE -->
-          <li class="role">
-            <span class="badge">
-              <svg class="glyph ball" viewBox="0 0 48 48" aria-hidden="true">
-                <circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" stroke-width="1.7"/>
-                <g class="seam">
-                  <polygon points="24,16 30,20.5 27.7,27.5 20.3,27.5 18,20.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
-                  <line x1="24" y1="16" x2="24" y2="8.5" stroke="currentColor" stroke-width="1.4"/>
-                  <line x1="30" y1="20.5" x2="36" y2="17" stroke="currentColor" stroke-width="1.4"/>
-                  <line x1="27.7" y1="27.5" x2="32" y2="34" stroke="currentColor" stroke-width="1.4"/>
-                  <line x1="20.3" y1="27.5" x2="16" y2="34" stroke="currentColor" stroke-width="1.4"/>
-                  <line x1="18" y1="20.5" x2="12" y2="17" stroke="currentColor" stroke-width="1.4"/>
-                </g>
-              </svg>
-            </span>
-            <div class="meta">
-              <h3 data-i18n="exp3.h">Support Supervisor <span style="color:var(--dim); font-weight:500">→ Software Engineer</span></h3>
-              <span class="when" data-i18n="exp3.when">Aug 2015 — Mar 2022</span>
-            </div>
-            <div class="meta" style="margin-top:4px"><span class="co">Deltatre</span><span class="tag-pill" data-i18n="exp3.pill">Turin · sports · real-time</span></div>
-            <ul class="bul">
-              <li data-i18n="exp3.b1">Supervised a <strong style="color:var(--text)">12-person</strong> application support team.</li>
-              <li data-i18n="exp3.b2">Built backend &amp; web apps (C#, SQL, ASP.NET, Angular) — Agile / TDD.</li>
-              <li data-i18n="exp3.b3">Kept microservices highly available on Azure with Docker &amp; Kubernetes.</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         4 · Case study — multi-agent engineering assistant
+         2 · Case study — multi-agent engineering assistant
          =================================================================== -->
     <section class="section" id="work" aria-labelledby="work-h">
       <div class="wrap">
@@ -380,22 +211,50 @@
           </div>
           <div class="block">
             <h4 data-i18n="work.outcome.h">Outcome</h4>
-            <p data-i18n="work.outcome.p">Rolled out to the lead engineering team and now part of how the platform ships. I measure it against <b>adoption, cycle time, and defect-leakage baselines</b> rather than vanity metrics — with the feedback loop steadily improving the agents over time.</p>
+            <p data-i18n="work.outcome.p">Rolled out to the lead engineering team and in daily use — <b>seven specialist agents sharing a 30+ skill library</b>, behind guardrails that gate anything destructive. Review quality has visibly improved and developer feedback has been consistently positive; the next iteration adds the numbers I want to manage it by — <b>cycle time and defect leakage</b> — because adoption should be measured, not assumed.</p>
+          </div>
+        </div>
+
+        <div class="fanout">
+          <h3 class="subh" data-i18n="work.fanout.h">The fan-out, quantified</h3>
+          <p class="hintline" data-i18n="orch.model">Modeled as a two-phase workflow: fan out → adversarially verify.</p>
+          <div class="panel">
+            <div class="inhead">
+              <div class="field">
+                <label for="oc-n" data-i18n="orch.n">Subtasks</label>
+                <input id="oc-n" type="number" min="1" max="500" step="1" value="12">
+              </div>
+              <div class="field">
+                <label for="oc-t" data-i18n="orch.t">Seconds / agent</label>
+                <input id="oc-t" type="number" min="1" max="3600" step="1" value="40">
+              </div>
+              <div class="field">
+                <label for="oc-c" data-i18n="orch.c">Concurrency cap</label>
+                <input id="oc-c" type="number" min="1" max="64" step="1" value="8">
+              </div>
+            </div>
+            <div class="budget">
+              <span class="lab" data-i18n="orch.best">Best speedup</span>
+              <span class="val" id="oc-speedup">8.0×</span>
+              <span class="of" data-i18n="orch.vs">vs running them one after another</span>
+            </div>
+            <div class="windows octhree" id="oc-rows"></div>
+            <p class="hintline" data-i18n="orch.hint">The cap — not the count — sets the wall-clock; a pipeline skips the barrier's idle wave.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ===================================================================
-         5 · Systems I would build
+         3 · How I build — six positions
          =================================================================== -->
-    <section class="section" id="systems" aria-labelledby="systems-h">
+    <section class="section" id="principles" aria-labelledby="principles-h">
       <div class="wrap">
-        <span class="eyebrow" data-i18n="sys.eyebrow">// architecture</span>
-        <h2 class="h" id="systems-h" data-i18n="sys.h">Systems I would build</h2>
-        <p class="sub" data-i18n="sys.sub">Past work shows what I've done; this shows how I <b>think</b>. Five positions I'd defend about building and scaling a platform — opinionated on purpose.</p>
+        <span class="eyebrow" data-i18n="sys.eyebrow">// how I build</span>
+        <h2 class="h" id="principles-h" data-i18n="sys.h">How I build</h2>
+        <p class="sub" data-i18n="sys.sub">Six positions I'll defend about building and scaling a platform — opinionated on purpose.</p>
 
-        <div class="grid-auto">
+        <div class="grid-2 positions">
           <article class="op">
             <div class="tag" data-i18n="sys1.tag">platform baseline</div>
             <h3 class="stance" data-i18n="sys1.stance">Ship identity, updates, and observability before a single feature.</h3>
@@ -418,6 +277,13 @@
           </article>
 
           <article class="op">
+            <div class="tag" data-i18n="sys5.tag">reliability vs cost</div>
+            <h3 class="stance" data-i18n="sys5.stance">An SLO is a budget — spend it, don't gold-plate.</h3>
+            <p class="why" data-i18n="sys5.why">Chasing more nines than users actually feel just burns money and engineering time. Define the SLO from real user experience, then spend the error budget: ship faster while it's healthy, slow down and harden when it's not. <b>Reliability and cost aren't opposites — the error budget is the dial that trades them on purpose.</b></p>
+            <div class="move"><span class="ml" data-i18n="sys.movelab">first move</span><span data-i18n="sys5.move">set SLOs from user-felt signals, then let the budget drive pace.</span></div>
+          </article>
+
+          <article class="op">
             <div class="tag" data-i18n="sys4.tag">AI in delivery</div>
             <h3 class="stance" data-i18n="sys4.stance">Let agents propose; never let them push unattended.</h3>
             <p class="why" data-i18n="sys4.why">AI agents are a force-multiplier on review, QA, and release prep — but anything destructive stays behind a human gate and a guardrail. Compose them into <b>workflows that fan out and self-verify</b>, give them a shared skills layer so conventions don't drift, and run the read-only ones <b>on a schedule</b> so problems surface on their own. <b>The win is consistency and removed toil, not autonomy for its own sake.</b></p>
@@ -425,24 +291,165 @@
           </article>
 
           <article class="op">
-            <div class="tag" data-i18n="sys5.tag">reliability vs cost</div>
-            <h3 class="stance" data-i18n="sys5.stance">An SLO is a budget — spend it, don't gold-plate.</h3>
-            <p class="why" data-i18n="sys5.why">Chasing more nines than users actually feel just burns money and engineering time. Define the SLO from real user experience, then spend the error budget: ship faster while it's healthy, slow down and harden when it's not. <b>Reliability and cost aren't opposites — the error budget is the dial that trades them on purpose.</b></p>
-            <div class="move"><span class="ml" data-i18n="sys.movelab">first move</span><span data-i18n="sys5.move">set SLOs from user-felt signals, then let the budget drive pace.</span></div>
+            <div class="tag" data-i18n="sys6.tag">leadership</div>
+            <h3 class="stance" data-i18n="sys6.stance">If the team can't ship without me, I've failed.</h3>
+            <p class="why" data-i18n="sys6.why">A lead who hoards context becomes the bottleneck: the team stalls whenever they're unavailable, and burnout follows. My job is to make myself progressively unnecessary — mentor, document, pave the road — <b>so the team moves faster than any one person could.</b></p>
+            <div class="move"><span class="ml" data-i18n="sys.movelab">first move</span><span data-i18n="sys6.move">write it down, hand it over, and stay off the critical path.</span></div>
           </article>
         </div>
       </div>
     </section>
 
     <!-- ===================================================================
-         6 · Reliability Lab — error-budget calculator
+         4 · Experience timeline
+         =================================================================== -->
+    <section class="section" id="experience" aria-labelledby="experience-h">
+      <div class="wrap">
+        <span class="eyebrow" data-i18n="exp.eyebrow">// experience</span>
+        <h2 class="h" id="experience-h" data-i18n="exp.h">Where I've built things</h2>
+
+        <ul class="tl">
+          <!-- CULLIGAN -->
+          <li class="role">
+            <span class="badge">
+              <svg class="glyph drop" viewBox="0 0 48 48" aria-hidden="true">
+                <path class="body" d="M24 7 C24 7 33 20 33 29 a9 9 0 0 1 -18 0 C15 20 24 7 24 7 Z" fill="none" stroke="currentColor" stroke-width="1.7"/>
+                <path class="body" d="M21 27 a3 3 0 0 0 3 3" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".7"/>
+                <ellipse class="ripple" cx="24" cy="40" rx="8" ry="2.4" fill="none" stroke="currentColor" stroke-width="1.3"/>
+              </svg>
+            </span>
+            <div class="meta">
+              <h3 data-i18n="exp1.h">Infrastructure Architect <span>(prev. DevOps Engineer)</span></h3>
+              <span class="when" data-i18n="exp1.when">Jul 2023 — present</span>
+            </div>
+            <div class="meta"><span class="co">Culligan International</span><span class="tag-pill" data-i18n="exp1.pill">Milan · IoT · water</span></div>
+            <ul class="bul">
+              <li data-i18n="exp1.b1">Lead IoT infrastructure architecture &amp; reliability for the Culligan IoT Platform.</li>
+              <li data-i18n="exp1.b2">Own end-to-end infra design &amp; operations — scalability, security, cost.</li>
+              <li data-i18n="exp1.b3">Mentor the DevOps/SRE team; evolve CI/CD, IaC &amp; Datadog across global IoT.</li>
+            </ul>
+          </li>
+
+          <!-- MSC -->
+          <li class="role">
+            <span class="badge">
+              <svg class="glyph ship" viewBox="0 0 48 48" aria-hidden="true">
+                <g class="stack">
+                  <rect x="14" y="17" width="8" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                  <rect x="23" y="17" width="8" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                  <rect x="18.5" y="10" width="8" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                </g>
+                <path d="M10 24 H38 L34.5 31 H13.5 Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                <path class="wave" d="M6 37 q4 -3 8 0 t8 0 t8 0 t8 0" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".75"/>
+              </svg>
+            </span>
+            <div class="meta">
+              <h3 data-i18n="exp2.h">DevOps Engineer</h3>
+              <span class="when" data-i18n="exp2.when">Mar 2022 — Jul 2023</span>
+            </div>
+            <div class="meta"><span class="co">MSC Mediterranean Shipping</span><span class="tag-pill" data-i18n="exp2.pill">Turin · containers · scale</span></div>
+            <ul class="bul">
+              <li data-i18n="exp2.b1">Built &amp; maintained scalable CI/CD pipelines on Azure DevOps (YAML).</li>
+              <li data-i18n="exp2.b2">Automated provisioning with Ansible, Bicep &amp; Rundeck — less manual config.</li>
+              <li data-i18n="exp2.b3">Stood up observability &amp; logging with Datadog for faster detection.</li>
+            </ul>
+          </li>
+
+          <!-- DELTATRE -->
+          <li class="role">
+            <span class="badge">
+              <svg class="glyph ball" viewBox="0 0 48 48" aria-hidden="true">
+                <circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" stroke-width="1.7"/>
+                <g class="seam">
+                  <polygon points="24,16 30,20.5 27.7,27.5 20.3,27.5 18,20.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                  <line x1="24" y1="16" x2="24" y2="8.5" stroke="currentColor" stroke-width="1.4"/>
+                  <line x1="30" y1="20.5" x2="36" y2="17" stroke="currentColor" stroke-width="1.4"/>
+                  <line x1="27.7" y1="27.5" x2="32" y2="34" stroke="currentColor" stroke-width="1.4"/>
+                  <line x1="20.3" y1="27.5" x2="16" y2="34" stroke="currentColor" stroke-width="1.4"/>
+                  <line x1="18" y1="20.5" x2="12" y2="17" stroke="currentColor" stroke-width="1.4"/>
+                </g>
+              </svg>
+            </span>
+            <div class="meta">
+              <h3 data-i18n="exp3.h">Support Supervisor <span>→ Software Engineer</span></h3>
+              <span class="when" data-i18n="exp3.when">Aug 2015 — Mar 2022</span>
+            </div>
+            <div class="meta"><span class="co">Deltatre</span><span class="tag-pill" data-i18n="exp3.pill">Turin · sports · real-time</span></div>
+            <ul class="bul">
+              <li data-i18n="exp3.b1">Supervised a <strong>12-person</strong> application support team.</li>
+              <li data-i18n="exp3.b2">Built backend &amp; web apps (C#, SQL, ASP.NET, Angular) — Agile / TDD.</li>
+              <li data-i18n="exp3.b3">Kept microservices highly available on Azure with Docker &amp; Kubernetes.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         5 · The lab — artifacts + error-budget calculator
          =================================================================== -->
     <section class="section" id="lab" aria-labelledby="lab-h">
       <div class="wrap">
-        <span class="eyebrow" data-i18n="lab.eyebrow">// reliability lab</span>
-        <h2 class="h" id="lab-h" data-i18n="lab.h">Error-budget calculator</h2>
-        <p class="sub" data-i18n="lab.sub">Pick an availability target and see how much downtime that actually buys you — the number behind every "we need more nines" conversation.</p>
+        <span class="eyebrow" data-i18n="lab.eyebrow">// the lab</span>
+        <h2 class="h" id="lab-h" data-i18n="lab.h">The lab</h2>
+        <p class="sub" data-i18n="lab.sub">Templates I actually use — de-identified and free to take — plus the number behind every "we need more nines" conversation.</p>
 
+        <h3 class="subh" id="artifacts" data-i18n="art.h">Engineering artifacts</h3>
+        <div class="flist" id="grid">
+          <div class="frow" data-id="adr">
+            <span class="fname">adr-template.md</span>
+            <span class="fdesc" data-i18n="art.adr.p">a decision, its context, and the trade-offs — so future-you knows <em>why</em>.</span>
+            <span class="fact">
+              <button class="view" data-i18n="art.view">View</button>
+              <a class="dl" href="lab/adr-template.md" download data-i18n="art.dl">Download</a>
+            </span>
+          </div>
+          <div class="frow" data-id="slo">
+            <span class="fname">slo-definition.md</span>
+            <span class="fdesc" data-i18n="art.slo.p">SLI, target, error budget, and the burn-rate alerts that back it.</span>
+            <span class="fact">
+              <button class="view" data-i18n="art.view">View</button>
+              <a class="dl" href="lab/slo-definition.md" download data-i18n="art.dl">Download</a>
+            </span>
+          </div>
+          <div class="frow" data-id="incident">
+            <span class="fname">incident-review.md</span>
+            <span class="fdesc" data-i18n="art.incident.p">blameless postmortem: timeline, impact, root cause, actions with owners.</span>
+            <span class="fact">
+              <button class="view" data-i18n="art.view">View</button>
+              <a class="dl" href="lab/incident-review.md" download data-i18n="art.dl">Download</a>
+            </span>
+          </div>
+          <div class="frow" data-id="tf">
+            <span class="fname">terraform-module-checklist.md</span>
+            <span class="fdesc" data-i18n="art.tf.p">the production-readiness gate before a module joins the paved road.</span>
+            <span class="fact">
+              <button class="view" data-i18n="art.view">View</button>
+              <a class="dl" href="lab/terraform-module-checklist.md" download data-i18n="art.dl">Download</a>
+            </span>
+          </div>
+          <div class="frow" data-id="skill">
+            <span class="fname">skill-template.md</span>
+            <span class="fdesc" data-i18n="art.skill.p">a Claude Code skill scaffold — trigger description, progressive disclosure, guardrails.</span>
+            <span class="fact">
+              <button class="view" data-i18n="art.view">View</button>
+              <a class="dl" href="lab/skill-template.md" download data-i18n="art.dl">Download</a>
+            </span>
+          </div>
+        </div>
+        <p class="hintline" data-i18n="art.sub">Each is a real <code>.md</code> in the <a href="https://github.com/fabrideci/fabrideci.github.io/tree/main/lab">/lab</a> folder of this site's repo.</p>
+
+        <div class="preview">
+          <div class="ph">
+            <span class="dots"><i class="d r"></i><i class="d y"></i><i class="d g"></i></span>
+            <span class="fn" id="fn">adr-template.md</span>
+            <span class="pmeta" data-i18n="art.pmeta">markdown · template</span>
+          </div>
+          <pre id="pv" tabindex="0" aria-label="Artifact preview" data-i18n-aria="aria.preview"></pre>
+        </div>
+
+        <h3 class="subh" data-i18n="lab.calc.h">Error-budget calculator</h3>
+        <p class="hintline" data-i18n="lab.calcsub">Pick an availability target and see how much downtime it actually buys you.</p>
         <div class="panel">
           <div class="inhead">
             <div class="field">
@@ -480,183 +487,25 @@
     </section>
 
     <!-- ===================================================================
-         7b · Orchestration Lab — dynamic workflows & scheduled loops
-         =================================================================== -->
-    <section class="section" id="orchestration" aria-labelledby="orch-h">
-      <div class="wrap">
-        <span class="eyebrow" data-i18n="orch.eyebrow">// orchestration lab</span>
-        <h2 class="h" id="orch-h" data-i18n="orch.h">Orchestration Lab</h2>
-        <p class="sub" data-i18n="orch.sub">The payoff behind "just orchestrate it with agents" — fan work out in parallel, or run it on a schedule. Two views, real numbers.</p>
-
-        <div class="seg orchtabs" id="orchtabs" role="tablist" aria-label="Orchestration lab views" data-i18n-aria="aria.orchtabs">
-          <button type="button" role="tab" id="tabbtn-fanout" aria-controls="tab-fanout" aria-selected="true" data-tab="fanout" data-i18n="orch.tab.fanout">Fan-out</button>
-          <button type="button" role="tab" id="tabbtn-schedule" aria-controls="tab-schedule" aria-selected="false" data-tab="schedule" data-i18n="orch.tab.schedule">Schedule</button>
-        </div>
-
-        <div class="panel orchpanel" id="tab-fanout" role="tabpanel" aria-labelledby="tabbtn-fanout">
-          <div class="inhead">
-            <div class="field">
-              <label for="oc-n" data-i18n="orch.n">Subtasks</label>
-              <input id="oc-n" type="number" min="1" max="500" step="1" value="12">
-            </div>
-            <div class="field">
-              <label for="oc-t" data-i18n="orch.t">Seconds / agent</label>
-              <input id="oc-t" type="number" min="1" max="3600" step="1" value="40">
-            </div>
-            <div class="field">
-              <label for="oc-c" data-i18n="orch.c">Concurrency cap</label>
-              <input id="oc-c" type="number" min="1" max="64" step="1" value="8">
-            </div>
-          </div>
-
-          <p class="hintline" data-i18n="orch.model">Modeled as a two-phase workflow: fan out → adversarially verify.</p>
-
-          <div class="budget">
-            <span class="lab" data-i18n="orch.best">Best speedup</span>
-            <span class="val" id="oc-speedup">8.0×</span>
-            <span class="of" data-i18n="orch.vs">vs running them one after another</span>
-          </div>
-
-          <div class="windows octhree" id="oc-rows"></div>
-
-          <p class="hintline" data-i18n="orch.hint">The cap — not the count — sets the wall-clock; a pipeline skips the barrier's idle wave.</p>
-        </div>
-
-        <div class="panel orchpanel" id="tab-schedule" role="tabpanel" aria-labelledby="tabbtn-schedule" hidden>
-          <div class="inhead">
-            <div class="field" style="flex:1; min-width:220px">
-              <label id="oc-loops-label" data-i18n="orch.loops">Scheduled loops</label>
-              <div class="presets" id="oc-loops" role="group" aria-labelledby="oc-loops-label">
-                <button type="button" data-loop="triage" aria-pressed="true" data-i18n="orch.loop.triage">dependency triage</button>
-                <button type="button" data-loop="analysis" aria-pressed="false" data-i18n="orch.loop.analysis">self-analysis</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="weekgrid" id="oc-week" aria-hidden="true"></div>
-
-          <div class="windows octhree loopdet" id="oc-loopdetail"></div>
-
-          <p class="hintline" data-i18n="orch.loop.hint">Loops read and notify on a schedule — they never act unattended. Anything destructive stays behind a human gate.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         7 · Engineering artifacts
-         =================================================================== -->
-    <section class="section" id="artifacts" aria-labelledby="artifacts-h">
-      <div class="wrap">
-        <span class="eyebrow" data-i18n="art.eyebrow">// artifacts</span>
-        <h2 class="h" id="artifacts-h" data-i18n="art.h">Engineering artifacts</h2>
-        <p class="sub" data-i18n="art.sub">Templates I actually use, de-identified and free to take — the difference between a portfolio that <em>describes</em> competence and one that <em>hands you</em> some. Each is a real <code>.md</code> in the <a href="https://github.com/fabrideci/fabrideci.github.io/tree/main/lab">/lab</a> folder.</p>
-
-        <div class="grid-auto" id="grid">
-          <article class="art" data-id="adr">
-            <span class="afmt">▢ .md</span>
-            <h3 data-i18n="art.adr.h">Architecture Decision Record</h3>
-            <p data-i18n="art.adr.p">Capture a decision, its context, and the trade-offs — so future-you (and the team) knows <em>why</em>.</p>
-            <div class="aact">
-              <button class="view" data-id="adr" data-i18n="art.view">View</button>
-              <a class="dl" href="lab/adr-template.md" download data-i18n="art.dl">Download</a>
-              <a class="repo" href="https://github.com/fabrideci/fabrideci.github.io/blob/main/lab/adr-template.md" data-i18n="art.repo">Repo</a>
-            </div>
-          </article>
-
-          <article class="art" data-id="slo">
-            <span class="afmt">▢ .md</span>
-            <h3 data-i18n="art.slo.h">SLO definition</h3>
-            <p data-i18n="art.slo.p">A one-page spec for an objective: SLI, target, error budget, and the burn-rate alerts that back it.</p>
-            <div class="aact">
-              <button class="view" data-id="slo" data-i18n="art.view">View</button>
-              <a class="dl" href="lab/slo-definition.md" download data-i18n="art.dl">Download</a>
-              <a class="repo" href="https://github.com/fabrideci/fabrideci.github.io/blob/main/lab/slo-definition.md" data-i18n="art.repo">Repo</a>
-            </div>
-          </article>
-
-          <article class="art" data-id="incident">
-            <span class="afmt">▢ .md</span>
-            <h3 data-i18n="art.incident.h">Incident review</h3>
-            <p data-i18n="art.incident.p">A blameless postmortem skeleton: timeline, impact, root cause, and action items with owners.</p>
-            <div class="aact">
-              <button class="view" data-id="incident" data-i18n="art.view">View</button>
-              <a class="dl" href="lab/incident-review.md" download data-i18n="art.dl">Download</a>
-              <a class="repo" href="https://github.com/fabrideci/fabrideci.github.io/blob/main/lab/incident-review.md" data-i18n="art.repo">Repo</a>
-            </div>
-          </article>
-
-          <article class="art" data-id="tf">
-            <span class="afmt">▢ .md</span>
-            <h3 data-i18n="art.tf.h">Terraform module checklist</h3>
-            <p data-i18n="art.tf.p">The production-readiness gate a module passes before it's allowed on the paved road.</p>
-            <div class="aact">
-              <button class="view" data-id="tf" data-i18n="art.view">View</button>
-              <a class="dl" href="lab/terraform-module-checklist.md" download data-i18n="art.dl">Download</a>
-              <a class="repo" href="https://github.com/fabrideci/fabrideci.github.io/blob/main/lab/terraform-module-checklist.md" data-i18n="art.repo">Repo</a>
-            </div>
-          </article>
-
-          <article class="art" data-id="skill">
-            <span class="afmt">▢ .md</span>
-            <h3 data-i18n="art.skill.h">Claude Code skill</h3>
-            <p data-i18n="art.skill.p">A de-identified skill scaffold — description-as-trigger, progressive disclosure, and read-only-by-default guardrails.</p>
-            <div class="aact">
-              <button class="view" data-id="skill" data-i18n="art.view">View</button>
-              <a class="dl" href="lab/skill-template.md" download data-i18n="art.dl">Download</a>
-              <a class="repo" href="https://github.com/fabrideci/fabrideci.github.io/blob/main/lab/skill-template.md" data-i18n="art.repo">Repo</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="preview">
-          <div class="ph">
-            <span class="dots"><i style="background:#ff5f56"></i><i style="background:#ffbd2e"></i><i style="background:#27c93f"></i></span>
-            <span class="fn" id="fn">adr-template.md</span>
-            <span class="pmeta" data-i18n="art.pmeta">markdown · template</span>
-          </div>
-          <pre id="pv" tabindex="0" aria-label="Artifact preview" data-i18n-aria="aria.preview"></pre>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         8 · Skills & stack
+         6 · Skills & certifications
          =================================================================== -->
     <section class="section" id="skills" aria-labelledby="skills-h">
       <div class="wrap">
-        <span class="eyebrow" data-i18n="skills.eyebrow">// skills &amp; stack</span>
-        <h2 class="h" id="skills-h" data-i18n="skills.h">Skills &amp; stack</h2>
-        <div class="clusters">
-          <div class="cluster"><h3 data-i18n="skills.c1">Cloud &amp; containers</h3><div class="tags"><span>Azure</span><span>AKS</span><span>Container Apps</span><span>Azure Functions</span><span>Kubernetes</span><span>Docker</span><span>Helm</span><span>VMs</span></div></div>
-          <div class="cluster"><h3 data-i18n="skills.c2">IoT &amp; messaging</h3><div class="tags"><span>IoT Hub</span><span>Event Hub</span><span>MQTT</span><span>CoAP</span><span>LWM2M</span><span>device identity</span><span>OTA</span></div></div>
-          <div class="cluster"><h3 data-i18n="skills.c3">Data &amp; analytics</h3><div class="tags"><span>Cosmos DB</span><span>Storage</span><span>Data Factory</span><span>Databricks</span><span>Microsoft Fabric</span></div></div>
-          <div class="cluster"><h3 data-i18n="skills.c4">Networking &amp; security</h3><div class="tags"><span>VNet</span><span>VPN</span><span>DNS Zones</span><span>Key Vault</span></div></div>
-          <div class="cluster"><h3 data-i18n="skills.c5">Infrastructure as Code</h3><div class="tags"><span>Terraform</span><span>Terragrunt</span><span>ARM/Bicep</span><span>Ansible</span></div></div>
-          <div class="cluster"><h3 data-i18n="skills.c6">CI/CD &amp; automation</h3><div class="tags"><span>Azure DevOps</span><span>Managed DevOps Pools</span><span>YAML pipelines</span><span>Bash</span><span>PowerShell</span></div></div>
-          <div class="cluster"><h3 data-i18n="skills.c7">Observability &amp; SRE</h3><div class="tags"><span>Datadog</span><span>Grafana</span><span>Prometheus</span><span>SLOs</span><span>error budgets</span><span>incident response</span></div></div>
-          <div class="cluster"><h3 data-i18n="skills.c8">Practices &amp; leadership</h3><div class="tags"><span>Agile</span><span>TDD</span><span>ADRs</span><span>mentoring</span><span>AI-assisted delivery</span></div></div>
+        <span class="eyebrow" data-i18n="skills.eyebrow">// skills</span>
+        <h2 class="h" id="skills-h" data-i18n="skills.h">Skills &amp; certifications</h2>
+        <div class="skmatrix">
+          <div class="skrow"><h3 data-i18n="skills.c1">Cloud &amp; containers</h3><p>Azure · AKS · Container Apps · Kubernetes · Docker · Helm</p></div>
+          <div class="skrow"><h3 data-i18n="skills.c2">IoT &amp; messaging</h3><p>IoT Hub · Event Hub · MQTT · CoAP · LWM2M · device identity · OTA</p></div>
+          <div class="skrow"><h3 data-i18n="skills.c3">IaC &amp; CI/CD</h3><p>Terraform · Terragrunt · Bicep · Ansible · Azure DevOps · YAML pipelines</p></div>
+          <div class="skrow"><h3 data-i18n="skills.c4">Observability &amp; SRE</h3><p>Datadog · Grafana · Prometheus · SLOs · error budgets · incident response</p></div>
+          <div class="skrow"><h3 data-i18n="skills.c5">AI-assisted delivery</h3><p>Claude Code · MCP · multi-agent orchestration · TypeScript</p></div>
+          <div class="skrow" id="certs"><h3 data-i18n="skills.certs">Certifications</h3><p><b>CKA</b> Certified Kubernetes Administrator (2022) · <b>LFCS</b> Linux Foundation Certified Sysadmin (2023) · <b>AZ-104</b> Azure Administrator (2023) · <b>AZ-400</b> DevOps Solutions (2023)</p></div>
         </div>
       </div>
     </section>
 
     <!-- ===================================================================
-         9 · Certifications
-         =================================================================== -->
-    <section class="section" id="certs" aria-labelledby="certs-h">
-      <div class="wrap">
-        <span class="eyebrow" data-i18n="certs.eyebrow">// certifications</span>
-        <h2 class="h" id="certs-h" data-i18n="certs.h">Certifications</h2>
-        <div class="certs">
-          <div class="cert"><div class="code">CKA</div><div class="cname">Certified Kubernetes Administrator</div><div class="ci">Linux Foundation · 2022</div></div>
-          <div class="cert"><div class="code">LFCS</div><div class="cname">Linux Foundation Certified Sysadmin</div><div class="ci">Linux Foundation · 2023</div></div>
-          <div class="cert"><div class="code">AZ-104</div><div class="cname">Microsoft Azure Administrator</div><div class="ci">Microsoft · 2023</div></div>
-          <div class="cert"><div class="code">AZ-400</div><div class="cname">Designing &amp; Implementing DevOps Solutions</div><div class="ci">Microsoft · 2023</div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         10 · Contact
+         7 · Contact
          =================================================================== -->
     <section class="section contact" id="contact" aria-labelledby="contact-h">
       <div class="wrap">
@@ -676,7 +525,7 @@
   </main>
 
   <!-- ===================================================================
-       11 · Footer status bar
+       8 · Footer status bar
        =================================================================== -->
   <footer class="status">
     <span class="l"><span class="dot"></span> <span data-i18n="foot.status">All systems operational</span></span>
