@@ -118,19 +118,20 @@
     'node.release.nm':'Release', 'node.release.ro':'promozione',
     'node.infrastructure.nm':'Infrastruttura', 'node.infrastructure.ro':'controlli IaC',
     'node.reliability.nm':'Reliability', 'node.reliability.ro':'SLO · incidenti',
-    'node.self-improvement.nm':'Auto-miglioramento', 'node.self-improvement.ro':'ciclo settimanale',
+    'node.self-improvement.nm':'Auto-miglioramento', 'node.self-improvement.ro':'loop schedulato',
     'node.skills.nm':'Livello di skill riutilizzabili', 'node.skills.ro':'convenzioni condivise · guardrail di sicurezza',
     'work.ichip1':'Sorgente e PR', 'work.ichip2':'Issue', 'work.ichip3':'CI/CD',
     'work.ichip4':'Qualità del codice', 'work.ichip5':'Osservabilità', 'work.ichip6':'Chat',
     'work.hintline':'Ogni agente è responsabile di <b>un singolo workflow</b> e porta solo il contesto che gli serve — organizzato per workflow, non per ruolo.',
-    'work.run':'<span class="pr">$</span> review --pr 1487\n<span class="ar">→ orchestratore: smistamento agli specialisti</span>\n<span class="ok">✓</span> code review — standard + impatto pipeline\n<span class="ok">✓</span> qa — checkout branch + test\n<span class="ok">✓</span> release — pronto per la promozione\n<span class="ok">✓</span> reliability — SLO + segnali di incidente\n<span class="ok">✓</span> <span class="b">review pronta — 0 bloccanti, 2 suggerimenti</span>',
+    'work.run':'<span class="pr">$</span> review --pr 1487\n<span class="ar">→ l\'orchestratore distribuisce gli specialisti in parallelo</span>\n<span class="ok">✓</span> code review — standard + impatto pipeline\n<span class="ok">✓</span> qa — checkout branch + test\n<span class="ok">✓</span> release — pronto per la promozione\n<span class="ok">✓</span> reliability — SLO + segnali di incidente\n<span class="ok">✓</span> verify — 2 risultati confermati, 1 respinto\n<span class="ok">✓</span> <span class="b">review pronta — 0 bloccanti, 2 suggerimenti</span>',
     'work.problem.h':'Problema',
     'work.problem.p':'In un insieme crescente di repository, code review, QA, coordinamento dei rilasci e monitoraggio dell\'affidabilità erano in gran parte manuali — lenti da eseguire, difficili da mantenere coerenti e un costante drenaggio del tempo degli ingegneri senior.',
     'work.approach.h':'Approccio',
-    'work.approach.p':'Ho progettato e costruito un insieme di agenti AI specialisti in Claude Code, ciascuno responsabile di un singolo workflow e con una libreria comune di skill riutilizzabili. Si integrano con il toolchain esistente del team tramite MCP, stanno dietro a <b>guardrail di sicurezza che bloccano qualsiasi cosa distruttiva</b> e alimentano un ciclo settimanale di auto-analisi che fa emergere le lacune.',
-    'work.dl':'due decisioni che l\'hanno plasmato',
+    'work.approach.p':'Ho progettato e costruito un insieme di agenti AI specialisti in Claude Code, ciascuno responsabile di un singolo workflow e con una libreria comune di skill riutilizzabili. L\'orchestratore li compone in <b>workflow dinamici che distribuiscono il lavoro in parallelo e verificano in modo avversariale i risultati</b> prima che emergano. Si integrano con il toolchain esistente del team tramite MCP, stanno dietro a <b>guardrail di sicurezza che bloccano qualsiasi cosa distruttiva</b> e quelli di sola lettura girano come <b>loop schedulati</b> che intercettano le derive e pubblicano un riepilogo — senza mai agire in autonomia.',
+    'work.dl':'tre decisioni che l\'hanno plasmato',
     'work.dec1':'Organizzare gli agenti <b>per workflow, non per ruolo</b> — così ciascuno porta solo il contesto che gli serve.',
     'work.dec2':'Spostare le convenzioni condivise in un <b>livello di skill</b> — così la conoscenza non è duplicata tra gli agenti.',
+    'work.dec3':'Fare dell\'orchestrazione un <b>workflow, non uno script</b> — distribuisci, verifica, poi sintetizza.',
     'work.outcome.h':'Risultato',
     'work.outcome.p':'Distribuito al team di lead engineering e ora parte di come la piattaforma rilascia. Lo misuro rispetto a <b>baseline di adozione, cycle time e defect-leakage</b> piuttosto che a metriche di vanità — con il ciclo di feedback che migliora costantemente gli agenti nel tempo.',
 
@@ -152,7 +153,7 @@
     'sys3.move':'giustifica il cluster rispetto al numero di servizi e alla capacità di on-call.',
     'sys4.tag':'AI nella delivery',
     'sys4.stance':'Lascia che gli agenti propongano; non lasciarli mai pushare senza supervisione.',
-    'sys4.why':'Gli agenti AI sono un moltiplicatore di forza su review, QA e preparazione dei rilasci — ma qualsiasi cosa distruttiva resta dietro un gate umano e un guardrail. Organizzali per workflow così ciascuno porta contesto minimo, dai loro un livello di skill condiviso così le convenzioni non divergono. <b>La vittoria è coerenza e meno lavoro ripetitivo, non autonomia fine a se stessa.</b>',
+    'sys4.why':'Gli agenti AI sono un moltiplicatore di forza su review, QA e preparazione dei rilasci — ma qualsiasi cosa distruttiva resta dietro un gate umano e un guardrail. Componili in <b>workflow che distribuiscono il lavoro e si auto-verificano</b>, dai loro un livello di skill condiviso così le convenzioni non divergono, e fai girare quelli di sola lettura <b>su una schedulazione</b> così i problemi emergono da soli. <b>La vittoria è coerenza e meno lavoro ripetitivo, non autonomia fine a se stessa.</b>',
     'sys4.move':'agenti dietro guardrail, con gate su qualsiasi cosa irreversibile.',
     'sys5.tag':'affidabilità vs costo',
     'sys5.stance':'Uno SLO è un budget — spendilo, non sovra-ingegnerizzare.',
@@ -342,9 +343,9 @@
         reliability:{ n:'Reliability agent', r:'SLOs · incident signals', o:[
           'Watches SLOs and incident signals.',
           'Surfaces reliability risk tied to a specific change.'] },
-        'self-improvement':{ n:'Self-improvement loop', r:'weekly self-analysis', o:[
-          'Weekly self-analysis that surfaces gaps.',
-          'Feeds improvements back into the agents.'] },
+        'self-improvement':{ n:'Self-improvement loop', r:'scheduled · read + notify', o:[
+          'A scheduled loop that reads recent history and surfaces gaps.',
+          'Posts a summary to chat — never acts on its own.'] },
         skills:{ n:'Shared skills layer', r:'conventions · safety guardrails', o:[
           'Reusable conventions every agent draws on — plus safety guardrails.',
           'Guardrails gate anything destructive.'] }
@@ -368,9 +369,9 @@
         reliability:{ n:'Agente Reliability', r:'SLO · segnali di incidente', o:[
           'Osserva SLO e segnali di incidente.',
           'Fa emergere il rischio di affidabilità legato a una modifica specifica.'] },
-        'self-improvement':{ n:'Ciclo di auto-miglioramento', r:'auto-analisi settimanale', o:[
-          'Auto-analisi settimanale che fa emergere le lacune.',
-          'Riporta i miglioramenti negli agenti.'] },
+        'self-improvement':{ n:'Ciclo di auto-miglioramento', r:'schedulato · legge e notifica', o:[
+          'Un loop schedulato che legge la cronologia recente e fa emergere le lacune.',
+          'Pubblica un riepilogo in chat — non agisce mai da solo.'] },
         skills:{ n:'Livello di skill condivise', r:'convenzioni · guardrail di sicurezza', o:[
           'Convenzioni riutilizzabili a cui ogni agente attinge — più guardrail di sicurezza.',
           'I guardrail bloccano qualsiasi cosa distruttiva.'] }
