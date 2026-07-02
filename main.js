@@ -199,7 +199,7 @@
   // Document-level strings that live in attributes, not innerHTML.
   var META_IT = {
     title:'Fabrizio De Cicco — Architetto di Infrastrutture IoT',
-    desc:'Fabrizio De Cicco — Architetto di Infrastrutture IoT e Lead DevOps Engineer. 10+ anni a costruire infrastrutture cloud affidabili per piattaforme IoT globali. Azure, Kubernetes, Terraform, Datadog, SRE.',
+    desc:'Fabrizio De Cicco — Architetto di Infrastrutture IoT e Lead DevOps Engineer. 10+ anni a costruire infrastrutture cloud affidabili per piattaforme IoT globali. Azure, Kubernetes, Terraform, Datadog, SRE. Costruisce anche tooling di delivery AI multi-agente su Claude Code.',
     cinPh:'scrivi un comando…'
   };
 
