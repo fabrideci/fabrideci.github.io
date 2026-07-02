@@ -10,13 +10,16 @@
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------------------------------------------------------------------
-     Theme — shared setTheme(), persisted, drives the toggle + terminal
+     Theme — shared setTheme(), persisted, drives the toggle + terminal.
+     Keeps the browser chrome (theme-color) in sync with the page.
      --------------------------------------------------------------------- */
   var seg = document.getElementById('themeSeg');
+  var metaThemeEl = document.querySelector('meta[name="theme-color"]');
   function setTheme(mode){
     if(mode !== 'light' && mode !== 'dark') return;
     root.setAttribute('data-theme', mode);
     try{ localStorage.setItem('theme', mode); }catch(e){}
+    if(metaThemeEl) metaThemeEl.setAttribute('content', getComputedStyle(root).getPropertyValue('--bg').trim());
     if(seg) seg.querySelectorAll('button').forEach(function(b){
       b.setAttribute('aria-pressed', b.dataset.thm === mode ? 'true' : 'false');
     });
@@ -45,62 +48,17 @@
     'aria.lang':'Lingua', 'aria.theme':'Tema', 'aria.stream':'Output del terminale',
     'aria.cin':'Comando terminale — scrivi help', 'aria.sections':'Sezioni',
     'aria.slider':'Cursore obiettivo SLO', 'aria.preview':'Anteprima artefatto',
-    'aria.orchtabs':'Viste del laboratorio di orchestrazione',
-    'bar.lang':'Lingua', 'bar.theme':'Tema', 'bar.dark':'Scuro', 'bar.light':'Chiaro',
+    'bar.dark':'Scuro', 'bar.light':'Chiaro',
     'term.connected':'connesso',
-    'hero.scroll':'↓ scorri per il sito completo',
-    'hero.role':'Architetto di Infrastrutture IoT e Lead DevOps Engineer',
-    'hero.bio':'Ho oltre 10 anni di esperienza nella costruzione di infrastrutture cloud affidabili per piattaforme IoT globali — attualmente guido l\'architettura e l\'affidabilità dell\'infrastruttura IoT in Culligan International. Gestisco <strong>oltre 50.000 dispositivi in produzione, in crescita verso ~300.000</strong>, su Azure con Kubernetes, IaC Terraform-first e osservabilità basata su Datadog. Azure gestisce i flussi MQTT; un bridge IoT parla CoAP e LWM2M.',
+    'nav.work':'Caso di studio', 'nav.principles':'Come costruisco', 'nav.experience':'Esperienza',
+    'nav.lab':'Laboratorio', 'nav.contact':'Contatti',
+
+    'hero.value':'Gestisco l\'infrastruttura cloud dietro <b>oltre 50.000 dispositivi connessi</b> — e costruisco il tooling AI che aiuta a rilasciare la piattaforma.',
+    'hero.support':'Infrastructure Architect in Culligan International · Azure, Kubernetes, Terraform, Datadog · Torino, Italia — disponibile da remoto',
     'hero.fact1':'<b>50.000+</b> dispositivi in produzione',
     'hero.fact2':'in crescita verso <b>~300.000</b>',
-    'hero.fact3':'10+ anni',
+    'hero.fact3':'<b>10+ anni</b> di infrastrutture',
     'hero.fact4':'CKA · LFCS · AZ-104 · AZ-400',
-    'hero.fact5':'Focalizzato su Terraform',
-    'nav.work':'Caso di studio', 'nav.principles':'Principi', 'nav.experience':'Esperienza',
-    'nav.systems':'Sistemi che costruirei', 'nav.lab':'Reliability Lab', 'nav.orchestration':'Laboratorio di orchestrazione', 'nav.artifacts':'Artefatti',
-    'nav.skills':'Competenze', 'nav.certs':'Certificazioni', 'nav.contact':'Contatti',
-    'hero.note':'La pagina si apre come un terminale interattivo — ogni comando corrisponde a una sezione reale, quindi il terminale è la navigazione del sito. Scrivi <span class="ac">help</span> per iniziare, premi <span class="ac">Tab</span> per completare, oppure prova <span class="ac">slo 99.9</span> per un vero error budget. Qui è tutto statico: <b>0 dipendenze, 0 tracker</b>.',
-
-    'principles.eyebrow':'// come lavoro',
-    'principles.h':'Principi operativi',
-    'principles.sub':'Sei convinzioni che plasmano il mio modo di costruire — e, per ciascuna, la modalità di guasto da cui ti protegge e la pratica che la rende concreta. Il colore è essenziale: <b>ambra = il guasto</b>, <b>verde = la risposta</b>.',
-    'principles.fmlab':'⚠ modalità di guasto', 'principles.rslab':'✓ risposta',
-    'pr1.cat':'affidabilità', 'pr1.h':'L\'affidabilità è una funzionalità.',
-    'pr1.fm':'L\'affidabilità viene aggiunta dopo il lancio — la prima volta che scopri che un percorso è fragile è da un utente, alle 3 del mattino.',
-    'pr1.rs':'Progetta per il guasto, definisci gli SLO in anticipo, spendi l\'error budget come denaro vero. Datadog, Grafana e Prometheus osservano ciò che gli utenti percepiscono davvero.',
-    'pr2.cat':'automazione', 'pr2.h':'Automatizza il lavoro ripetitivo.',
-    'pr2.fm':'I passaggi manuali divergono, vengono saltati sotto pressione e vivono nella testa di una sola persona — finché quella persona non è in ferie.',
-    'pr2.rs':'Fatto a mano due volte → diventa codice. Terraform e Azure DevOps fanno la ripetizione; il giudizio resta alle persone.',
-    'pr3.cat':'osservabilità', 'pr3.h':'Non puoi gestire ciò che non vedi.',
-    'pr3.fm':'Senza segnali fai debug tirando a indovinare; l\'MTTR esplode perché un cliente se n\'è accorto prima di qualsiasi dashboard.',
-    'pr3.rs':'Metriche, log, tracce e SLO arrivano con il sistema, non dopo — l\'osservabilità è un requisito di build, non un ticket di follow-up.',
-    'pr4.cat':'semplicità', 'pr4.h':'Vince ciò che è noioso e prevedibile.',
-    'pr4.fm':'Un\'infrastruttura ingegnosa e su misura diventa un singolo punto di guasto che solo il suo autore comprende — e non sarà sempre reperibile.',
-    'pr4.rs':'Scegli componenti semplici e ben conosciuti, e percorsi consolidati. Il prevedibile batte l\'ingegnoso ogni volta che ti chiamano in reperibilità.',
-    'pr5.cat':'infrastructure as code', 'pr5.h':'Infrastructure as code, o non è successo.',
-    'pr5.fm':'I server snowflake e le modifiche click-ops non possono essere revisionati, riprodotti o annullati — e nessuno ricorda perché la produzione differisce dallo staging.',
-    'pr5.rs':'Tutto riproducibile, revisionabile, versionato in Terraform. Niente snowflake, niente sorprese, storia completa in Git.',
-    'pr6.cat':'leadership', 'pr6.h':'Guidare abilitando.',
-    'pr6.fm':'Un eroe che detiene tutta la conoscenza è un collo di bottiglia; il team si blocca ogni volta che non è disponibile, e a quel punto arriva il burnout.',
-    'pr6.rs':'Fai mentoring, documenta e rimuovi gli attriti così il team va più veloce di quanto potrebbe chiunque da solo — me incluso.',
-
-    'exp.eyebrow':'// esperienza',
-    'exp.h':'Dove ho costruito',
-    'exp.sub':'Ogni ruolo porta un glifo a tratto lineare ispirato al dominio di quell\'azienda — che fa anche da metafora infrastrutturale. Passa il mouse su un ruolo per vedere il suo motivo muoversi.',
-    'exp1.h':'Architetto di Infrastrutture <span style="color:var(--dim); font-weight:500">(prec. DevOps Engineer)</span>',
-    'exp1.when':'Lug 2023 — oggi', 'exp1.pill':'Milano · IoT · acqua',
-    'exp1.b1':'Guido l\'architettura e l\'affidabilità dell\'infrastruttura IoT per la Culligan IoT Platform.',
-    'exp1.b2':'Sono responsabile end-to-end di design e operazioni dell\'infrastruttura — scalabilità, sicurezza, costi.',
-    'exp1.b3':'Faccio mentoring al team DevOps/SRE; faccio evolvere CI/CD, IaC e Datadog sull\'IoT globale.',
-    'exp2.h':'DevOps Engineer', 'exp2.when':'Mar 2022 — Lug 2023', 'exp2.pill':'Torino · container · scala',
-    'exp2.b1':'Costruito e mantenuto pipeline CI/CD scalabili su Azure DevOps (YAML).',
-    'exp2.b2':'Automatizzato il provisioning con Ansible, Bicep e Rundeck — meno config manuale.',
-    'exp2.b3':'Avviato osservabilità e logging con Datadog per un rilevamento più rapido.',
-    'exp3.h':'Supervisore Supporto <span style="color:var(--dim); font-weight:500">→ Software Engineer</span>',
-    'exp3.when':'Ago 2015 — Mar 2022', 'exp3.pill':'Torino · sport · real-time',
-    'exp3.b1':'Supervisionato un team di supporto applicativo di <strong style="color:var(--text)">12 persone</strong>.',
-    'exp3.b2':'Costruito app backend e web (C#, SQL, ASP.NET, Angular) — Agile / TDD.',
-    'exp3.b3':'Mantenuto microservizi ad alta disponibilità su Azure con Docker e Kubernetes.',
 
     'work.eyebrow':'// lavori selezionati',
     'work.h':'Assistente di ingegneria multi-agente',
@@ -134,11 +92,17 @@
     'work.dec2':'Spostare le convenzioni condivise in un <b>livello di skill</b> — così la conoscenza non è duplicata tra gli agenti.',
     'work.dec3':'Fare dell\'orchestrazione un <b>workflow, non uno script</b> — distribuisci, verifica, poi sintetizza.',
     'work.outcome.h':'Risultato',
-    'work.outcome.p':'Distribuito al team di lead engineering e ora parte di come la piattaforma rilascia. Lo misuro rispetto a <b>baseline di adozione, cycle time e defect-leakage</b> piuttosto che a metriche di vanità — con il ciclo di feedback che migliora costantemente gli agenti nel tempo.',
+    'work.outcome.p':'Distribuito al team di lead engineering e in uso quotidiano — <b>sette agenti specialisti con una libreria di oltre 30 skill</b>, dietro guardrail che bloccano qualsiasi cosa distruttiva. La qualità delle review è migliorata visibilmente e il feedback degli sviluppatori è stato costantemente positivo; la prossima iterazione aggiunge i numeri con cui voglio gestirlo — <b>cycle time e defect leakage</b> — perché l\'adozione va misurata, non presunta.',
+    'work.fanout.h':'Il fan-out, quantificato',
 
-    'sys.eyebrow':'// architettura',
-    'sys.h':'Sistemi che costruirei',
-    'sys.sub':'Il lavoro passato mostra cosa ho fatto; questo mostra come <b>penso</b>. Cinque posizioni che difenderei su come costruire e scalare una piattaforma — volutamente schierate.',
+    'orch.n':'Sottotask', 'orch.t':'Secondi / agente', 'orch.c':'Limite di concorrenza',
+    'orch.model':'Modellato come workflow a due fasi: distribuisci → verifica in modo avversariale.',
+    'orch.best':'Miglior speedup', 'orch.vs':'rispetto a eseguirli uno dopo l\'altro',
+    'orch.hint':'È il limite — non il numero — a fissare il wall-clock; una pipeline salta l\'onda ferma della barriera.',
+
+    'sys.eyebrow':'// come costruisco',
+    'sys.h':'Come costruisco',
+    'sys.sub':'Sei posizioni che difenderei su come costruire e scalare una piattaforma — volutamente schierate.',
     'sys.movelab':'prima mossa',
     'sys1.tag':'baseline della piattaforma',
     'sys1.stance':'Rilascia identità, aggiornamenti e osservabilità prima di una singola funzionalità.',
@@ -160,46 +124,49 @@
     'sys5.stance':'Uno SLO è un budget — spendilo, non sovra-ingegnerizzare.',
     'sys5.why':'Inseguire più nove di quanti gli utenti percepiscano davvero brucia solo denaro e tempo di ingegneria. Definisci lo SLO dall\'esperienza utente reale, poi spendi l\'error budget: rilascia più velocemente finché è sano, rallenta e irrobustisci quando non lo è. <b>Affidabilità e costo non sono opposti — l\'error budget è la manopola che li scambia di proposito.</b>',
     'sys5.move':'imposta gli SLO da segnali percepiti dagli utenti, poi lascia che il budget guidi il ritmo.',
+    'sys6.tag':'leadership',
+    'sys6.stance':'Se il team non può rilasciare senza di me, ho fallito.',
+    'sys6.why':'Un lead che accentra il contesto diventa il collo di bottiglia: il team si blocca ogni volta che non è disponibile, e poi arriva il burnout. Il mio lavoro è rendermi progressivamente non necessario — mentoring, documentazione, percorsi consolidati — <b>così il team va più veloce di quanto potrebbe chiunque da solo.</b>',
+    'sys6.move':'scrivilo, passalo di mano, e resta fuori dal percorso critico.',
 
-    'lab.eyebrow':'// reliability lab',
-    'lab.h':'Calcolatore di error budget',
-    'lab.sub':'Scegli un obiettivo di disponibilità e vedi quanto downtime ti concede davvero — il numero dietro ogni conversazione "servono più nove".',
+    'exp.eyebrow':'// esperienza',
+    'exp.h':'Dove ho costruito',
+    'exp1.h':'Architetto di Infrastrutture <span>(prec. DevOps Engineer)</span>',
+    'exp1.when':'Lug 2023 — oggi', 'exp1.pill':'Milano · IoT · acqua',
+    'exp1.b1':'Guido l\'architettura e l\'affidabilità dell\'infrastruttura IoT per la Culligan IoT Platform.',
+    'exp1.b2':'Sono responsabile end-to-end di design e operazioni dell\'infrastruttura — scalabilità, sicurezza, costi.',
+    'exp1.b3':'Faccio mentoring al team DevOps/SRE; faccio evolvere CI/CD, IaC e Datadog sull\'IoT globale.',
+    'exp2.h':'DevOps Engineer', 'exp2.when':'Mar 2022 — Lug 2023', 'exp2.pill':'Torino · container · scala',
+    'exp2.b1':'Costruito e mantenuto pipeline CI/CD scalabili su Azure DevOps (YAML).',
+    'exp2.b2':'Automatizzato il provisioning con Ansible, Bicep e Rundeck — meno config manuale.',
+    'exp2.b3':'Avviato osservabilità e logging con Datadog per un rilevamento più rapido.',
+    'exp3.h':'Supervisore Supporto <span>→ Software Engineer</span>',
+    'exp3.when':'Ago 2015 — Mar 2022', 'exp3.pill':'Torino · sport · real-time',
+    'exp3.b1':'Supervisionato un team di supporto applicativo di <strong>12 persone</strong>.',
+    'exp3.b2':'Costruito app backend e web (C#, SQL, ASP.NET, Angular) — Agile / TDD.',
+    'exp3.b3':'Mantenuto microservizi ad alta disponibilità su Azure con Docker e Kubernetes.',
+
+    'lab.eyebrow':'// il laboratorio',
+    'lab.h':'Il laboratorio',
+    'lab.sub':'Template che uso davvero — anonimizzati e liberi da usare — più il numero dietro ogni conversazione "servono più nove".',
+    'lab.calc.h':'Calcolatore di error budget',
+    'lab.calcsub':'Scegli un obiettivo di disponibilità e vedi quanto downtime ti concede davvero.',
     'lab.targetslo':'SLO obiettivo', 'lab.commontargets':'Obiettivi comuni',
     'lab.budgetlab':'Error budget', 'lab.budgetof':'del tempo in cui puoi essere down',
 
-    'orch.eyebrow':'// laboratorio di orchestrazione',
-    'orch.h':'Laboratorio di orchestrazione',
-    'orch.sub':'Il vantaggio dietro "orchestralo con gli agenti" — distribuisci il lavoro in parallelo, o eseguilo su una schedulazione. Due viste, numeri reali.',
-    'orch.tab.fanout':'Fan-out', 'orch.tab.schedule':'Schedulazione',
-    'orch.n':'Sottotask', 'orch.t':'Secondi / agente', 'orch.c':'Limite di concorrenza',
-    'orch.model':'Modellato come workflow a due fasi: distribuisci → verifica in modo avversariale.',
-    'orch.best':'Miglior speedup', 'orch.vs':'rispetto a eseguirli uno dopo l\'altro',
-    'orch.hint':'È il limite — non il numero — a fissare il wall-clock; una pipeline salta l\'onda ferma della barriera.',
-    'orch.loops':'Loop schedulati',
-    'orch.loop.triage':'triage dipendenze', 'orch.loop.analysis':'auto-analisi',
-    'orch.loop.hint':'I loop leggono e notificano su una schedulazione — non agiscono mai in autonomia. Qualsiasi cosa distruttiva resta dietro un gate umano.',
-
-    'art.eyebrow':'// artefatti',
     'art.h':'Artefatti di ingegneria',
-    'art.sub':'Template che uso davvero, anonimizzati e liberi da usare — la differenza tra un portfolio che <em>descrive</em> competenza e uno che te ne <em>mette in mano un pezzo</em>. Ognuno è un vero <code>.md</code> nella cartella <a href="https://github.com/fabrideci/fabrideci.github.io/tree/main/lab">/lab</a>.',
-    'art.adr.h':'Architecture Decision Record',
-    'art.adr.p':'Cattura una decisione, il suo contesto e i trade-off — così il te futuro (e il team) sa <em>perché</em>.',
-    'art.slo.h':'Definizione SLO',
-    'art.slo.p':'Una specifica di una pagina per un obiettivo: SLI, target, error budget e gli alert sul burn-rate che lo sostengono.',
-    'art.incident.h':'Revisione incidente',
-    'art.incident.p':'Uno scheletro di postmortem senza colpe: timeline, impatto, causa radice e azioni con responsabili.',
-    'art.tf.h':'Checklist modulo Terraform',
-    'art.tf.p':'Il gate di production-readiness che un modulo supera prima di essere ammesso sul percorso consolidato.',
-    'art.skill.h':'Skill di Claude Code',
-    'art.skill.p':'Uno scaffold di skill anonimizzato — descrizione-come-trigger, divulgazione progressiva e guardrail di sola lettura per impostazione predefinita.',
-    'art.view':'Vedi', 'art.dl':'Scarica', 'art.repo':'Repo', 'art.pmeta':'markdown · template',
+    'art.sub':'Ognuno è un vero <code>.md</code> nella cartella <a href="https://github.com/fabrideci/fabrideci.github.io/tree/main/lab">/lab</a> del repo di questo sito.',
+    'art.adr.p':'una decisione, il suo contesto e i trade-off — così il te futuro sa <em>perché</em>.',
+    'art.slo.p':'SLI, target, error budget e gli alert sul burn-rate che lo sostengono.',
+    'art.incident.p':'postmortem senza colpe: timeline, impatto, causa radice, azioni con responsabili.',
+    'art.tf.p':'il gate di production-readiness prima che un modulo entri sul percorso consolidato.',
+    'art.skill.p':'scaffold di una skill Claude Code — descrizione-trigger, divulgazione progressiva, guardrail.',
+    'art.view':'Vedi', 'art.dl':'Scarica', 'art.pmeta':'markdown · template',
 
-    'skills.eyebrow':'// competenze e stack', 'skills.h':'Competenze e stack',
-    'skills.c1':'Cloud e container', 'skills.c2':'IoT e messaggistica', 'skills.c3':'Dati e analytics',
-    'skills.c4':'Networking e sicurezza', 'skills.c5':'Infrastructure as Code', 'skills.c6':'CI/CD e automazione',
-    'skills.c7':'Osservabilità e SRE', 'skills.c8':'Pratiche e leadership',
-
-    'certs.eyebrow':'// certificazioni', 'certs.h':'Certificazioni',
+    'skills.eyebrow':'// competenze', 'skills.h':'Competenze e certificazioni',
+    'skills.c1':'Cloud e container', 'skills.c2':'IoT e messaggistica', 'skills.c3':'IaC e CI/CD',
+    'skills.c4':'Osservabilità e SRE', 'skills.c5':'Delivery assistita dall\'AI',
+    'skills.certs':'Certificazioni',
 
     'contact.eyebrow':'// contatti',
     'contact.h':'Costruiamo qualcosa di affidabile.',
@@ -284,7 +251,7 @@
   }
 
   /* ---------------------------------------------------------------------
-     Reliability Lab — error-budget calculator (also reused by terminal slo)
+     Error-budget calculator (WINMINS is shared with the terminal slo command)
      --------------------------------------------------------------------- */
   var WINMINS = [1440, 10080, 43200, 129600, 525600];
   var WINLABELS = {
@@ -297,6 +264,12 @@
     var h = m/60; if(h < 24) return h.toFixed(h<10 ? 2 : 1) + ' h';
     return (h/24).toFixed(1) + ' d';
   }
+  function wcard(label, value, opts){
+    opts = opts || {};
+    return '<div class="wcard' + (opts.mo ? ' mo' : '') + '"><div class="wt">' + label +
+           '</div><div class="wv">' + value + '</div>' +
+           (opts.sub != null ? '<span class="wsub">' + opts.sub + '</span>' : '') + '</div>';
+  }
   (function lab(){
     var num = document.getElementById('num'),
         range = document.getElementById('range'),
@@ -308,13 +281,12 @@
     var shown = 99.9;
     function calc(s){
       shown = s;
-      if(!isFinite(s)) s = 0; if(s < 0) s = 0; if(s > 100) s = 100;
+      if(s < 0) s = 0; if(s > 100) s = 100;
       var b = 1 - s/100;
       var labels = WINLABELS[currentLang()];
       budget.textContent = (b*100).toFixed(s>99.99 ? 4 : (s>99.9 ? 3 : 2)) + '%';
       windows.innerHTML = WINMINS.map(function(min, i){
-        return '<div class="wcard'+(i===2?' mo':'')+'"><div class="wt">'+labels[i]+
-               '</div><div class="wv">'+fmtDur(b*min)+'</div></div>';
+        return wcard(labels[i], fmtDur(b*min), { mo:i===2 });
       }).join('');
     }
     function setVal(v, from){
@@ -333,41 +305,21 @@
   })();
 
   /* ---------------------------------------------------------------------
-     Orchestration Lab — a tabbed widget with the same 0-dependency shape as
-     the Reliability Lab above. Tab 1 turns the fan-out → verify workflow into
-     concrete wall-clock (sequential vs parallel vs pipeline); tab 2 shows the
-     scheduled loops as read-and-notify, never act.
+     Fan-out model — turns the case study's fan-out → verify workflow into
+     concrete wall-clock (sequential vs parallel vs pipeline).
      --------------------------------------------------------------------- */
-  (function orchestration(){
-    var root = document.getElementById('orchestration');
-    if(!root) return;
+  (function fanout(){
+    var nEl = document.getElementById('oc-n'),
+        tEl = document.getElementById('oc-t'),
+        cEl = document.getElementById('oc-c'),
+        rowsEl = document.getElementById('oc-rows'),
+        spEl = document.getElementById('oc-speedup');
+    if(!rowsEl) return;
 
-    // JS-rendered copy, per language (static labels use data-i18n in the HTML).
     var OTX = {
-      en: {
-        rows:{ sequential:'sequential', parallel:'parallel', pipeline:'pipeline' },
-        faster:'faster',
-        days:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-        det:{ reads:'reads', emits:'emits', acts:'acts' },
-        loops:{
-          triage:  { reads:'open dependency PRs',    emits:'one chat summary', acts:'never · read + notify' },
-          analysis:{ reads:'recent session history', emits:'one chat summary', acts:'never · read + notify' }
-        }
-      },
-      it: {
-        rows:{ sequential:'sequenziale', parallel:'parallelo', pipeline:'pipeline' },
-        faster:'più veloce',
-        days:['Lun','Mar','Mer','Gio','Ven','Sab','Dom'],
-        det:{ reads:'legge', emits:'pubblica', acts:'agisce' },
-        loops:{
-          triage:  { reads:'PR di dipendenze aperte',     emits:'un riepilogo in chat', acts:'mai · legge e notifica' },
-          analysis:{ reads:'cronologia sessioni recente', emits:'un riepilogo in chat', acts:'mai · legge e notifica' }
-        }
-      }
+      en: { rows:{ sequential:'sequential', parallel:'parallel', pipeline:'pipeline' }, faster:'faster' },
+      it: { rows:{ sequential:'sequenziale', parallel:'parallelo', pipeline:'pipeline' }, faster:'più veloce' }
     };
-    // Generic cadence (Mon-indexed 0..6) — illustrative, not a real config.
-    var LOOPS = { triage:{ day:0, time:'09:00' }, analysis:{ day:0, time:'10:30' } };
-
     function T(){ return OTX[currentLang()]; }
     function clampInt(v, lo, hi){ v = parseInt(v, 10); if(!isFinite(v)) v = lo; return Math.max(lo, Math.min(hi, v)); }
     function fmtClock(s){
@@ -377,37 +329,8 @@
       var h = Math.floor(s/3600), mm = Math.floor((s%3600)/60); return h + 'h ' + (mm<10?'0':'') + mm + 'm';
     }
     function fmtX(x){ return (x < 10 ? x.toFixed(1) : String(Math.round(x))) + '×'; }
-    function card(label, value, opts){
-      opts = opts || {};
-      return '<div class="wcard' + (opts.best ? ' mo' : '') + '">' +
-               '<div class="wt">' + label + '</div>' +
-               '<div class="wv' + (opts.sm ? ' sm' : '') + '">' + value + '</div>' +
-               (opts.sub != null ? '<span class="wsub">' + opts.sub + '</span>' : '') +
-             '</div>';
-    }
 
-    // ---- tabs ----
-    var tabsWrap = root.querySelector('.orchtabs');
-    function selectTab(name){
-      Array.prototype.forEach.call(root.querySelectorAll('[role="tab"]'), function(t){
-        var on = t.dataset.tab === name;
-        t.setAttribute('aria-selected', on ? 'true' : 'false');
-        var panel = document.getElementById('tab-' + t.dataset.tab);
-        if(panel) panel.hidden = !on;
-      });
-    }
-    if(tabsWrap) tabsWrap.addEventListener('click', function(e){
-      var b = e.target.closest('[role="tab"]'); if(b) selectTab(b.dataset.tab);
-    });
-
-    // ---- tab 1: fan-out calculator (fixed 2-phase model: fan out → verify) ----
-    var nEl = document.getElementById('oc-n'),
-        tEl = document.getElementById('oc-t'),
-        cEl = document.getElementById('oc-c'),
-        rowsEl = document.getElementById('oc-rows'),
-        spEl = document.getElementById('oc-speedup');
     function calc(){
-      if(!rowsEl) return;
       var N = clampInt(nEl.value, 1, 500),
           t = clampInt(tEl.value, 1, 3600),
           c = clampInt(cEl.value, 1, 64),
@@ -422,45 +345,13 @@
         { k:'pipeline',   v:pipe, x:seq/pipe, best:true }
       ];
       rowsEl.innerHTML = data.map(function(d){
-        return card(lab[d.k], fmtClock(d.v), { best:d.best, sub:(d.x > 1.001 ? fmtX(d.x) + ' ' + faster : '—') });
+        return wcard(lab[d.k], fmtClock(d.v), { mo:d.best, sub:(d.x > 1.001 ? fmtX(d.x) + ' ' + faster : '—') });
       }).join('');
       if(spEl) spEl.textContent = fmtX(seq / pipe);
     }
     [nEl, tEl, cEl].forEach(function(el){ if(el) el.addEventListener('input', calc); });
-
-    // ---- tab 2: loop schedule ----
-    var loopBtns = document.getElementById('oc-loops'),
-        weekEl = document.getElementById('oc-week'),
-        detEl = document.getElementById('oc-loopdetail'),
-        curLoop = 'triage';
-    function renderLoop(){
-      if(!weekEl || !detEl) return;
-      var days = T().days, spec = LOOPS[curLoop], info = T().loops[curLoop], det = T().det;
-      weekEl.innerHTML = days.map(function(d, i){
-        var on = i === spec.day;
-        return '<div class="day' + (on ? ' on' : '') + '"><span class="dn">' + d + '</span>' +
-               '<span class="dt">' + (on ? spec.time : '') + '</span></div>';
-      }).join('');
-      detEl.innerHTML = [
-        { k:'reads', v:info.reads },
-        { k:'emits', v:info.emits },
-        { k:'acts',  v:info.acts, best:true }
-      ].map(function(cd){
-        return card(det[cd.k], cd.v, { best:cd.best, sm:true });
-      }).join('');
-    }
-    if(loopBtns) loopBtns.addEventListener('click', function(e){
-      var b = e.target.closest('button'); if(!b) return;
-      curLoop = b.dataset.loop;
-      Array.prototype.forEach.call(loopBtns.querySelectorAll('button'), function(x){
-        x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
-      });
-      renderLoop();
-    });
-
     calc();
-    renderLoop();
-    addLangListener(function(){ calc(); renderLoop(); });
+    addLangListener(calc);
   })();
 
   /* ---------------------------------------------------------------------
@@ -566,11 +457,11 @@
       it: { loading:'Caricamento…', err:function(f){ return 'Anteprima non disponibile — apri lab/' + f; } }
     };
     var cache = {};
-    var cards = Array.prototype.slice.call(document.querySelectorAll('.art'));
+    var rows = Array.prototype.slice.call(document.querySelectorAll('.frow'));
     function view(id){
       var file = FILES[id]; if(!file) return;
       fn.textContent = file;
-      cards.forEach(function(c){ c.classList.toggle('on', c.dataset.id === id); });
+      rows.forEach(function(c){ c.classList.toggle('on', c.dataset.id === id); });
       if(cache[id] != null){ pv.textContent = cache[id]; return; }
       pv.textContent = TXT[currentLang()].loading;
       fetch('lab/' + file).then(function(r){ return r.text(); }).then(function(t){
@@ -579,13 +470,14 @@
     }
     grid.addEventListener('click', function(e){
       var b = e.target.closest('.view'); if(!b) return;   // Download is a native link
-      view(b.dataset.id);
+      view(b.closest('.frow').dataset.id);
     });
     view('adr');
   })();
 
   /* ---------------------------------------------------------------------
-     Hero terminal — bootable, interactive, data-driven command map
+     Hero terminal — an exhibit, not a gatekeeper. Boots instantly (no
+     typing theatre), never steals focus; commands still navigate the site.
      --------------------------------------------------------------------- */
   (function terminal(){
     var stream = document.getElementById('stream'),
@@ -601,11 +493,11 @@
       en: {
         desc:{ about:'one-line profile', stack:'core stack', devices:'platform scale',
           certs:'certifications', experience:'work history', topology:'platform diagram',
-          contact:'links', work:'open the case study', principles:'how I work',
-          systems:'systems I would build', lab:'reliability lab', orchestration:'orchestration lab', artifacts:'downloadable templates',
+          contact:'links', work:'open the case study', principles:'how I build',
+          lab:'the lab', artifacts:'downloadable templates',
           slo:'compute an error budget', theme:'switch theme', ls:'list sections',
           resume:'download résumé (PDF)', clear:'clear the screen', sudo:'(try it)',
-          coffee:'(try it)', help:'list commands' },
+          coffee:'(try it)' },
         groups:{ navigate:'navigate', info:'info', tools:'tools', fun:'fun' },
         opening:'→ opening ',
         notfound:function(n){ return 'command not found: ' + n + ' — try <span class="ac">help</span>'; },
@@ -621,16 +513,14 @@
                   '  Azure handles MQTT; the IoT bridge speaks CoAP &amp; LWM2M.'],
         contact:'github.com/fabrideci · linkedin.com/in/fabriziodecicco · fabri.deci@gmail.com',
         nav:{ work:['<span class="b">multi-agent engineering assistant</span>', []],
-              principles:['operating principles', ['each one: principle · failure mode · response']],
-              systems:['“systems I would build”', ['architectural opinions, not just past work']],
-              lab:['Reliability Lab', ['try: <span class="ac">slo 99.9</span>']],
-              orchestration:['Orchestration Lab', ['try: fan-out vs. schedule']],
+              principles:['how I build', ['six positions, opinionated on purpose']],
+              lab:['the lab', ['templates + try: <span class="ac">slo 99.9</span>']],
               artifacts:['engineering artifacts', ['ADR · SLO · incident-review · Terraform module checklist']] },
         sloUsage:'usage: <span class="ac">slo &lt;target%&gt;</span>   e.g. <span class="ac">slo 99.9</span>',
         sloResult:function(t, disp){ return 'SLO <span class="b">'+t+'%</span> → error budget <span class="ok">'+disp+'</span> / 30 days'; },
         themeUsage:'usage: <span class="ac">theme dark|light</span>',
         themeSet:function(m){ return 'theme → <span class="ac">'+m+'</span>'; },
-        ls:'about.md   experience/   work/   principles/   lab/   orchestration/   artifacts/   contact.md',
+        ls:'about.md   work/   principles/   experience/   lab/   artifacts/   contact.md',
         resume:'→ downloading <span class="ac">Fabrizio-De-Cicco-Resume.pdf</span>',
         sudo:'sudo: permission denied — you’re not on the on-call rotation 🙂',
         coffee:'☕ brewing… <span class="dm">deploy responsibly.</span>',
@@ -642,11 +532,11 @@
       it: {
         desc:{ about:'profilo in una riga', stack:'stack principale', devices:'scala della piattaforma',
           certs:'certificazioni', experience:'storia lavorativa', topology:'diagramma della piattaforma',
-          contact:'link', work:'apri il caso di studio', principles:'come lavoro',
-          systems:'sistemi che costruirei', lab:'reliability lab', orchestration:'laboratorio di orchestrazione', artifacts:'template scaricabili',
+          contact:'link', work:'apri il caso di studio', principles:'come costruisco',
+          lab:'il laboratorio', artifacts:'template scaricabili',
           slo:'calcola un error budget', theme:'cambia tema', ls:'elenca le sezioni',
           resume:'scarica il curriculum (PDF)', clear:'pulisci lo schermo', sudo:'(provalo)',
-          coffee:'(provalo)', help:'elenca i comandi' },
+          coffee:'(provalo)' },
         groups:{ navigate:'naviga', info:'info', tools:'strumenti', fun:'divertimento' },
         opening:'→ apertura ',
         notfound:function(n){ return 'comando non trovato: ' + n + ' — prova <span class="ac">help</span>'; },
@@ -662,16 +552,14 @@
                   '  Azure gestisce MQTT; il bridge IoT parla CoAP e LWM2M.'],
         contact:'github.com/fabrideci · linkedin.com/in/fabriziodecicco · fabri.deci@gmail.com',
         nav:{ work:['<span class="b">assistente di ingegneria multi-agente</span>', []],
-              principles:['principi operativi', ['ognuno: principio · modalità di guasto · risposta']],
-              systems:['“sistemi che costruirei”', ['opinioni architetturali, non solo lavoro passato']],
-              lab:['Reliability Lab', ['prova: <span class="ac">slo 99.9</span>']],
-              orchestration:['Laboratorio di orchestrazione', ['prova: fan-out vs. schedulazione']],
+              principles:['come costruisco', ['sei posizioni, volutamente schierate']],
+              lab:['il laboratorio', ['template + prova: <span class="ac">slo 99.9</span>']],
               artifacts:['artefatti di ingegneria', ['ADR · SLO · revisione incidente · checklist modulo Terraform']] },
         sloUsage:'uso: <span class="ac">slo &lt;target%&gt;</span>   es. <span class="ac">slo 99.9</span>',
         sloResult:function(t, disp){ return 'SLO <span class="b">'+t+'%</span> → error budget <span class="ok">'+disp+'</span> / 30 giorni'; },
         themeUsage:'uso: <span class="ac">theme dark|light</span>',
         themeSet:function(m){ return 'tema → <span class="ac">'+m+'</span>'; },
-        ls:'about.md   experience/   work/   principles/   lab/   orchestration/   artifacts/   contact.md',
+        ls:'about.md   work/   principles/   experience/   lab/   artifacts/   contact.md',
         resume:'→ scaricamento <span class="ac">Fabrizio-De-Cicco-Resume.pdf</span>',
         sudo:'sudo: permesso negato — non sei nel turno di reperibilità 🙂',
         coffee:'☕ in preparazione… <span class="dm">fai deploy responsabilmente.</span>',
@@ -707,23 +595,21 @@
       about:   { run:function(){ var S=L(); el(S.about[0], 'b'); el(S.about[1], 'dm'); } },
       stack:   { run:function(){ el(L().stack, 'dm'); } },
       devices: { run:function(){ el(L().devices); } },
-      certs:   { run:function(){ el(L().certs); } },
+      certs:   { run:function(){ el(L().certs); go('certs'); } },
       experience: { run:function(){ L().experience.forEach(function(l){ el(l); }); go('experience'); } },
       topology:{ run:function(){ var S=L(); el(S.topology[0], 'ac', true); el(S.topology[1], 'dm'); } },
       contact: { run:function(){ el(L().contact, 'ac'); go('contact'); } },
 
       work:       { run:function(){ var n=L().nav.work;       nav('work', n[0], n[1]); } },
       principles: { run:function(){ var n=L().nav.principles; nav('principles', n[0], n[1]); } },
-      systems:    { run:function(){ var n=L().nav.systems;    nav('systems', n[0], n[1]); } },
       lab:        { run:function(){ var n=L().nav.lab;        nav('lab', n[0], n[1]); } },
-      orchestration: { run:function(){ var n=L().nav.orchestration; nav('orchestration', n[0], n[1]); } },
       artifacts:  { run:function(){ var n=L().nav.artifacts;  nav('artifacts', n[0], n[1]); } },
 
       slo:   { run:function(a){
           var S=L(), t = parseFloat(a && a[0]);
           if(!isFinite(t)){ el(S.sloUsage, 'dm'); return; }
           if(t < 0) t = 0; if(t > 100) t = 100;
-          var mins = (1 - t/100) * 43200, disp = mins >= 60 ? (mins/60).toFixed(1)+' h' : mins.toFixed(1)+' min';
+          var mins = (1 - t/100) * WINMINS[2], disp = mins >= 60 ? (mins/60).toFixed(1)+' h' : mins.toFixed(1)+' min';
           el(S.sloResult(t, disp)); } },
       theme: { run:function(a){
           var S=L(), cur = currentTheme();
@@ -741,10 +627,12 @@
       sudo:  { run:function(){ el(L().sudo, 'al'); } },
       coffee:{ run:function(){ el(L().coffee); } }
     };
-    cmds.orch = cmds.orchestration;   // convenience alias
+    // legacy names from the previous IA — resolved in exec(), invisible to
+    // help and Tab-completion so they don't advertise ghost commands
+    var ALIASES = { orch:'work', orchestration:'work', systems:'principles' };
 
     var helpGroups = [
-      ['navigate', ['work','principles','systems','lab','orchestration','artifacts']],
+      ['navigate', ['work','principles','lab','artifacts']],
       ['info',     ['about','stack','devices','certs','experience','topology','contact']],
       ['tools',    ['slo','theme','ls','resume','clear']],
       ['fun',      ['sudo','coffee']]
@@ -763,49 +651,22 @@
     function exec(raw){
       var t = raw.trim(); if(!t) return;
       var parts = t.split(/\s+/), name = parts[0].toLowerCase(), args = parts.slice(1);
+      name = ALIASES[name] || name;
       promptLine(t);
       if(cmds[name]) cmds[name].run(args);
       else el(L().notfound(esc(name)), 'al');
       scrollBody();
     }
 
-    function ready(){
+    // Instant boot: print the transcript, show the prompt, never steal focus.
+    function runBoot(){
+      L().boot.forEach(function(step){
+        promptLine(step.cmd);
+        step.out.forEach(function(o){ el(o[0], o[1]); });
+      });
+      el(L().readyHint);
       if(inrow) inrow.hidden = false;
       if(hints) hints.hidden = false;
-      // Ready to type — but don't scroll the page or yank focus back if the
-      // user already moved into it (e.g. tabbed to the skip link during boot).
-      var ae = document.activeElement;
-      if(!ae || ae === document.body) input.focus({ preventScroll:true });
-    }
-
-    function readyHint(){ el(L().readyHint); }
-
-    var bootGen = 0;
-    function runBoot(){
-      var gen = ++bootGen, boot = L().boot;   // a newer run (language switch) supersedes any pending one
-      if(reduce){
-        boot.forEach(function(step){ promptLine(step.cmd); step.out.forEach(function(o){ el(o[0], o[1]); }); });
-        readyHint(); ready();
-      } else {
-        var bi = 0;
-        function typeCmd(text, done){
-          var span = el('<span class="pr">$</span> <span class="t"></span>').querySelector('.t');
-          var i = 0;
-          (function tick(){
-            if(gen !== bootGen) return;
-            if(i <= text.length){ span.textContent = text.slice(0, i++); setTimeout(tick, 38); }
-            else done();
-          })();
-        }
-        function nextBoot(){
-          if(gen !== bootGen) return;
-          if(bi < boot.length){
-            var step = boot[bi++];
-            typeCmd(step.cmd, function(){ setTimeout(function(){ if(gen !== bootGen) return; step.out.forEach(function(o){ el(o[0], o[1]); }); setTimeout(nextBoot, 320); }, 140); });
-          } else { readyHint(); ready(); }
-        }
-        setTimeout(nextBoot, 450);
-      }
     }
     runBoot();
 
