@@ -131,6 +131,7 @@
             <a href="#experience" data-i18n="nav.experience">Experience</a>
             <a href="#systems" data-i18n="nav.systems">Systems I would build</a>
             <a href="#lab" data-i18n="nav.lab">Reliability Lab</a>
+            <a href="#orchestration" data-i18n="nav.orchestration">Orchestration Lab</a>
             <a href="#artifacts" data-i18n="nav.artifacts">Artifacts</a>
             <a href="#skills" data-i18n="nav.skills">Skills</a>
             <a href="#certs" data-i18n="nav.certs">Certifications</a>
@@ -479,6 +480,69 @@
     </section>
 
     <!-- ===================================================================
+         7b · Orchestration Lab — dynamic workflows & scheduled loops
+         =================================================================== -->
+    <section class="section" id="orchestration" aria-labelledby="orch-h">
+      <div class="wrap">
+        <span class="eyebrow" data-i18n="orch.eyebrow">// orchestration lab</span>
+        <h2 class="h" id="orch-h" data-i18n="orch.h">Orchestration Lab</h2>
+        <p class="sub" data-i18n="orch.sub">The payoff behind "just orchestrate it with agents" — fan work out in parallel, or run it on a schedule. Two views, real numbers.</p>
+
+        <div class="seg orchtabs" id="orchtabs" role="tablist" aria-label="Orchestration lab views" data-i18n-aria="aria.orchtabs">
+          <button type="button" role="tab" id="tabbtn-fanout" aria-controls="tab-fanout" aria-selected="true" data-tab="fanout" data-i18n="orch.tab.fanout">Fan-out</button>
+          <button type="button" role="tab" id="tabbtn-schedule" aria-controls="tab-schedule" aria-selected="false" data-tab="schedule" data-i18n="orch.tab.schedule">Schedule</button>
+        </div>
+
+        <div class="panel orchpanel" id="tab-fanout" role="tabpanel" aria-labelledby="tabbtn-fanout">
+          <div class="inhead">
+            <div class="field">
+              <label for="oc-n" data-i18n="orch.n">Subtasks</label>
+              <input id="oc-n" type="number" min="1" max="500" step="1" value="12">
+            </div>
+            <div class="field">
+              <label for="oc-t" data-i18n="orch.t">Seconds / agent</label>
+              <input id="oc-t" type="number" min="1" max="3600" step="1" value="40">
+            </div>
+            <div class="field">
+              <label for="oc-c" data-i18n="orch.c">Concurrency cap</label>
+              <input id="oc-c" type="number" min="1" max="64" step="1" value="8">
+            </div>
+          </div>
+
+          <p class="hintline" data-i18n="orch.model">Modeled as a two-phase workflow: fan out → adversarially verify.</p>
+
+          <div class="budget">
+            <span class="lab" data-i18n="orch.best">Best speedup</span>
+            <span class="val" id="oc-speedup">8.0×</span>
+            <span class="of" data-i18n="orch.vs">vs running them one after another</span>
+          </div>
+
+          <div class="windows octhree" id="oc-rows"></div>
+
+          <p class="hintline" data-i18n="orch.hint">The cap — not the count — sets the wall-clock; a pipeline skips the barrier's idle wave.</p>
+        </div>
+
+        <div class="panel orchpanel" id="tab-schedule" role="tabpanel" aria-labelledby="tabbtn-schedule" hidden>
+          <div class="inhead">
+            <div class="field" style="flex:1; min-width:220px">
+              <label id="oc-loops-label" data-i18n="orch.loops">Scheduled loops</label>
+              <div class="presets" id="oc-loops" role="group" aria-labelledby="oc-loops-label">
+                <button type="button" data-loop="triage" aria-pressed="true" data-i18n="orch.loop.triage">dependency triage</button>
+                <button type="button" data-loop="analysis" aria-pressed="false" data-i18n="orch.loop.analysis">self-analysis</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="weekgrid" id="oc-week" aria-hidden="true"></div>
+
+          <div class="windows octhree loopdet" id="oc-loopdetail"></div>
+
+          <p class="hintline" data-i18n="orch.loop.hint">Loops read and notify on a schedule — they never act unattended. Anything destructive stays behind a human gate.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
          7 · Engineering artifacts
          =================================================================== -->
     <section class="section" id="artifacts" aria-labelledby="artifacts-h">
@@ -529,6 +593,17 @@
               <button class="view" data-id="tf" data-i18n="art.view">View</button>
               <a class="dl" href="lab/terraform-module-checklist.md" download data-i18n="art.dl">Download</a>
               <a class="repo" href="https://github.com/fabrideci/fabrideci.github.io/blob/main/lab/terraform-module-checklist.md" data-i18n="art.repo">Repo</a>
+            </div>
+          </article>
+
+          <article class="art" data-id="skill">
+            <span class="afmt">▢ .md</span>
+            <h3 data-i18n="art.skill.h">Claude Code skill</h3>
+            <p data-i18n="art.skill.p">A de-identified skill scaffold — description-as-trigger, progressive disclosure, and read-only-by-default guardrails.</p>
+            <div class="aact">
+              <button class="view" data-id="skill" data-i18n="art.view">View</button>
+              <a class="dl" href="lab/skill-template.md" download data-i18n="art.dl">Download</a>
+              <a class="repo" href="https://github.com/fabrideci/fabrideci.github.io/blob/main/lab/skill-template.md" data-i18n="art.repo">Repo</a>
             </div>
           </article>
         </div>

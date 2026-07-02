@@ -321,6 +321,22 @@ li.role:last-child{ padding-bottom:0; }
 .preview pre{ margin:0; padding:18px; font:13px/1.65 var(--mono); color:var(--text); white-space:pre; overflow-x:auto; max-height:420px; overflow-y:auto; }
 
 /* =========================================================================
+   7b · Orchestration Lab (reuses .panel / .field / .budget / .windows / .seg)
+   ========================================================================= */
+.orchtabs{ margin:0 0 18px; }
+.orchpanel{ max-width:820px; }
+.windows.octhree{ grid-template-columns:repeat(3,1fr); }
+.wcard .wsub{ display:block; margin-top:8px; font:600 12px/1 var(--mono); color:var(--accent); letter-spacing:.02em; }
+.wcard .wv.sm{ font-size:14px; line-height:1.4; }
+.presets button[aria-pressed="true"]{ border-color:var(--accent); color:var(--accent); background:var(--accent-weak); }
+.weekgrid{ display:grid; grid-template-columns:repeat(7,1fr); gap:8px; margin:6px 0 22px; }
+.weekgrid .day{ border:1px solid var(--border); border-radius:10px; background:var(--bg3); padding:11px 6px; text-align:center; }
+.weekgrid .day .dn{ font:600 10.5px/1 var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--dim); }
+.weekgrid .day .dt{ display:block; margin-top:8px; min-height:13px; font:600 12px/1 var(--mono); color:var(--accent); }
+.weekgrid .day.on{ border-color:var(--accent); background:var(--accent-weak); }
+.weekgrid .day.on .dn{ color:var(--text); }
+
+/* =========================================================================
    8 · Skills & stack
    ========================================================================= */
 .clusters{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px; }
@@ -368,6 +384,7 @@ li.role:last-child{ padding-bottom:0; }
   .grid-2{ grid-template-columns:1fr; }
   .certs{ grid-template-columns:repeat(2,1fr); }
   .windows{ grid-template-columns:repeat(2,1fr); }
+  .windows.octhree{ grid-template-columns:1fr; }
 }
 @media (max-width:640px){
   .agents{ grid-template-columns:repeat(2,1fr); }
