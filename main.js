@@ -464,7 +464,7 @@
       rows.forEach(function(c){ c.classList.toggle('on', c.dataset.id === id); });
       if(cache[id] != null){ pv.textContent = cache[id]; return; }
       pv.textContent = TXT[currentLang()].loading;
-      fetch('lab/' + file).then(function(r){ return r.text(); }).then(function(t){
+      fetch('lab/' + file).then(function(r){ if(!r.ok) throw new Error(r.status); return r.text(); }).then(function(t){
         cache[id] = t; if(fn.textContent === file) pv.textContent = t;   // ignore a stale fetch
       }).catch(function(){ pv.textContent = TXT[currentLang()].err(file); });
     }
