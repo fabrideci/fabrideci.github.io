@@ -55,18 +55,26 @@
 
     'hero.value':'Gestisco l\'infrastruttura cloud dietro <b>oltre 50.000 dispositivi connessi</b> — e costruisco il tooling AI che aiuta a rilasciare la piattaforma.',
     'hero.support':'Infrastructure Architect in Culligan International · Azure, Kubernetes, Terraform, Datadog · Torino, Italia — disponibile da remoto',
-    'hero.fact1':'<b>50.000+</b> dispositivi in produzione',
-    'hero.fact2':'in crescita verso <b>~300.000</b>',
-    'hero.fact3':'<b>10+ anni</b> di infrastrutture',
-    'hero.fact4':'CKA · LFCS · AZ-104 · AZ-400',
+    'hero.st1':'fabrizio@infra — connesso',
+    'hero.st2':'<b>50.000+</b> dispositivi online',
+    'hero.st3':'regione: <b>weu · neu</b>',
+    'hero.st4':'uptime <b>10+ anni</b>',
+    'hero.dim':'flotta · misurata in produzione',
+    'hero.k1':'dispositivi · prod', 'hero.v1':'50.000<b>+</b>',
+    'hero.k2':'in crescita verso', 'hero.v2':'~300.000',
+    'hero.k3':'anni di infra',
+    'hero.k4':'certificazioni',
 
-    'work.eyebrow':'// lavori selezionati',
+    'work.eyebrow':'// lavori selezionati · tav. 02/07',
     'work.h':'Assistente di ingegneria multi-agente',
     'work.sub':'Un sistema AI multi-agente che aiuta un team di piattaforma a revisionare, testare, rilasciare e gestire il software con più coerenza e meno fatica — adottato in tutto il team di lead engineering.',
-    'work.mc1':'Ruolo: <b>Progettazione e sviluppo</b>',
-    'work.mc2':'Contesto: <b>Tooling interno della piattaforma IoT</b>',
-    'work.mc3':'Costruito con: <b>Claude Code · MCP · TypeScript</b>',
-    'work.arch':'Architettura ad alto livello — tocca un blocco',
+    'work.arch':'Architettura ad alto livello, disegnata come costruita — tocca un blocco',
+    'work.sheetno':'tav. 02/07 · rev 2026.07',
+    'work.tb1k':'progetto',
+    'work.tb2k':'ruolo', 'work.tb2v':'progettazione e sviluppo',
+    'work.tb3k':'costruito con',
+    'work.tb4k':'scala', 'work.tb4v':'7 agenti · 50 skill',
+    'work.tb5k':'stato', 'work.tb5v':'in uso quotidiano',
     'work.lab.control':'controllo', 'work.lab.specialists':'agenti specialisti',
     'work.lab.shared':'condiviso', 'work.lab.integ':'integrazioni · MCP',
     'work.conn1':'↓ smista agli specialisti', 'work.conn2':'↑ tutti su una base condivisa',
@@ -100,7 +108,7 @@
     'orch.best':'Miglior speedup', 'orch.vs':'rispetto a eseguirli uno dopo l\'altro',
     'orch.hint':'È il limite — non il numero — a fissare il wall-clock; una pipeline salta l\'onda ferma della barriera.',
 
-    'sys.eyebrow':'// come costruisco',
+    'sys.eyebrow':'// come costruisco · tav. 03/07',
     'sys.h':'Come costruisco',
     'sys.sub':'Sei posizioni che difenderei su come costruire e scalare una piattaforma — volutamente schierate.',
     'sys.movelab':'prima mossa',
@@ -129,7 +137,7 @@
     'sys6.why':'Un lead che accentra il contesto diventa il collo di bottiglia: il team si blocca ogni volta che non è disponibile, e poi arriva il burnout. Il mio lavoro è rendermi progressivamente non necessario — mentoring, documentazione, percorsi consolidati — <b>così il team va più veloce di quanto potrebbe chiunque da solo.</b>',
     'sys6.move':'scrivilo, passalo di mano, e resta fuori dal percorso critico.',
 
-    'exp.eyebrow':'// esperienza',
+    'exp.eyebrow':'// esperienza · tav. 04/07',
     'exp.h':'Dove ho costruito',
     'exp1.h':'Architetto di Infrastrutture <span>(prec. DevOps Engineer)</span>',
     'exp1.when':'Lug 2023 — oggi', 'exp1.pill':'Milano · IoT · acqua',
@@ -146,7 +154,7 @@
     'exp3.b2':'Costruito app backend e web (C#, SQL, ASP.NET, Angular) — Agile / TDD.',
     'exp3.b3':'Mantenuto microservizi ad alta disponibilità su Azure con Docker e Kubernetes.',
 
-    'lab.eyebrow':'// il laboratorio',
+    'lab.eyebrow':'// il laboratorio · tav. 05/07',
     'lab.h':'Il laboratorio',
     'lab.sub':'Template che uso davvero — anonimizzati e liberi da usare — più il numero dietro ogni conversazione "servono più nove".',
     'lab.calc.h':'Calcolatore di error budget',
@@ -163,12 +171,12 @@
     'art.skill.p':'scaffold di una skill Claude Code — descrizione-trigger, divulgazione progressiva, guardrail.',
     'art.view':'Vedi', 'art.dl':'Scarica', 'art.pmeta':'markdown · template',
 
-    'skills.eyebrow':'// competenze', 'skills.h':'Competenze e certificazioni',
+    'skills.eyebrow':'// competenze · tav. 06/07', 'skills.h':'Competenze e certificazioni',
     'skills.c1':'Cloud e container', 'skills.c2':'IoT e messaggistica', 'skills.c3':'IaC e CI/CD',
     'skills.c4':'Osservabilità e SRE', 'skills.c5':'Delivery assistita dall\'AI',
     'skills.certs':'Certificazioni',
 
-    'contact.eyebrow':'// contatti',
+    'contact.eyebrow':'// contatti · tav. 07/07',
     'contact.h':'Costruiamo qualcosa di affidabile.',
     'contact.lead':'Architettura, affidabilità della piattaforma o delivery assistita dall\'AI — se hai qualcosa del genere tra le mani, sono felice di parlarne.',
     'contact.email':'Email', 'contact.resume':'Curriculum (PDF)',
@@ -700,6 +708,25 @@
       var b = e.target.closest('.cmdchip'); if(!b) return; exec(b.dataset.c); input.focus();
     });
     term.addEventListener('click', function(e){ if(!e.target.closest('a,button')) input.focus(); });
+  })();
+
+  /* ---------------------------------------------------------------------
+     Scroll reveals — the .rv class is added here only, so content is never
+     hidden without JS; skipped entirely under reduced-motion.
+     --------------------------------------------------------------------- */
+  (function reveal(){
+    if(reduce || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin:'0px 0px -8% 0px' });
+    // read all positions before the class writes so layout is computed once
+    var vh = window.innerHeight, below = [];
+    document.querySelectorAll('.section .wrap > *').forEach(function(el){
+      if(el.getBoundingClientRect().top >= vh) below.push(el);   // on-screen elements get no entrance
+    });
+    below.forEach(function(el){ el.classList.add('rv'); io.observe(el); });
   })();
 
   /* ---------------------------------------------------------------------

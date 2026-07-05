@@ -11,14 +11,17 @@
   --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
   --display: var(--mono);                 /* monospace display headings = engineer identity */
-  --bg:#0d1117; --bg2:#161b22; --bg3:#0b0e14;
-  --panel:#0e131b; --panel2:#0b0f16;      /* terminal window */
-  --text:#e6edf3; --muted:#9aa7b4; --dim:#8b949e;
-  --border:#2a313c;
-  --accent:#3fb950; --accent2:#56d364; --accent-weak:#16331f;
-  --alert:#d29922;
-  --ok:#3fb950;
-  --grid:rgba(63,185,80,.06);
+  --bg:#05090c; --bg2:#0b1218; --bg3:#080e12;
+  --panel:#081016; --panel2:#060b10;      /* terminal window */
+  --text:#dfeae2; --muted:#9cafa3; --dim:#7e9187;
+  --border:#22302a;
+  --accent:#41f39a; --accent2:#63f7ae; --accent-weak:#0d2f1e;
+  --alert:#e8b348;
+  --ok:#41f39a;
+  --on-accent:#04170c;
+  --grid:color-mix(in srgb, var(--accent) 5%, transparent);
+  --grid2:color-mix(in srgb, var(--accent) 10%, transparent);
+  --name-glow:0 0 26px color-mix(in srgb, var(--accent) 24%, transparent);
   --shadow:0 1px 0 rgba(255,255,255,.02);
   --shadow-term:0 24px 60px rgba(0,0,0,.45);
 }
@@ -30,7 +33,10 @@
   --border:#d6dee0;
   --accent:#1a7f37; --accent2:#1a7f37; --accent-weak:#d6f0de;
   --alert:#9a6700; --ok:#1a7f37;
-  --grid:rgba(26,127,55,.07);
+  --on-accent:#f2faf4;
+  --grid:color-mix(in srgb, var(--accent) 7%, transparent);
+  --grid2:color-mix(in srgb, var(--accent) 12%, transparent);
+  --name-glow:none;
   --shadow:0 1px 2px rgba(16,40,28,.07);
   --shadow-term:0 20px 50px rgba(16,40,28,.14);
 }
@@ -49,10 +55,14 @@ img,svg{ max-width:100%; }
 :focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
 
 /* tabular numerics everywhere numbers matter */
-.when,.co,.budget .val,.wcard .wv{ font-variant-numeric:tabular-nums; }
+.when,.co,.budget .val,.wcard .wv,.stats .v,.tb .v{ font-variant-numeric:tabular-nums; }
+
+/* uppercase mono microlabel — one recipe for every drawing-sheet annotation */
+.sheetno, .dimlab .dl, .stats .k, .tb .k{ font:600 10px/1.4 var(--mono);
+  letter-spacing:.18em; text-transform:uppercase; color:var(--dim); }
 
 /* ---- accessibility helpers ---- */
-.skip-link{ position:absolute; left:12px; top:-60px; z-index:100; background:var(--accent); color:#06140b;
+.skip-link{ position:absolute; left:12px; top:-60px; z-index:100; background:var(--accent); color:var(--on-accent);
   font:600 13px/1 var(--mono); padding:11px 15px; border-radius:8px; transition:top .15s; }
 .skip-link:focus{ top:12px; }
 
@@ -74,7 +84,7 @@ img,svg{ max-width:100%; }
 .seg{ display:inline-flex; overflow:hidden; }
 .seg button{ letter-spacing:.04em; color:var(--muted); background:transparent; border:0; cursor:pointer; }
 .seg button + button{ border-left:1px solid var(--border); }
-.seg button[aria-pressed="true"]{ background:var(--accent); color:#06140b; }
+.seg button[aria-pressed="true"]{ background:var(--accent); color:var(--on-accent); }
 @media (max-width:900px){ .barnav{ display:none; } }
 @media (max-width:560px){ .barcta{ display:none; } }
 
@@ -102,21 +112,50 @@ img,svg{ max-width:100%; }
 /* =========================================================================
    1 · Hero — name, value line, proof, compact terminal
    ========================================================================= */
-.hero{ padding:72px 0 40px; border-bottom:1px solid var(--border); }
-.name{ font-size:clamp(38px,6vw,60px); letter-spacing:-.03em; line-height:1.05; }
+.hero{ padding:0 0 48px; border-bottom:1px solid var(--border);
+  background:
+    radial-gradient(1100px 480px at 50% -10%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 60%),
+    repeating-linear-gradient(0deg, var(--grid) 0 1px, transparent 1px 44px),
+    repeating-linear-gradient(90deg, var(--grid) 0 1px, transparent 1px 44px); }
+.herostatus{ display:flex; flex-wrap:wrap; gap:8px 22px; align-items:center; padding:10px 24px;
+  border-bottom:1px solid var(--border); background:color-mix(in srgb, var(--panel2) 80%, transparent);
+  font:11.5px/1.5 var(--mono); color:var(--dim); letter-spacing:.04em; }
+.herostatus .live{ color:var(--accent); display:inline-flex; align-items:center; gap:7px; }
+.herostatus .live i{ width:7px; height:7px; border-radius:50%; background:var(--accent);
+  box-shadow:0 0 8px var(--accent); animation:blink 2s infinite; }
+.herostatus .sp{ flex:1; }
+.herostatus b{ color:var(--text); font-weight:600; }
+.hero .wrap{ padding-top:64px; }
+.promptline{ font:13px/1 var(--mono); color:var(--dim); margin:0 0 14px; }
+.name{ font-size:clamp(40px,6.5vw,72px); letter-spacing:-.035em; line-height:1.02;
+  text-shadow:var(--name-glow); }
+.name::after{ content:"\258A"; color:var(--accent); margin-left:10px; font-weight:400;
+  animation:blink 1.1s steps(1) infinite; text-shadow:none; }
 .value{ font-size:clamp(18px,2.4vw,23px); line-height:1.5; color:var(--muted); max-width:36ch;
   margin:20px 0 0; }
 .value b{ color:var(--text); font-weight:650; }
 .support{ font:13px/1.7 var(--mono); color:var(--dim); margin:14px 0 0; max-width:72ch; }
-.stats{ list-style:none; margin:22px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:8px; }
-.stats li{ font:12.5px/1 var(--mono); color:var(--muted); background:var(--bg3); border-radius:8px; padding:9px 12px; }
-.stats b{ color:var(--text); font-weight:650; }
-.cta{ display:flex; flex-wrap:wrap; gap:11px; margin:26px 0 0; }
+.dimlab{ display:flex; align-items:flex-end; gap:8px; margin:34px 0 6px; }
+.dimlab .tick{ width:1px; height:10px; background:var(--accent); opacity:.8; }
+.dimlab .rule{ flex:1; height:1px; background:var(--accent); opacity:.5; }
+.dimlab .dl{ color:var(--accent); padding-bottom:2px; }
+.stats{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr);
+  gap:1px; background:var(--border); border:1px solid var(--border); border-radius:10px; overflow:hidden; }
+.stats li{ background:var(--panel2); padding:14px 15px 13px; display:flex; flex-direction:column; gap:8px; }
+.stats .v{ font:700 19px/1.25 var(--mono); color:var(--text); letter-spacing:-.01em; }
+.stats .v.sm{ font-size:13px; line-height:1.5; }
+.stats .v b{ color:var(--accent); font-weight:700; }
+.cta{ display:flex; flex-wrap:wrap; gap:11px; margin:30px 0 0; }
 .btn{ font:600 13.5px/1 var(--mono); padding:12px 17px; border-radius:9px; text-decoration:none;
-  display:inline-flex; align-items:center; gap:8px; border:1px solid var(--border); color:var(--text); }
-.btn.primary{ background:var(--accent); color:#06140b; border-color:var(--accent); }
-.btn.quiet{ border-color:transparent; color:var(--dim); }
-.btn.quiet:hover, .btn.quiet:focus-visible{ color:var(--accent); }
+  display:inline-flex; align-items:center; gap:8px; border:1px solid var(--border); color:var(--text);
+  background:color-mix(in srgb, var(--panel2) 70%, transparent); }
+.btn .pr{ color:var(--accent); }
+.btn:hover, .btn:focus-visible{ border-color:var(--accent);
+  box-shadow:0 0 18px color-mix(in srgb, var(--accent) 20%, transparent); }
+.btn.primary{ background:var(--accent); color:var(--on-accent); border-color:var(--accent); }
+.btn.primary .pr{ color:var(--on-accent); }
+.btn.quiet{ border-color:transparent; background:transparent; color:var(--dim); }
+.btn.quiet:hover, .btn.quiet:focus-visible{ color:var(--accent); box-shadow:none; }
 
 /* compact terminal — an exhibit, not a gatekeeper */
 .term{ margin-top:44px; border:1px solid var(--border); border-radius:14px; overflow:hidden;
@@ -145,16 +184,29 @@ img,svg{ max-width:100%; }
 /* =========================================================================
    2 · Case study — interactive architecture + fan-out model
    ========================================================================= */
-.metachips{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:30px; }
-.mc{ font:11.5px/1 var(--mono); color:var(--muted); background:var(--bg2); border:1px solid var(--border);
-  border-radius:999px; padding:7px 11px; }
-.mc b{ color:var(--text); font-weight:600; }
-.diagram{ border:1px solid var(--border); border-radius:16px; background:var(--bg2); box-shadow:var(--shadow);
-  padding:22px 18px; background-image:radial-gradient(var(--grid) 1px, transparent 1px); background-size:18px 18px; }
+/* the case study reads as an as-built drawing sheet */
+#work{ background:
+  repeating-linear-gradient(0deg, var(--grid) 0 1px, transparent 1px 22px),
+  repeating-linear-gradient(90deg, var(--grid) 0 1px, transparent 1px 22px),
+  repeating-linear-gradient(0deg, var(--grid2) 0 1px, transparent 1px 110px),
+  repeating-linear-gradient(90deg, var(--grid2) 0 1px, transparent 1px 110px); }
+.diagram{ position:relative; border:1.5px solid var(--border);
+  background:color-mix(in srgb, var(--bg2) 55%, transparent);
+  padding:40px 22px 0; }
+.diagram::before, .diagram::after{ content:""; position:absolute; width:14px; height:14px;
+  border:1.5px solid var(--accent); }
+.diagram::before{ top:-8px; left:-8px; border-right:0; border-bottom:0; }
+.diagram::after{ bottom:-8px; right:-8px; border-left:0; border-top:0; }
+.sheetno{ position:absolute; top:12px; right:14px; }
 .layerlab{ font:600 11px/1 var(--mono); letter-spacing:.16em; text-transform:uppercase; color:var(--dim); margin:0 0 10px 2px; }
-.conn{ text-align:center; font:11px/1 var(--mono); color:var(--dim); margin:12px 0; letter-spacing:.04em; }
-.node{ font-family:var(--mono); border:1px solid var(--border); background:var(--bg3); color:var(--text);
-  border-radius:11px; cursor:pointer; text-align:left; transition:border-color .15s, background .15s, transform .15s; }
+.conn{ display:flex; align-items:center; gap:14px; font:11px/1 var(--mono); color:var(--dim); margin:14px 0; letter-spacing:.04em; }
+.conn::before, .conn::after{ content:""; flex:1; height:1px;
+  background:repeating-linear-gradient(90deg, var(--dim) 0 5px, transparent 5px 9px);
+  animation:flow 1.6s steps(4) infinite; }   /* stepped: 4 repaints/loop instead of every frame */
+@keyframes flow{ to{ background-position:-18px 0; } }
+.node{ font-family:var(--mono); border:1px solid var(--border); background:color-mix(in srgb, var(--bg3) 75%, transparent);
+  color:var(--text); border-radius:0; cursor:pointer; text-align:left;
+  transition:border-color .15s, background .15s, transform .15s; }
 .node:hover{ transform:translateY(-1px); }
 .node.on{ border-color:var(--accent); background:var(--accent-weak); }
 .node .nm{ display:block; font-size:13px; font-weight:600; }
@@ -168,7 +220,12 @@ img,svg{ max-width:100%; }
 .skills .nm{ display:flex; align-items:center; gap:8px; }
 .skills .nm::before{ content:"\2B22"; color:var(--accent); }
 .integ{ display:flex; flex-wrap:wrap; gap:7px; }
-.ichip{ font:11px/1 var(--mono); color:var(--muted); background:var(--bg3); border:1px solid var(--border); border-radius:7px; padding:7px 10px; }
+.ichip{ font:11px/1 var(--mono); color:var(--muted); background:var(--bg3); border:1px solid var(--border); padding:7px 10px; }
+.titleblock{ margin:26px -22px 0; border-top:1.5px solid var(--border); display:grid;
+  grid-template-columns:1.5fr 1fr 1.5fr 1.4fr 1fr; gap:1px; background:var(--border); }
+.tb{ background:var(--bg2); padding:12px 14px 14px; display:flex; flex-direction:column; gap:7px; }
+.tb .v{ font:600 12.5px/1.4 var(--mono); color:var(--text); }
+.tb .v.acc{ color:var(--accent); }
 .detail{ margin-top:16px; border:1px solid var(--border); border-radius:14px; background:var(--bg2); padding:18px 20px; min-height:132px; box-shadow:var(--shadow); }
 .dname{ font:600 16px/1.2 var(--display); color:var(--text); }
 .drole{ font:12px/1 var(--mono); color:var(--accent); margin-top:6px; letter-spacing:.02em; }
@@ -337,6 +394,8 @@ li.role:last-child{ padding-bottom:0; }
   .frow, .skrow{ grid-template-columns:1fr; }
   .frow{ gap:6px; }
   .frow .fact{ margin-top:2px; }
+  .stats{ grid-template-columns:repeat(2,1fr); }
+  .titleblock{ grid-template-columns:1fr 1fr; }
 }
 @media (max-width:640px){
   .agents{ grid-template-columns:repeat(2,1fr); }
@@ -347,7 +406,15 @@ li.role:last-child{ padding-bottom:0; }
 }
 @media (max-width:400px){
   .agents, .windows{ grid-template-columns:1fr; }
+  .stats, .titleblock{ grid-template-columns:1fr; }
 }
+
+/* =========================================================================
+   Scroll reveals — the .rv class is added by JS only, so content is never
+   hidden without JS; reduced-motion skips the whole module.
+   ========================================================================= */
+.rv{ opacity:0; transform:translateY(12px); transition:opacity .55s ease, transform .55s ease; }
+.rv.in{ opacity:1; transform:none; }
 
 /* =========================================================================
    Touch-target comfort — coarse pointers only (desktop density preserved)
