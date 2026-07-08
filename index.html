@@ -215,11 +215,12 @@
             <h4 data-i18n="work.approach.h">Approach</h4>
             <p data-i18n="work.approach.p">I designed and built a set of specialist AI agents in Claude Code, each owning a single workflow and sharing a common library of reusable skills. The orchestrator composes them into <b>dynamic workflows that fan work out in parallel and adversarially verify findings</b> before anything is surfaced. They integrate with the team's existing toolchain through MCP, sit behind <b>safety guardrails that gate anything destructive</b>, and the read-only ones run as <b>scheduled loops</b> that catch drift and post a summary — never acting unattended. The newest layer points the other way — hooks and skills that sharpen the <b>engineer's side of the loop</b>: reframing vague prompts at session start, surfacing blindspots before unfamiliar work, and quizzing the author on their own change before it ships.</p>
             <div class="decisions">
-              <div class="dl" data-i18n="work.dl">three decisions that shaped it</div>
+              <div class="dl" data-i18n="work.dl">four decisions that shaped it</div>
               <ul>
                 <li data-i18n="work.dec1">Organise agents <b>by workflow, not by role</b> — so each carries only the context it needs.</li>
                 <li data-i18n="work.dec2">Push shared conventions into a <b>skills layer</b> — so knowledge isn't duplicated across agents.</li>
                 <li data-i18n="work.dec3">Make orchestration a <b>workflow, not a script</b> — fan out, verify, then synthesize.</li>
+                <li data-i18n="work.dec4">Tier model capability <b>by stage, like infrastructure</b> — cheap executors for mechanical work, a top-tier advisor consulted on demand, and security-critical stages pinned so no cost tier can downgrade them.</li>
               </ul>
             </div>
           </div>
@@ -512,7 +513,7 @@
           <div class="skrow"><h3 data-i18n="skills.c2">IoT &amp; messaging</h3><p>IoT Hub · Event Hub · MQTT · CoAP · LWM2M · device identity · OTA</p></div>
           <div class="skrow"><h3 data-i18n="skills.c3">IaC &amp; CI/CD</h3><p>Terraform · Terragrunt · Bicep · Ansible · Azure DevOps · YAML pipelines</p></div>
           <div class="skrow"><h3 data-i18n="skills.c4">Observability &amp; SRE</h3><p>Datadog · Grafana · Prometheus · SLOs · error budgets · incident response</p></div>
-          <div class="skrow"><h3 data-i18n="skills.c5">AI-assisted delivery</h3><p>Claude Code · MCP · multi-agent orchestration · TypeScript</p></div>
+          <div class="skrow"><h3 data-i18n="skills.c5">AI-assisted delivery</h3><p>Claude Code · MCP · multi-agent orchestration · model tiering · TypeScript</p></div>
           <div class="skrow" id="certs"><h3 data-i18n="skills.certs">Certifications</h3><p><b>CKA</b> Certified Kubernetes Administrator (2022) · <b>LFCS</b> Linux Foundation Certified Sysadmin (2023) · <b>AZ-104</b> Azure Administrator (2023) · <b>AZ-400</b> DevOps Solutions (2023)</p></div>
         </div>
       </div>
