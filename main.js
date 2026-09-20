@@ -541,16 +541,22 @@
       it: { loading:'Caricamento…', err:function(f){ return 'Anteprima non disponibile — apri lab/' + f; } }
     };
     var cache = {};
+    var previewRequest = 0;
     var rows = Array.prototype.slice.call(document.querySelectorAll('.frow'));
     function view(id){
       var file = FILES[id]; if(!file) return;
+      var request = ++previewRequest;
       fn.textContent = file;
       rows.forEach(function(c){ c.classList.toggle('on', c.dataset.id === id); });
       if(cache[id] != null){ pv.textContent = cache[id]; return; }
       pv.textContent = TXT[currentLang()].loading;
       fetch('lab/' + file).then(function(r){ if(!r.ok) throw new Error(r.status); return r.text(); }).then(function(t){
-        cache[id] = t; if(fn.textContent === file) pv.textContent = t;   // ignore a stale fetch
-      }).catch(function(){ pv.textContent = TXT[currentLang()].err(file); });
+        cache[id] = t;
+        // Selection can return to the same file while an earlier request is pending.
+        if(request === previewRequest) pv.textContent = t;
+      }).catch(function(){
+        if(request === previewRequest) pv.textContent = TXT[currentLang()].err(file);
+      });
     }
     grid.addEventListener('click', function(e){
       var b = e.target.closest('.view'); if(!b) return;   // Download is a native link
@@ -763,18 +769,18 @@
     // input + tab-completion (no history)
     input.addEventListener('keydown', function(e){
       if(e.key === 'Enter'){ var v = input.value; input.value = ''; exec(v); return; }
-      if(e.key === 'Tab'){
-        e.preventDefault();
+      if(e.key === 'Tab' && !e.shiftKey && !e.ctrlKey && !e.altKey && !e.metaKey){
         var parts = input.value.split(/\s+/);
-        if(parts.length > 1) return;                 // only complete the command name
+        if(parts.length > 1 || !parts[0]) return;    // only complete a nonempty command name
         var frag = parts[0].toLowerCase(), keys = Object.keys(cmds);
-        var matches = frag ? keys.filter(function(k){ return k.indexOf(frag) === 0; }) : keys;
-        if(matches.length === 1){ input.value = matches[0]; }
-        else if(matches.length > 1){
-          var lcp = matches.reduce(function(a, b){
-            var i = 0; while(i < a.length && i < b.length && a[i] === b[i]) i++; return a.slice(0, i);
-          });
-          if(lcp.length > frag.length) input.value = lcp;
+        var matches = keys.filter(function(k){ return k.indexOf(frag) === 0; });
+        if(!matches.length) return;
+        var lcp = matches.reduce(function(a, b){
+          var i = 0; while(i < a.length && i < b.length && a[i] === b[i]) i++; return a.slice(0, i);
+        });
+        // Leave native focus navigation intact unless Tab can extend the command.
+        if(lcp.length > frag.length){ e.preventDefault(); input.value = lcp; }
+        if(matches.length > 1){
           el('<span class="dm">' + matches.join('   ') + '</span>');
           scrollBody();
         }

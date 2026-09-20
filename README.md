@@ -20,6 +20,9 @@ or trackers. All assets, including fonts, load from the site's own origin.
 - Engineering principles use native `details` disclosures.
 - The Lab retains the error-budget calculator, Markdown previews and downloads,
   and an optional command-line interface.
+- Each preview/download action includes its filename in its accessible name.
+- The terminal completes partial commands with Tab. Tab moves on when no further
+  completion is possible; Shift+Tab always keeps normal backward navigation.
 - The fan-out calculator is an illustrative two-stage model. Its capacity is per
   stage; its outputs are not measurements of the engineering assistant.
 - Core reading content, navigation, disclosures and downloads work without
