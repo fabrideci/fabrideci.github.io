@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fabrizio De Cicco — IoT Infrastructure Architect</title>
-<meta name="description" content="Fabrizio De Cicco — IoT Infrastructure Architect & Lead DevOps Engineer. 10+ years building reliable cloud infrastructure for global IoT platforms. Azure, Kubernetes, Terraform, Datadog, SRE. Also builds multi-agent AI delivery tooling on Claude Code.">
+<meta name="description" content="Fabrizio De Cicco — IoT Infrastructure Architect & Lead Engineer. 10+ years building reliable cloud infrastructure for global IoT platforms. Azure, Kubernetes, Terraform, Datadog, SRE. Also builds multi-agent AI delivery tooling on Claude Code.">
 <meta name="author" content="Fabrizio De Cicco">
-<meta name="theme-color" content="#05090c">
+<meta name="theme-color" content="#f5f4ef">
 <link rel="canonical" href="https://fabriziodecicco.dev/">
 
 <!-- icons (self-hosted; no external request) -->
@@ -15,7 +15,7 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Fabrizio De Cicco — IoT Infrastructure Architect & Lead DevOps Engineer">
+<meta property="og:title" content="Fabrizio De Cicco — IoT Infrastructure Architect & Lead Engineer">
 <meta property="og:description" content="10+ years building reliable cloud infrastructure for global IoT platforms. Azure, Kubernetes, Terraform, Datadog, SRE. Plus multi-agent AI delivery tooling on Claude Code.">
 <meta property="og:url" content="https://fabriziodecicco.dev/">
 <meta property="og:image" content="https://fabriziodecicco.dev/assets/og.png">
@@ -24,17 +24,19 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Fabrizio De Cicco — IoT Infrastructure Architect & Lead DevOps Engineer">
+<meta name="twitter:title" content="Fabrizio De Cicco — IoT Infrastructure Architect & Lead Engineer">
 <meta name="twitter:description" content="10+ years building reliable cloud infrastructure for global IoT platforms — and multi-agent AI delivery tooling on Claude Code.">
 <meta name="twitter:image" content="https://fabriziodecicco.dev/assets/og.png">
 
+<link rel="preload" href="assets/fonts/dm-serif-display.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 
 <!-- Person JSON-LD -->
 <script type="application/ld+json">
 { "@context":"https://schema.org","@type":"Person",
   "name":"Fabrizio De Cicco",
-  "jobTitle":"IoT Infrastructure Architect & Lead DevOps Engineer",
+  "jobTitle":"IoT Infrastructure Architect & Lead Engineer",
   "url":"https://fabriziodecicco.dev/",
   "image":"https://fabriziodecicco.dev/assets/og.png",
   "worksFor":{"@type":"Organization","name":"Culligan International"},
@@ -52,7 +54,7 @@
   document.documentElement.setAttribute('lang', l);
 }catch(e){} })();
 </script>
-<noscript><style>.term,.hintbar{display:none}</style></noscript>
+<noscript><style>.terminal-lab,.fact .view,.preview,.studio-system .micro{display:none}</style></noscript>
 </head>
 <body>
 <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
@@ -61,9 +63,9 @@
   <div class="bar">
     <a class="brand" href="#top">Fabrizio De Cicco</a>
     <nav class="barnav" aria-label="Sections" data-i18n-aria="aria.sections">
-      <a href="#work" data-i18n="nav.work">Case study</a>
+      <a href="#work" data-i18n="nav.work">Work</a>
       <a href="#principles" data-i18n="nav.principles">How I build</a>
-      <a href="#experience" data-i18n="nav.experience">Experience</a>
+      <a href="#experience" data-i18n="nav.experience">About</a>
       <a href="#lab" data-i18n="nav.lab">Lab</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
@@ -74,64 +76,50 @@
       <button data-lng="it" aria-pressed="false">IT</button>
     </div>
     <div class="seg" id="themeSeg" role="group" aria-label="Theme" data-i18n-aria="aria.theme">
-      <button data-thm="dark" aria-pressed="true" data-i18n="bar.dark">Dark</button>
-      <button data-thm="light" aria-pressed="false" data-i18n="bar.light">Light</button>
+      <button data-thm="dark" aria-pressed="false" data-i18n="bar.dark">Dark</button>
+      <button data-thm="light" aria-pressed="true" data-i18n="bar.light">Light</button>
     </div>
   </div>
 
   <main id="main">
 
     <!-- ===================================================================
-         1 · Hero — name, value line, proof, then the (optional) terminal
+         1 · Hero — engineering practice, interactive system, production scale
          =================================================================== -->
     <header class="hero" id="top">
-      <div class="herostatus" aria-hidden="true">
-        <span class="live"><i></i><span data-i18n="hero.st1">fabrizio@infra — connected</span></span>
-        <span data-i18n="hero.st2"><b>50,000+</b> devices online</span>
-        <span data-i18n="hero.st3">region: <b>weu · neu</b></span>
-        <span class="sp"></span>
-        <span data-i18n="hero.st4">uptime <b>10+ yrs</b></span>
-      </div>
       <div class="wrap">
-        <p class="promptline" aria-hidden="true"><span class="pr">$</span> whoami</p>
-        <h1 class="name">Fabrizio De Cicco</h1>
-        <p class="value" data-i18n="hero.value">I run the cloud infrastructure behind <b>50,000+ connected devices</b> — and build the AI tooling that helps ship it.</p>
-        <p class="support" data-i18n="hero.support">Infrastructure Architect at Culligan International · Azure, Kubernetes, Terraform, Datadog · Turin, Italy — open to remote</p>
-        <div class="dimlab" aria-hidden="true"><span class="tick"></span><span class="dl" data-i18n="hero.dim">fleet · measured in production</span><span class="rule"></span><span class="tick"></span></div>
-        <ul class="stats">
-          <li><span class="k" data-i18n="hero.k1">devices · prod</span><span class="v" data-i18n="hero.v1">50,000<b>+</b></span></li>
-          <li><span class="k" data-i18n="hero.k2">scaling to</span><span class="v" data-i18n="hero.v2">~300,000</span></li>
-          <li><span class="k" data-i18n="hero.k3">years infra</span><span class="v">10<b>+</b></span></li>
-          <li><span class="k" data-i18n="hero.k4">certified</span><span class="v sm">CKA · LFCS · AZ&#8209;104 · AZ&#8209;400</span></li>
-        </ul>
-        <div class="cta">
-          <a class="btn primary" href="assets/Fabrizio-De-Cicco-Resume.pdf"><span class="pr">$</span> open resume.pdf</a>
-          <a class="btn" href="#work"><span class="pr">$</span> view case-study</a>
-          <a class="btn" href="mailto:fabri.deci@gmail.com"><span class="pr">$</span> contact --email</a>
-          <a class="btn quiet" href="https://github.com/fabrideci">GitHub</a>
-          <a class="btn quiet" href="https://www.linkedin.com/in/fabriziodecicco">LinkedIn</a>
-        </div>
-
-        <div class="term" id="term">
-          <div class="thead">
-            <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
-            <span class="ttitle">fabrizio@infra: ~ — zsh</span>
-            <span class="tstatus"><span class="d"></span><span data-i18n="term.connected">connected</span></span>
-          </div>
-          <div class="tbody">
-            <div id="stream" role="log" aria-live="polite" aria-relevant="additions" aria-label="Terminal output" data-i18n-aria="aria.stream"></div>
-            <div class="inrow" id="inrow" hidden>
-              <span class="pr">$</span>
-              <input id="cin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal command — type help" data-i18n-aria="aria.cin" placeholder="type a command…">
+        <div class="studio-hero">
+          <div class="hero-copy">
+            <p class="eyebrow" data-i18n="studio.role">IoT Infrastructure Architect &amp; Lead Engineer</p>
+            <h1 class="name" data-i18n="studio.headline">Infrastructure,<br><em>by design.</em></h1>
+            <p class="value" data-i18n="studio.intro">I design cloud platforms for <strong>Culligan’s connected devices</strong>, and build the AI tools that help our engineers review, test and ship.</p>
+            <div class="cta">
+              <a class="btn primary" href="#work"><span data-i18n="studio.worklink">Explore the work</span><span aria-hidden="true">↗</span></a>
+              <a class="text-link" href="assets/Fabrizio-De-Cicco-Resume.pdf" data-i18n="contact.resume">Résumé (PDF)</a>
             </div>
+            <p class="support" data-i18n="studio.location">Fabrizio De Cicco · Turin, Italy · Open to remote</p>
           </div>
+          <article class="studio-system" aria-labelledby="studio-system-h">
+            <div class="studio-system-heading"><h2 id="studio-system-h" data-i18n="studio.system">Engineering assistant</h2><span class="micro" data-i18n="studio.explore">Explore an agent</span></div>
+            <div class="studio-graph" id="studio-graph">
+              <svg class="studio-wires" viewBox="0 0 480 346" preserveAspectRatio="none" aria-hidden="true"><path d="M240 176 C240 118 76 118 76 60"/><path d="M240 176 L240 60"/><path d="M240 176 C240 118 404 118 404 60"/><path d="M240 176 C240 234 76 234 76 292"/><path d="M240 176 L240 292"/><path d="M240 176 C240 234 404 234 404 292"/></svg>
+              <button class="studio-node" data-studio-agent="code-review" aria-pressed="false" aria-controls="studio-detail"><span class="node-index" aria-hidden="true">01</span><span data-i18n="studio.review">Code review</span></button>
+              <button class="studio-node" data-studio-agent="qa" aria-pressed="false" aria-controls="studio-detail"><span class="node-index" aria-hidden="true">02</span><span>QA</span></button>
+              <button class="studio-node" data-studio-agent="release" aria-pressed="false" aria-controls="studio-detail"><span class="node-index" aria-hidden="true">03</span><span>Release</span></button>
+              <button class="studio-node studio-hub" data-studio-agent="orchestrator" aria-pressed="true" aria-controls="studio-detail"><span data-i18n="node.orchestrator.nm">Orchestrator</span><small data-i18n="studio.routes">Routes the work</small></button>
+              <button class="studio-node" data-studio-agent="infrastructure" aria-pressed="false" aria-controls="studio-detail"><span class="node-index" aria-hidden="true">04</span><span data-i18n="studio.infra">Infrastructure</span></button>
+              <button class="studio-node" data-studio-agent="reliability" aria-pressed="false" aria-controls="studio-detail"><span class="node-index" aria-hidden="true">05</span><span data-i18n="studio.reliability">Reliability</span></button>
+              <button class="studio-node" data-studio-agent="self-improvement" aria-pressed="false" aria-controls="studio-detail"><span class="node-index" aria-hidden="true">06</span><span data-i18n="studio.improve">Improvement</span></button>
+            </div>
+            <div class="studio-foundation"><span data-i18n="studio.skills">50 shared skills</span><span data-i18n="studio.mcp">Tool integrations via MCP</span></div>
+            <div class="studio-detail" id="studio-detail" aria-live="polite"><h3 data-i18n="node.orchestrator.nm">Orchestrator</h3><p data-i18n="studio.default">Receives a task, dispatches specialists and brings their findings together.</p></div>
+            <div class="studio-caption"><span data-i18n="studio.caption">From the published case study</span><a href="#work" data-i18n="studio.read">Read it ↗</a></div>
+          </article>
         </div>
-        <div class="hintbar" id="hints" hidden>
-          <button class="cmdchip" data-c="help">help</button>
-          <button class="cmdchip" data-c="work">work</button>
-          <button class="cmdchip" data-c="topology">topology</button>
-          <button class="cmdchip" data-c="slo 99.9">slo 99.9</button>
-          <button class="cmdchip" data-c="contact">contact</button>
+        <div class="studio-proof">
+          <div><span class="proof-number" data-i18n="studio.production">50,000+</span><span class="proof-label" data-i18n="studio.devices">devices in production</span></div>
+          <p data-i18n="studio.responsibility">Architecture, reliability and engineering practice for <strong>Culligan's IoT platform.</strong></p>
+          <div class="proof-secondary"><p><strong>10+</strong><span data-i18n="studio.years">years in infrastructure</span></p><p><strong data-i18n="hero.v2">~300,000</strong><span data-i18n="studio.target">fleet scale target</span></p></div>
         </div>
       </div>
     </header>
@@ -141,13 +129,13 @@
          =================================================================== -->
     <section class="section" id="work" aria-labelledby="work-h">
       <div class="wrap">
-        <span class="eyebrow" data-i18n="work.eyebrow">// selected work · sheet 02/07</span>
-        <h2 class="h" id="work-h" data-i18n="work.h">Multi-agent engineering assistant</h2>
-        <p class="sub" data-i18n="work.sub">A multi-agent AI system that helps a platform team review, test, ship, and operate software with more consistency and less toil — adopted across the lead engineering team.</p>
+        <span class="eyebrow" data-i18n="work.eyebrow">01 / Selected work</span>
+        <h2 class="h" id="work-h" data-i18n="work.h">How a team works, built into its tools.</h2>
+        <p class="sub" data-i18n="work.sub">I designed and built a multi-agent engineering assistant for review, testing, release preparation and reliability. It is now used across the lead engineering team.</p>
 
-        <p class="layerlab" data-i18n="work.arch">High-level architecture, drawn as built — tap any block</p>
+        <p class="layerlab" data-i18n="work.arch">Explore the architecture</p>
         <div class="diagram">
-          <span class="sheetno" aria-hidden="true" data-i18n="work.sheetno">sheet 02/07 · rev 2026.07</span>
+          <span class="sheetno" aria-hidden="true" data-i18n="work.sheetno">Engineering assistant / Architecture</span>
           <p class="layerlab" data-i18n="work.lab.control">control</p>
           <button class="node orch" data-id="orchestrator" aria-pressed="true">
             <span class="nm" data-i18n="node.orchestrator.nm">Orchestrator</span>
@@ -191,20 +179,10 @@
           </div>
         </div>
 
-        <div class="detail" id="detail" aria-live="polite"></div>
+        <div class="detail" id="detail" aria-live="polite"><div class="dname">Orchestrator</div><div class="drole">routes work · plays the developer</div><ul class="downs"><li>Receives a task, dispatches the right specialists, assembles their findings into one verdict.</li><li>Acts as the developer-in-the-loop across the whole workflow.</li></ul></div>
         <p class="hintline" data-i18n="work.hintline">Each agent owns <b>one workflow</b> and carries only the context it needs — organised by workflow, not by role.</p>
 
-        <div class="run">
-          <div class="rh"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="t">engineering-assistant — review</span></div>
-          <pre data-i18n="work.run"><span class="pr">$</span> review --pr 1487
-<span class="ar">→ orchestrator fans out specialists in parallel</span>
-<span class="ok">✓</span> code review — standards + pipeline impact
-<span class="ok">✓</span> qa — branch checkout + tests
-<span class="ok">✓</span> release — promotion readiness
-<span class="ok">✓</span> reliability — SLOs + incident signals
-<span class="ok">✓</span> verify — 2 findings confirmed, 1 refuted
-<span class="ok">✓</span> <span class="b">review ready — 0 blocking, 2 suggestions</span></pre>
-        </div>
+
 
         <div class="story">
           <div class="block">
@@ -226,12 +204,12 @@
           </div>
           <div class="block">
             <h4 data-i18n="work.outcome.h">Outcome</h4>
-            <p data-i18n="work.outcome.p">Rolled out to the lead engineering team and in daily use — <b>seven specialist agents sharing a 50-skill library</b>, behind guardrails that gate anything destructive. Review quality has visibly improved and developer feedback has been consistently positive; the next iteration adds the numbers I want to manage it by — <b>cycle time and defect leakage</b> — because adoption should be measured, not assumed.</p>
+            <p data-i18n="work.outcome.p">Rolled out to the lead engineering team and in daily use — <b>seven agents sharing a 50-skill library</b>, behind guardrails that gate anything destructive. Review quality has visibly improved and developer feedback has been consistently positive; the next iteration adds the numbers I want to manage it by: <b>cycle time and defect leakage</b>.</p>
           </div>
         </div>
 
-        <div class="fanout">
-          <h3 class="subh" data-i18n="work.fanout.h">The fan-out, quantified</h3>
+        <details class="fanout tool-disclosure"><summary data-i18n="studio.fanout">Explore the fan-out model</summary>
+          <h3 class="subh" data-i18n="work.fanout.h">What parallel work changes</h3>
           <p class="hintline" data-i18n="orch.model">Modeled as a two-phase workflow: fan out → adversarially verify.</p>
           <div class="panel">
             <div class="inhead">
@@ -244,19 +222,19 @@
                 <input id="oc-t" type="number" min="1" max="3600" step="1" value="40">
               </div>
               <div class="field">
-                <label for="oc-c" data-i18n="orch.c">Concurrency cap</label>
+                <label for="oc-c" data-i18n="orch.c">Agents / stage</label>
                 <input id="oc-c" type="number" min="1" max="64" step="1" value="8">
               </div>
             </div>
             <div class="budget">
-              <span class="lab" data-i18n="orch.best">Best speedup</span>
+              <span class="lab" data-i18n="orch.best">Modeled speedup</span>
               <span class="val" id="oc-speedup">8.0×</span>
               <span class="of" data-i18n="orch.vs">vs running them one after another</span>
             </div>
             <div class="windows octhree" id="oc-rows"></div>
-            <p class="hintline" data-i18n="orch.hint">The cap — not the count — sets the wall-clock; a pipeline skips the barrier's idle wave.</p>
+            <p class="hintline" data-i18n="orch.hint">Equal task durations, separate capacity per stage and no coordination overhead. An illustrative model, not measured delivery time.</p>
           </div>
-        </div>
+        </details>
       </div>
     </section>
 
@@ -265,52 +243,40 @@
          =================================================================== -->
     <section class="section" id="principles" aria-labelledby="principles-h">
       <div class="wrap">
-        <span class="eyebrow" data-i18n="sys.eyebrow">// how I build · sheet 03/07</span>
+        <span class="eyebrow" data-i18n="sys.eyebrow">02 / Engineering practice</span>
         <h2 class="h" id="principles-h" data-i18n="sys.h">How I build</h2>
-        <p class="sub" data-i18n="sys.sub">Six positions I'll defend about building and scaling a platform — opinionated on purpose.</p>
+        <p class="sub" data-i18n="sys.sub">The decisions I come back to when building platforms and the teams behind them.</p>
 
         <div class="grid-2 positions">
-          <article class="op">
-            <div class="tag" data-i18n="sys1.tag">platform baseline</div>
-            <h3 class="stance" data-i18n="sys1.stance">Ship identity, updates, and observability before a single feature.</h3>
+          <details class="op"><summary><span class="tag" data-i18n="sys1.tag">platform baseline</span><span class="stance" data-i18n="sys1.stance">Ship identity, updates, and observability before a single feature.</span><span class="op-toggle" aria-hidden="true">+</span></summary><div class="op-body">
             <p class="why" data-i18n="sys1.why">For connected products, the platform's job is to keep a fleet secure, updatable, and visible — not to ship features on day one. Device identity, over-the-air update, and end-to-end telemetry are the load-bearing walls; <b>bolt them on later and you're rebuilding the foundation under a live fleet.</b></p>
             <div class="move"><span class="ml" data-i18n="sys.movelab">first move</span><span data-i18n="sys1.move">identity + OTA + telemetry pipeline, before product features.</span></div>
-          </article>
+          </div></details>
 
-          <article class="op">
-            <div class="tag" data-i18n="sys2.tag">standardization</div>
-            <h3 class="stance" data-i18n="sys2.stance">Pick the boring defaults before the team is big enough to argue.</h3>
+          <details class="op"><summary><span class="tag" data-i18n="sys2.tag">standardization</span><span class="stance" data-i18n="sys2.stance">Pick the boring defaults before the team is big enough to argue.</span><span class="op-toggle" aria-hidden="true">+</span></summary><div class="op-body">
             <p class="why" data-i18n="sys2.why">The cheapest time to standardize IaC modules, secret management, pipelines, and an SLO convention is at two repos, not twenty. Every week you wait, divergence compounds and migration turns political. <b>Standardization isn't bureaucracy — it's the paved road</b> that lets people stop reinventing plumbing.</p>
             <div class="move"><span class="ml" data-i18n="sys.movelab">first move</span><span data-i18n="sys2.move">a Terraform module library + one pipeline template + one observability convention.</span></div>
-          </article>
+          </div></details>
 
-          <article class="op">
-            <div class="tag" data-i18n="sys3.tag">kubernetes</div>
-            <h3 class="stance" data-i18n="sys3.stance">Don't run Kubernetes until the problem is Kubernetes-shaped.</h3>
+          <details class="op"><summary><span class="tag" data-i18n="sys3.tag">kubernetes</span><span class="stance" data-i18n="sys3.stance">Don't run Kubernetes until the problem is Kubernetes-shaped.</span><span class="op-toggle" aria-hidden="true">+</span></summary><div class="op-body">
             <p class="why" data-i18n="sys3.why">AKS is right when you have many services, real scaling needs, and a team that can own the operational surface. For a handful of services it's a tax — managed container platforms ship the same outcome with a fraction of the ops. <b>Complexity should be earned by load, not adopted for the résumé.</b></p>
             <div class="move"><span class="ml" data-i18n="sys.movelab">first move</span><span data-i18n="sys3.move">justify the cluster against service count and on-call capacity.</span></div>
-          </article>
+          </div></details>
 
-          <article class="op">
-            <div class="tag" data-i18n="sys5.tag">reliability vs cost</div>
-            <h3 class="stance" data-i18n="sys5.stance">An SLO is a budget — spend it, don't gold-plate.</h3>
+          <details class="op"><summary><span class="tag" data-i18n="sys5.tag">reliability vs cost</span><span class="stance" data-i18n="sys5.stance">An SLO is a budget — spend it, don't gold-plate.</span><span class="op-toggle" aria-hidden="true">+</span></summary><div class="op-body">
             <p class="why" data-i18n="sys5.why">Chasing more nines than users actually feel just burns money and engineering time. Define the SLO from real user experience, then spend the error budget: ship faster while it's healthy, slow down and harden when it's not. <b>Reliability and cost aren't opposites — the error budget is the dial that trades them on purpose.</b></p>
             <div class="move"><span class="ml" data-i18n="sys.movelab">first move</span><span data-i18n="sys5.move">set SLOs from user-felt signals, then let the budget drive pace.</span></div>
-          </article>
+          </div></details>
 
-          <article class="op">
-            <div class="tag" data-i18n="sys4.tag">AI in delivery</div>
-            <h3 class="stance" data-i18n="sys4.stance">Let agents propose; never let them push unattended.</h3>
+          <details class="op"><summary><span class="tag" data-i18n="sys4.tag">AI in delivery</span><span class="stance" data-i18n="sys4.stance">Let agents propose; never let them push unattended.</span><span class="op-toggle" aria-hidden="true">+</span></summary><div class="op-body">
             <p class="why" data-i18n="sys4.why">AI agents are a force-multiplier on review, QA, and release prep — but anything destructive stays behind a human gate and a guardrail. Compose them into <b>workflows that fan out and self-verify</b>, give them a shared skills layer so conventions don't drift, and run the read-only ones <b>on a schedule</b> so problems surface on their own. <b>The win is consistency and removed toil, not autonomy for its own sake.</b></p>
             <div class="move"><span class="ml" data-i18n="sys.movelab">first move</span><span data-i18n="sys4.move">agents behind guardrails, gated on anything irreversible.</span></div>
-          </article>
+          </div></details>
 
-          <article class="op">
-            <div class="tag" data-i18n="sys6.tag">leadership</div>
-            <h3 class="stance" data-i18n="sys6.stance">If the team can't ship without me, I've failed.</h3>
+          <details class="op"><summary><span class="tag" data-i18n="sys6.tag">leadership</span><span class="stance" data-i18n="sys6.stance">If the team can't ship without me, I've failed.</span><span class="op-toggle" aria-hidden="true">+</span></summary><div class="op-body">
             <p class="why" data-i18n="sys6.why">A lead who hoards context becomes the bottleneck: the team stalls whenever they're unavailable, and burnout follows. My job is to make myself progressively unnecessary — mentor, document, pave the road — <b>so the team moves faster than any one person could.</b></p>
             <div class="move"><span class="ml" data-i18n="sys.movelab">first move</span><span data-i18n="sys6.move">write it down, hand it over, and stay off the critical path.</span></div>
-          </article>
+          </div></details>
         </div>
       </div>
     </section>
@@ -320,7 +286,7 @@
          =================================================================== -->
     <section class="section" id="experience" aria-labelledby="experience-h">
       <div class="wrap">
-        <span class="eyebrow" data-i18n="exp.eyebrow">// experience · sheet 04/07</span>
+        <span class="eyebrow" data-i18n="exp.eyebrow">03 / Experience</span>
         <h2 class="h" id="experience-h" data-i18n="exp.h">Where I've built things</h2>
 
         <ul class="tl">
@@ -405,7 +371,7 @@
          =================================================================== -->
     <section class="section" id="lab" aria-labelledby="lab-h">
       <div class="wrap">
-        <span class="eyebrow" data-i18n="lab.eyebrow">// the lab · sheet 05/07</span>
+        <span class="eyebrow" data-i18n="lab.eyebrow">04 / The lab</span>
         <h2 class="h" id="lab-h" data-i18n="lab.h">The lab</h2>
         <p class="sub" data-i18n="lab.sub">Templates I actually use — de-identified and free to take — plus the number behind every "we need more nines" conversation.</p>
 
@@ -498,6 +464,31 @@
             <div class="wcard"><div class="wt">per year</div><div class="wv">8.76 h</div></div>
           </div>
         </div>
+
+        <details class="terminal-lab tool-disclosure"><summary data-i18n="studio.terminal">Explore the command-line lab</summary>
+        <div class="term" id="term">
+          <div class="thead">
+            <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
+            <span class="ttitle">fabrizio / command-line lab</span>
+            <span class="tstatus"><span class="d"></span><span data-i18n="term.connected">interactive lab</span></span>
+          </div>
+          <div class="tbody">
+            <div id="stream" role="log" aria-live="polite" aria-relevant="additions" aria-label="Terminal output" data-i18n-aria="aria.stream"></div>
+            <div class="inrow" id="inrow" hidden>
+              <span class="pr">$</span>
+              <input id="cin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal command — type help" data-i18n-aria="aria.cin" placeholder="type a command…">
+            </div>
+          </div>
+        </div>
+        <div class="hintbar" id="hints" hidden>
+          <button class="cmdchip" data-c="help">help</button>
+          <button class="cmdchip" data-c="work">work</button>
+          <button class="cmdchip" data-c="topology">topology</button>
+          <button class="cmdchip" data-c="slo 99.9">slo 99.9</button>
+          <button class="cmdchip" data-c="contact">contact</button>
+        </div>
+
+        </details>
       </div>
     </section>
 
@@ -506,7 +497,7 @@
          =================================================================== -->
     <section class="section" id="skills" aria-labelledby="skills-h">
       <div class="wrap">
-        <span class="eyebrow" data-i18n="skills.eyebrow">// skills · sheet 06/07</span>
+        <span class="eyebrow" data-i18n="skills.eyebrow">05 / Capabilities</span>
         <h2 class="h" id="skills-h" data-i18n="skills.h">Skills &amp; certifications</h2>
         <div class="skmatrix">
           <div class="skrow"><h3 data-i18n="skills.c1">Cloud &amp; containers</h3><p>Azure · AKS · Container Apps · Kubernetes · Docker · Helm</p></div>
@@ -524,7 +515,7 @@
          =================================================================== -->
     <section class="section contact" id="contact" aria-labelledby="contact-h">
       <div class="wrap">
-        <span class="eyebrow" data-i18n="contact.eyebrow">// contact · sheet 07/07</span>
+        <span class="eyebrow" data-i18n="contact.eyebrow">06 / Get in touch</span>
         <h2 class="h" id="contact-h" data-i18n="contact.h">Let's build something reliable.</h2>
         <p class="lead" data-i18n="contact.lead">Architecture, platform reliability, or AI-assisted delivery — if any of that is on your plate, I'm happy to talk.</p>
         <div class="links">
@@ -540,16 +531,12 @@
   </main>
 
   <!-- ===================================================================
-       8 · Footer status bar
+       8 · Colophon
        =================================================================== -->
-  <footer class="status">
-    <span class="l"><span class="dot"></span> <span data-i18n="foot.status">All systems operational</span></span>
-    <span class="sp"></span>
-    <span data-i18n="foot.static">static · <b>0 dependencies</b> · <b>0 trackers</b></span>
-    <span>·</span>
-    <span data-i18n="foot.handcoded">hand-coded — <a href="https://github.com/fabrideci/fabrideci.github.io">source</a></span>
-    <span>·</span>
+  <footer class="status wrap">
     <span>© 2026 Fabrizio De Cicco</span>
+    <span data-i18n="studio.footer">Architecture · Reliability · Engineering tools</span>
+    <a href="https://github.com/fabrideci/fabrideci.github.io" data-i18n="studio.source">Source ↗</a>
   </footer>
 
 </div>
