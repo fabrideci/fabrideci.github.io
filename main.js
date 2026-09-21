@@ -24,7 +24,7 @@
       b.setAttribute('aria-pressed', b.dataset.thm === mode ? 'true' : 'false');
     });
   }
-  function currentTheme(){ return root.getAttribute('data-theme') || 'dark'; }
+  function currentTheme(){ return root.getAttribute('data-theme') || 'light'; }
   if(seg){
     // reflect the pre-paint choice
     setTheme(currentTheme());
@@ -44,13 +44,39 @@
   // Italian translations of the static [data-i18n] body content. Keys map to
   // index.html data-i18n attributes; missing keys fall back to English.
   var IT = {
+    "studio.role":"IoT Infrastructure Architect e Lead Engineer",
+    "studio.headline":"Infrastrutture,<br><em>progettate bene.</em>",
+    "studio.intro":"Progetto piattaforme cloud per i <strong>dispositivi connessi di Culligan</strong> e costruisco gli strumenti AI con cui il nostro team fa review, testa e rilascia.",
+    "studio.worklink":"Esplora il lavoro",
+    "studio.location":"Fabrizio De Cicco · Torino, Italia · Disponibile da remoto",
+    "studio.system":"Assistente di ingegneria",
+    "studio.explore":"Esplora un agente",
+    "studio.review":"Code review",
+    "studio.routes":"Smista il lavoro",
+    "studio.infra":"Infrastruttura",
+    "studio.reliability":"Affidabilità",
+    "studio.improve":"Miglioramento",
+    "studio.skills":"50 skill condivise",
+    "studio.mcp":"Integrazioni tramite MCP",
+    "studio.default":"Riceve un task, coinvolge gli specialisti e riunisce i loro risultati.",
+    "studio.caption":"Dal caso di studio pubblicato",
+    "studio.read":"Leggilo ↗",
+    "studio.production":"50.000+",
+    "studio.devices":"dispositivi in produzione",
+    "studio.responsibility":"Architettura, affidabilità e pratiche di ingegneria per la <strong>piattaforma IoT di Culligan.</strong>",
+    "studio.years":"anni nelle infrastrutture",
+    "studio.target":"obiettivo di scala della flotta",
+    "studio.fanout":"Esplora il modello di fan-out",
+    "studio.terminal":"Esplora il laboratorio da terminale",
+    "studio.footer":"Architettura · Affidabilità · Strumenti di ingegneria",
+    "studio.source":"Codice ↗",
     'a11y.skip':'Vai al contenuto',
     'aria.lang':'Lingua', 'aria.theme':'Tema', 'aria.stream':'Output del terminale',
     'aria.cin':'Comando terminale — scrivi help', 'aria.sections':'Sezioni',
     'aria.slider':'Cursore obiettivo SLO', 'aria.preview':'Anteprima artefatto',
     'bar.dark':'Scuro', 'bar.light':'Chiaro',
-    'term.connected':'connesso',
-    'nav.work':'Caso di studio', 'nav.principles':'Come costruisco', 'nav.experience':'Esperienza',
+    'term.connected':"laboratorio interattivo",
+    'nav.work':"Progetti", 'nav.principles':'Come costruisco', 'nav.experience':"Profilo",
     'nav.lab':'Laboratorio', 'nav.contact':'Contatti',
 
     'hero.value':'Gestisco l\'infrastruttura cloud dietro <b>oltre 50.000 dispositivi connessi</b> — e costruisco il tooling AI che aiuta a rilasciare la piattaforma.',
@@ -65,11 +91,11 @@
     'hero.k3':'anni di infra',
     'hero.k4':'certificazioni',
 
-    'work.eyebrow':'// lavori selezionati · tav. 02/07',
-    'work.h':'Assistente di ingegneria multi-agente',
-    'work.sub':'Un sistema AI multi-agente che aiuta un team di piattaforma a revisionare, testare, rilasciare e gestire il software con più coerenza e meno fatica — adottato in tutto il team di lead engineering.',
-    'work.arch':'Architettura ad alto livello, disegnata come costruita — tocca un blocco',
-    'work.sheetno':'tav. 02/07 · rev 2026.07',
+    'work.eyebrow':"01 / Progetti selezionati",
+    'work.h':"Il modo di lavorare di un team, nei suoi strumenti.",
+    'work.sub':"Ho progettato e costruito un assistente di ingegneria multi-agente per review, test, preparazione dei rilasci e affidabilità. Oggi è usato dal team di lead engineering.",
+    'work.arch':"Esplora l’architettura",
+    'work.sheetno':"Assistente di ingegneria / Architettura",
     'work.tb1k':'progetto',
     'work.tb2k':'ruolo', 'work.tb2v':'progettazione e sviluppo',
     'work.tb3k':'costruito con',
@@ -101,17 +127,17 @@
     'work.dec3':'Fare dell\'orchestrazione un <b>workflow, non uno script</b> — distribuisci, verifica, poi sintetizza.',
     'work.dec4':'Stratificare la capacità dei modelli <b>per fase, come l\'infrastruttura</b> — esecutori economici per il lavoro meccanico, un advisor di fascia alta consultato su richiesta, e le fasi critiche per la sicurezza bloccate così che nessun livello di costo possa degradarle.',
     'work.outcome.h':'Risultato',
-    'work.outcome.p':'Distribuito al team di lead engineering e in uso quotidiano — <b>sette agenti specialisti con una libreria di 50 skill</b>, dietro guardrail che bloccano qualsiasi cosa distruttiva. La qualità delle review è migliorata visibilmente e il feedback degli sviluppatori è stato costantemente positivo; la prossima iterazione aggiunge i numeri con cui voglio gestirlo — <b>cycle time e defect leakage</b> — perché l\'adozione va misurata, non presunta.',
-    'work.fanout.h':'Il fan-out, quantificato',
+    'work.outcome.p':"Distribuito al team di lead engineering e in uso quotidiano: <b>sette agenti con una libreria di 50 skill</b>, dietro guardrail che bloccano qualsiasi cosa distruttiva. La qualità delle review è migliorata visibilmente e il feedback degli sviluppatori è stato costantemente positivo. La prossima iterazione aggiunge i numeri con cui voglio gestirlo: <b>cycle time e defect leakage</b>.",
+    'work.fanout.h':"Cosa cambia lavorando in parallelo",
 
-    'orch.n':'Sottotask', 'orch.t':'Secondi / agente', 'orch.c':'Limite di concorrenza',
+    'orch.n':'Sottotask', 'orch.t':'Secondi / agente', 'orch.c':"Agenti / fase",
     'orch.model':'Modellato come workflow a due fasi: distribuisci → verifica in modo avversariale.',
-    'orch.best':'Miglior speedup', 'orch.vs':'rispetto a eseguirli uno dopo l\'altro',
-    'orch.hint':'È il limite — non il numero — a fissare il wall-clock; una pipeline salta l\'onda ferma della barriera.',
+    'orch.best':"Speedup stimato", 'orch.vs':'rispetto a eseguirli uno dopo l\'altro',
+    'orch.hint':"Task di uguale durata, capacità separata per fase e nessun costo di coordinamento. Un modello illustrativo, non tempi di delivery misurati.",
 
-    'sys.eyebrow':'// come costruisco · tav. 03/07',
+    'sys.eyebrow':"02 / Pratica di ingegneria",
     'sys.h':'Come costruisco',
-    'sys.sub':'Sei posizioni che difenderei su come costruire e scalare una piattaforma — volutamente schierate.',
+    'sys.sub':"Le scelte a cui torno quando costruisco piattaforme e i team che le gestiscono.",
     'sys.movelab':'prima mossa',
     'sys1.tag':'baseline della piattaforma',
     'sys1.stance':'Rilascia identità, aggiornamenti e osservabilità prima di una singola funzionalità.',
@@ -138,7 +164,7 @@
     'sys6.why':'Un lead che accentra il contesto diventa il collo di bottiglia: il team si blocca ogni volta che non è disponibile, e poi arriva il burnout. Il mio lavoro è rendermi progressivamente non necessario — mentoring, documentazione, percorsi consolidati — <b>così il team va più veloce di quanto potrebbe chiunque da solo.</b>',
     'sys6.move':'scrivilo, passalo di mano, e resta fuori dal percorso critico.',
 
-    'exp.eyebrow':'// esperienza · tav. 04/07',
+    'exp.eyebrow':"03 / Esperienza",
     'exp.h':'Dove ho costruito',
     'exp1.h':'Architetto di Infrastrutture <span>(prec. DevOps Engineer)</span>',
     'exp1.when':'Lug 2023 — oggi', 'exp1.pill':'Milano · IoT · acqua',
@@ -155,7 +181,7 @@
     'exp3.b2':'Costruito app backend e web (C#, SQL, ASP.NET, Angular) — Agile / TDD.',
     'exp3.b3':'Mantenuto microservizi ad alta disponibilità su Azure con Docker e Kubernetes.',
 
-    'lab.eyebrow':'// il laboratorio · tav. 05/07',
+    'lab.eyebrow':"04 / Il laboratorio",
     'lab.h':'Il laboratorio',
     'lab.sub':'Template che uso davvero — anonimizzati e liberi da usare — più il numero dietro ogni conversazione "servono più nove".',
     'lab.calc.h':'Calcolatore di error budget',
@@ -172,12 +198,12 @@
     'art.skill.p':'scaffold di una skill Claude Code — descrizione-trigger, divulgazione progressiva, guardrail.',
     'art.view':'Vedi', 'art.dl':'Scarica', 'art.pmeta':'markdown · template',
 
-    'skills.eyebrow':'// competenze · tav. 06/07', 'skills.h':'Competenze e certificazioni',
+    'skills.eyebrow':"05 / Competenze", 'skills.h':'Competenze e certificazioni',
     'skills.c1':'Cloud e container', 'skills.c2':'IoT e messaggistica', 'skills.c3':'IaC e CI/CD',
     'skills.c4':'Osservabilità e SRE', 'skills.c5':'Delivery assistita dall\'AI',
     'skills.certs':'Certificazioni',
 
-    'contact.eyebrow':'// contatti · tav. 07/07',
+    'contact.eyebrow':"06 / Contatti",
     'contact.h':'Costruiamo qualcosa di affidabile.',
     'contact.lead':'Architettura, affidabilità della piattaforma o delivery assistita dall\'AI — se hai qualcosa del genere tra le mani, sono felice di parlarne.',
     'contact.email':'Email', 'contact.resume':'Curriculum (PDF)',
@@ -191,7 +217,7 @@
   // Document-level strings that live in attributes, not innerHTML.
   var META_IT = {
     title:'Fabrizio De Cicco — Architetto di Infrastrutture IoT',
-    desc:'Fabrizio De Cicco — Architetto di Infrastrutture IoT e Lead DevOps Engineer. 10+ anni a costruire infrastrutture cloud affidabili per piattaforme IoT globali. Azure, Kubernetes, Terraform, Datadog, SRE. Costruisce anche tooling di delivery AI multi-agente su Claude Code.',
+    desc:'Fabrizio De Cicco — Architetto di Infrastrutture IoT e Lead Engineer. 10+ anni a costruire infrastrutture cloud affidabili per piattaforme IoT globali. Azure, Kubernetes, Terraform, Datadog, SRE. Costruisce anche tooling di delivery AI multi-agente su Claude Code.',
     cinPh:'scrivi un comando…'
   };
 
@@ -301,7 +327,7 @@
     function setVal(v, from){
       v = parseFloat(v); if(!isFinite(v)) return;
       if(from !== 'num') num.value = v;
-      if(from !== 'range') range.value = Math.max(90, Math.min(99.999, v));
+      if(from !== 'range') range.value = v;
       calc(v);
     }
     num.addEventListener('input', function(){ setVal(num.value, 'num'); });
@@ -437,12 +463,61 @@
       });
     }
     nodes.forEach(function(n){
+      n.setAttribute('aria-controls', 'detail');
       n.addEventListener('click', function(){ render(n.dataset.id); });
-      n.addEventListener('mouseenter', function(){ render(n.dataset.id); });
-      n.addEventListener('focus', function(){ render(n.dataset.id); });
     });
     render('orchestrator');
     addLangListener(function(){ render(curId); });
+
+    // The overview and the full diagram share the actual case-study data.
+    // Selection is deliberate (click, Enter or Space), never triggered by hover.
+    var graph = document.getElementById('studio-graph');
+    var heroDetail = document.getElementById('studio-detail');
+    if(!graph || !heroDetail) return;
+    var heroNodes = Array.prototype.slice.call(graph.querySelectorAll('[data-studio-agent]'));
+    var hub = graph.querySelector('.studio-hub');
+    var wires = graph.querySelector('.studio-wires');
+    var heroId = 'orchestrator';
+    var drawFrame = 0;
+
+    function drawWires(){
+      drawFrame = 0;
+      var rect = graph.getBoundingClientRect();
+      if(!wires || !hub || !rect.width || !rect.height) return;
+      var center = hub.getBoundingClientRect();
+      var x = center.left - rect.left + center.width / 2;
+      var y = center.top - rect.top + center.height / 2;
+      wires.setAttribute('viewBox', '0 0 ' + rect.width + ' ' + rect.height);
+      wires.innerHTML = heroNodes.filter(function(n){ return n !== hub; }).map(function(n){
+        var r = n.getBoundingClientRect();
+        var endX = r.left - rect.left + r.width / 2;
+        var endY = r.top - rect.top + r.height / 2;
+        var bend = (y + endY) / 2;
+        var active = n.dataset.studioAgent === heroId;
+        return '<path class="' + (active ? 'active' : '') + '" d="M' + x + ' ' + y
+          + ' C' + x + ' ' + bend + ' ' + endX + ' ' + bend + ' ' + endX + ' ' + endY + '"/>';
+      }).join('');
+    }
+    function scheduleDraw(){
+      if(!drawFrame) drawFrame = requestAnimationFrame(drawWires);
+    }
+    function renderHero(id){
+      var d = INFO[currentLang()][id]; if(!d) return;
+      heroId = id;
+      heroDetail.innerHTML = '<h3>' + d.n + '</h3><p>' + d.o[0] + '</p>';
+      heroNodes.forEach(function(n){
+        n.setAttribute('aria-pressed', n.dataset.studioAgent === id ? 'true' : 'false');
+      });
+      scheduleDraw();
+    }
+    heroNodes.forEach(function(n){
+      n.addEventListener('click', function(){ renderHero(n.dataset.studioAgent); });
+    });
+    renderHero(heroId);
+    addLangListener(function(){ renderHero(heroId); });
+    if('ResizeObserver' in window) new ResizeObserver(scheduleDraw).observe(graph);
+    window.addEventListener('resize', scheduleDraw);
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(scheduleDraw);
   })();
 
   /* ---------------------------------------------------------------------
@@ -453,7 +528,8 @@
   (function artifacts(){
     var grid = document.getElementById('grid'),
         pv = document.getElementById('pv'),
-        fn = document.getElementById('fn');
+        fn = document.getElementById('fn'),
+        status = document.getElementById('preview-status');
     if(!grid || !pv || !fn) return;
 
     var FILES = {
@@ -462,30 +538,55 @@
       skill:'skill-template.md'
     };
     var TXT = {
-      en: { loading:'Loading…', err:function(f){ return 'Preview unavailable — open lab/' + f; } },
-      it: { loading:'Caricamento…', err:function(f){ return 'Anteprima non disponibile — apri lab/' + f; } }
+      en: { loading:'Loading…', err:function(f){ return 'Preview unavailable — open lab/' + f; }, ready:function(f){ return 'Preview ready: ' + f; } },
+      it: { loading:'Caricamento…', err:function(f){ return 'Anteprima non disponibile — apri lab/' + f; }, ready:function(f){ return 'Anteprima pronta: ' + f; } }
     };
     var cache = {};
+    var previewRequest = 0;
+    var previewState = 'loading';
     var rows = Array.prototype.slice.call(document.querySelectorAll('.frow'));
+    function announce(){
+      var text = TXT[currentLang()];
+      if(status) status.textContent = previewState === 'loading' ? text.loading + ' ' + fn.textContent : text[previewState](fn.textContent);
+    }
+    function finish(content, state){
+      pv.textContent = content;
+      pv.setAttribute('aria-busy', 'false');
+      previewState = state;
+      announce();
+    }
     function view(id){
       var file = FILES[id]; if(!file) return;
+      var request = ++previewRequest;
       fn.textContent = file;
-      rows.forEach(function(c){ c.classList.toggle('on', c.dataset.id === id); });
-      if(cache[id] != null){ pv.textContent = cache[id]; return; }
+      rows.forEach(function(c){
+        var selected = c.dataset.id === id;
+        c.classList.toggle('on', selected);
+        c.querySelector('.view').setAttribute('aria-pressed', String(selected));
+      });
+      if(cache[id] != null){ finish(cache[id], 'ready'); return; }
+      pv.setAttribute('aria-busy', 'true');
       pv.textContent = TXT[currentLang()].loading;
+      previewState = 'loading';
+      announce();
       fetch('lab/' + file).then(function(r){ if(!r.ok) throw new Error(r.status); return r.text(); }).then(function(t){
-        cache[id] = t; if(fn.textContent === file) pv.textContent = t;   // ignore a stale fetch
-      }).catch(function(){ pv.textContent = TXT[currentLang()].err(file); });
+        cache[id] = t;
+        // Selection can return to the same file while an earlier request is pending.
+        if(request === previewRequest) finish(t, 'ready');
+      }).catch(function(){
+        if(request === previewRequest) finish(TXT[currentLang()].err(file), 'err');
+      });
     }
     grid.addEventListener('click', function(e){
       var b = e.target.closest('.view'); if(!b) return;   // Download is a native link
       view(b.closest('.frow').dataset.id);
     });
     view('adr');
+    addLangListener(announce);
   })();
 
   /* ---------------------------------------------------------------------
-     Hero terminal — an exhibit, not a gatekeeper. Boots instantly (no
+     Lab terminal — an optional tool. Boots instantly (no
      typing theatre), never steals focus; commands still navigate the site.
      --------------------------------------------------------------------- */
   (function terminal(){
@@ -510,10 +611,10 @@
         groups:{ navigate:'navigate', info:'info', tools:'tools', fun:'fun' },
         opening:'→ opening ',
         notfound:function(n){ return 'command not found: ' + n + ' — try <span class="ac">help</span>'; },
-        about:['IoT Infrastructure Architect &amp; Lead DevOps Engineer.',
+        about:['IoT Infrastructure Architect &amp; Lead Engineer.',
                '10+ years building reliable cloud infrastructure for global IoT platforms.'],
         stack:'Azure · AKS · Azure Functions · <span class="ac">Terraform</span> · Datadog · Azure DevOps · Kubernetes · SRE',
-        devices:'<span class="ok">50,000+</span> devices in production — scaling to <span class="ok">~300,000</span> within a year.',
+        devices:'<span class="ok">50,000+</span> devices in production — scale target: <span class="ok">~300,000</span>.',
         certs:'<span class="ac">CKA</span> · <span class="ac">LFCS</span> · <span class="ac">AZ-104</span> · <span class="ac">AZ-400</span>',
         experience:['Culligan International   <span class="dm">Infrastructure Architect</span>   <span class="dm">2023–present</span>',
                      'MSC Mediterranean Shipping   <span class="dm">DevOps Engineer</span>   <span class="dm">2022–2023</span>',
@@ -533,7 +634,7 @@
         resume:'→ downloading <span class="ac">Fabrizio-De-Cicco-Resume.pdf</span>',
         sudo:'sudo: permission denied — you’re not on the on-call rotation 🙂',
         coffee:'☕ brewing… <span class="dm">deploy responsibly.</span>',
-        boot:[{ cmd:'whoami', out:[['Fabrizio De Cicco — IoT Infrastructure Architect &amp; Lead DevOps Engineer','ok']] },
+        boot:[{ cmd:'whoami', out:[['Fabrizio De Cicco — IoT Infrastructure Architect &amp; Lead Engineer','ok']] },
               { cmd:'cat profile.md', out:[['10+ yrs of cloud infra for global IoT · <span class="ok">50K+</span> devices in prod (→300K)','dm'],
                                             ['Azure · Kubernetes · <span class="ac">Terraform</span> · Datadog · SRE','dm']] }],
         readyHint:'<span class="dm">type</span> <span class="ac">help</span> <span class="dm">· Tab completes · try</span> <span class="ac">slo 99.9</span> <span class="cursor"></span>'
@@ -549,10 +650,10 @@
         groups:{ navigate:'naviga', info:'info', tools:'strumenti', fun:'divertimento' },
         opening:'→ apertura ',
         notfound:function(n){ return 'comando non trovato: ' + n + ' — prova <span class="ac">help</span>'; },
-        about:['Architetto di Infrastrutture IoT e Lead DevOps Engineer.',
+        about:['Architetto di Infrastrutture IoT e Lead Engineer.',
                '10+ anni a costruire infrastrutture cloud affidabili per piattaforme IoT globali.'],
         stack:'Azure · AKS · Azure Functions · <span class="ac">Terraform</span> · Datadog · Azure DevOps · Kubernetes · SRE',
-        devices:'<span class="ok">50.000+</span> dispositivi in produzione — in crescita verso <span class="ok">~300.000</span> entro un anno.',
+        devices:'<span class="ok">50.000+</span> dispositivi in produzione — obiettivo di scala: <span class="ok">~300.000</span>.',
         certs:'<span class="ac">CKA</span> · <span class="ac">LFCS</span> · <span class="ac">AZ-104</span> · <span class="ac">AZ-400</span>',
         experience:['Culligan International   <span class="dm">Infrastructure Architect</span>   <span class="dm">2023–oggi</span>',
                      'MSC Mediterranean Shipping   <span class="dm">DevOps Engineer</span>   <span class="dm">2022–2023</span>',
@@ -572,7 +673,7 @@
         resume:'→ scaricamento <span class="ac">Fabrizio-De-Cicco-Resume.pdf</span>',
         sudo:'sudo: permesso negato — non sei nel turno di reperibilità 🙂',
         coffee:'☕ in preparazione… <span class="dm">fai deploy responsabilmente.</span>',
-        boot:[{ cmd:'whoami', out:[['Fabrizio De Cicco — Architetto di Infrastrutture IoT e Lead DevOps Engineer','ok']] },
+        boot:[{ cmd:'whoami', out:[['Fabrizio De Cicco — Architetto di Infrastrutture IoT e Lead Engineer','ok']] },
               { cmd:'cat profile.md', out:[['10+ anni di infra cloud per IoT globale · <span class="ok">50K+</span> dispositivi in prod (→300K)','dm'],
                                             ['Azure · Kubernetes · <span class="ac">Terraform</span> · Datadog · SRE','dm']] }],
         readyHint:'<span class="dm">scrivi</span> <span class="ac">help</span> <span class="dm">· Tab completa · prova</span> <span class="ac">slo 99.9</span> <span class="cursor"></span>'
@@ -591,7 +692,11 @@
     function scrollBody(){ var tb = stream.parentElement; tb.scrollTop = tb.scrollHeight; }
     function go(id){
       var t = document.getElementById(id);
-      if(t) t.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+      if(t){
+        t.setAttribute('tabindex', '-1');
+        t.focus({preventScroll:true});
+        t.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+      }
     }
     function nav(id, label, lines){
       el(L().opening + label, 'dm');
@@ -688,46 +793,27 @@
     // input + tab-completion (no history)
     input.addEventListener('keydown', function(e){
       if(e.key === 'Enter'){ var v = input.value; input.value = ''; exec(v); return; }
-      if(e.key === 'Tab'){
-        e.preventDefault();
+      if(e.key === 'Tab' && !e.shiftKey && !e.ctrlKey && !e.altKey && !e.metaKey){
         var parts = input.value.split(/\s+/);
-        if(parts.length > 1) return;                 // only complete the command name
+        if(parts.length > 1 || !parts[0]) return;    // only complete a nonempty command name
         var frag = parts[0].toLowerCase(), keys = Object.keys(cmds);
-        var matches = frag ? keys.filter(function(k){ return k.indexOf(frag) === 0; }) : keys;
-        if(matches.length === 1){ input.value = matches[0]; }
-        else if(matches.length > 1){
-          var lcp = matches.reduce(function(a, b){
-            var i = 0; while(i < a.length && i < b.length && a[i] === b[i]) i++; return a.slice(0, i);
-          });
-          if(lcp.length > frag.length) input.value = lcp;
+        var matches = keys.filter(function(k){ return k.indexOf(frag) === 0; });
+        if(!matches.length) return;
+        var lcp = matches.reduce(function(a, b){
+          var i = 0; while(i < a.length && i < b.length && a[i] === b[i]) i++; return a.slice(0, i);
+        });
+        // Leave native focus navigation intact unless Tab can extend the command.
+        if(lcp.length > frag.length){ e.preventDefault(); input.value = lcp; }
+        if(matches.length > 1){
           el('<span class="dm">' + matches.join('   ') + '</span>');
           scrollBody();
         }
       }
     });
     if(hints) hints.addEventListener('click', function(e){
-      var b = e.target.closest('.cmdchip'); if(!b) return; exec(b.dataset.c); input.focus();
+      var b = e.target.closest('.cmdchip'); if(!b) return; input.focus(); exec(b.dataset.c);
     });
     term.addEventListener('click', function(e){ if(!e.target.closest('a,button')) input.focus(); });
-  })();
-
-  /* ---------------------------------------------------------------------
-     Scroll reveals — the .rv class is added here only, so content is never
-     hidden without JS; skipped entirely under reduced-motion.
-     --------------------------------------------------------------------- */
-  (function reveal(){
-    if(reduce || !('IntersectionObserver' in window)) return;
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
-      });
-    }, { rootMargin:'0px 0px -8% 0px' });
-    // read all positions before the class writes so layout is computed once
-    var vh = window.innerHeight, below = [];
-    document.querySelectorAll('.section .wrap > *').forEach(function(el){
-      if(el.getBoundingClientRect().top >= vh) below.push(el);   // on-screen elements get no entrance
-    });
-    below.forEach(function(el){ el.classList.add('rv'); io.observe(el); });
   })();
 
   /* ---------------------------------------------------------------------
