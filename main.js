@@ -327,7 +327,7 @@
     function setVal(v, from){
       v = parseFloat(v); if(!isFinite(v)) return;
       if(from !== 'num') num.value = v;
-      if(from !== 'range') range.value = Math.max(90, Math.min(99.999, v));
+      if(from !== 'range') range.value = v;
       calc(v);
     }
     num.addEventListener('input', function(){ setVal(num.value, 'num'); });
@@ -528,7 +528,8 @@
   (function artifacts(){
     var grid = document.getElementById('grid'),
         pv = document.getElementById('pv'),
-        fn = document.getElementById('fn');
+        fn = document.getElementById('fn'),
+        status = document.getElementById('preview-status');
     if(!grid || !pv || !fn) return;
 
     var FILES = {
@@ -537,25 +538,43 @@
       skill:'skill-template.md'
     };
     var TXT = {
-      en: { loading:'Loading…', err:function(f){ return 'Preview unavailable — open lab/' + f; } },
-      it: { loading:'Caricamento…', err:function(f){ return 'Anteprima non disponibile — apri lab/' + f; } }
+      en: { loading:'Loading…', err:function(f){ return 'Preview unavailable — open lab/' + f; }, ready:function(f){ return 'Preview ready: ' + f; } },
+      it: { loading:'Caricamento…', err:function(f){ return 'Anteprima non disponibile — apri lab/' + f; }, ready:function(f){ return 'Anteprima pronta: ' + f; } }
     };
     var cache = {};
     var previewRequest = 0;
+    var previewState = 'loading';
     var rows = Array.prototype.slice.call(document.querySelectorAll('.frow'));
+    function announce(){
+      var text = TXT[currentLang()];
+      if(status) status.textContent = previewState === 'loading' ? text.loading + ' ' + fn.textContent : text[previewState](fn.textContent);
+    }
+    function finish(content, state){
+      pv.textContent = content;
+      pv.setAttribute('aria-busy', 'false');
+      previewState = state;
+      announce();
+    }
     function view(id){
       var file = FILES[id]; if(!file) return;
       var request = ++previewRequest;
       fn.textContent = file;
-      rows.forEach(function(c){ c.classList.toggle('on', c.dataset.id === id); });
-      if(cache[id] != null){ pv.textContent = cache[id]; return; }
+      rows.forEach(function(c){
+        var selected = c.dataset.id === id;
+        c.classList.toggle('on', selected);
+        c.querySelector('.view').setAttribute('aria-pressed', String(selected));
+      });
+      if(cache[id] != null){ finish(cache[id], 'ready'); return; }
+      pv.setAttribute('aria-busy', 'true');
       pv.textContent = TXT[currentLang()].loading;
+      previewState = 'loading';
+      announce();
       fetch('lab/' + file).then(function(r){ if(!r.ok) throw new Error(r.status); return r.text(); }).then(function(t){
         cache[id] = t;
         // Selection can return to the same file while an earlier request is pending.
-        if(request === previewRequest) pv.textContent = t;
+        if(request === previewRequest) finish(t, 'ready');
       }).catch(function(){
-        if(request === previewRequest) pv.textContent = TXT[currentLang()].err(file);
+        if(request === previewRequest) finish(TXT[currentLang()].err(file), 'err');
       });
     }
     grid.addEventListener('click', function(e){
@@ -563,6 +582,7 @@
       view(b.closest('.frow').dataset.id);
     });
     view('adr');
+    addLangListener(announce);
   })();
 
   /* ---------------------------------------------------------------------
@@ -672,7 +692,11 @@
     function scrollBody(){ var tb = stream.parentElement; tb.scrollTop = tb.scrollHeight; }
     function go(id){
       var t = document.getElementById(id);
-      if(t) t.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+      if(t){
+        t.setAttribute('tabindex', '-1');
+        t.focus({preventScroll:true});
+        t.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+      }
     }
     function nav(id, label, lines){
       el(L().opening + label, 'dm');
@@ -787,7 +811,7 @@
       }
     });
     if(hints) hints.addEventListener('click', function(e){
-      var b = e.target.closest('.cmdchip'); if(!b) return; exec(b.dataset.c); input.focus();
+      var b = e.target.closest('.cmdchip'); if(!b) return; input.focus(); exec(b.dataset.c);
     });
     term.addEventListener('click', function(e){ if(!e.target.closest('a,button')) input.focus(); });
   })();

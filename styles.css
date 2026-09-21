@@ -46,6 +46,7 @@ code,pre{font-family:var(--mono)}
 .hintline{max-width:900px;margin:18px 0;color:var(--muted);font-size:13px;line-height:1.7}
 .skip-link{position:fixed;top:12px;left:12px;z-index:50;background:var(--text);color:var(--bg);padding:12px 18px;transform:translateY(-160%)}
 .skip-link:focus{transform:none;color:var(--bg)}
+.sr-only{clip-path:inset(50%);height:1px;overflow:hidden;position:absolute;white-space:nowrap;width:1px}
 
 /* Navigation stays available at every width. */
 .bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;flex-wrap:wrap;gap:19px;padding:21px 40px;background:var(--bg);border-bottom:1px solid var(--border)}
@@ -123,6 +124,7 @@ code,pre{font-family:var(--mono)}
 .node.orch{width:52%;margin:auto;background:var(--hub);color:var(--hub-text);border-color:var(--hub)}
 .node.orch .ro{color:inherit;opacity:.8}
 .node.orch.on{outline:1px solid var(--accent);outline-offset:3px}
+.node.orch.on:focus-visible,.studio-hub:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
 .agents{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .conn{margin:16px 0;color:var(--muted);text-align:center;font-size:11px}
 .integ{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;padding:12px 0 0}
@@ -317,7 +319,7 @@ code,pre{font-family:var(--mono)}
   .bar .spacer{display:none}
   .barcta{margin-right:auto;font-size:11px}
   .seg button{padding:5px 7px;font-size:10px}
-  .barnav{gap:10px;font-size:12px}
+  .barnav{flex-wrap:wrap;gap:10px;font-size:12px}
   .hero{padding-top:33px}
   .hero .eyebrow{max-width:340px;font-size:10px;letter-spacing:.09em}
   .name{font-size:clamp(39px,11.4vw,59px);margin-block:20px}

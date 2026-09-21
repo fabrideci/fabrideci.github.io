@@ -21,8 +21,12 @@ or trackers. All assets, including fonts, load from the site's own origin.
 - The Lab retains the error-budget calculator, Markdown previews and downloads,
   and an optional command-line interface.
 - Each preview/download action includes its filename in its accessible name.
+- Preview buttons expose their selection; loading, completion and failures report
+  the filename through a localized status message without moving keyboard focus.
+- The SLO number field and slider share the full 0–100% range.
 - The terminal completes partial commands with Tab. Tab moves on when no further
   completion is possible; Shift+Tab always keeps normal backward navigation.
+- Terminal navigation moves keyboard focus to the requested section.
 - The fan-out calculator is an illustrative two-stage model. Its capacity is per
   stage; its outputs are not measurements of the engineering assistant.
 - Core reading content, navigation, disclosures and downloads work without
@@ -53,6 +57,21 @@ python3 -m http.server 8000
 
 Open `http://localhost:8000`. Serve over HTTP so the Lab can fetch its Markdown
 files. No install or build is required.
+
+## Regression checks
+
+With Node.js installed, run `node --test tests/*.test.js`. The tests exercise the
+production script with small DOM fixtures, covering SLO synchronization, terminal
+navigation and Tab handling, and artifact selection/loading/request races. They
+add no browser runtime dependencies. Also run `node --check main.js` and
+`git diff --check`.
+
+The local browser review covered EN/IT and light/dark at 320, 390, 768, 1024 and
+1280 pixels. It verified native keyboard activation, focus navigation, both
+calculators, and all five Markdown previews/downloads. Mobile navigation wraps
+at narrow widths, and the selected orchestrator retains a distinct focus ring.
+These checks do not replace a screen-reader audit or confirmation of professional
+claims.
 
 ## Review before publishing
 
